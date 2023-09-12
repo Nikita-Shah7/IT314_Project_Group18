@@ -10,3 +10,4 @@
 - give IDs accord. to pattern
 - print a bill and send email/SMS to cust
 - manage the "choices" options in models
+- 404 not found page

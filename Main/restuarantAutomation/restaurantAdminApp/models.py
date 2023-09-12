@@ -12,7 +12,7 @@ class restaurantMenu(models.Model):
     dishName = models.CharField(max_length=30)
     # img = models.ImageField(upload_to='menuItems/',blank=True,null=False)
     category = models.ForeignKey("dishCategory",on_delete=models.CASCADE)  # categoryID will be taken from category table
-    description = models.CharField(max_length=100,blank=True,null=True)
+    description = models.CharField(max_length=100,blank=True,null=True,default="Yummy!!")
     quantity = models.IntegerField()   # in grams
     rate = models.IntegerField()
     # estTime = models.IntegerField()  # estimated time in minutes
