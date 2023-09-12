@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { dishCategory } from '../AxiosCreate'
 import CategoryList from './CategoryList';
 import './MenuList.scss'
-import { FaShoppingCart } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBurger } from '@fortawesome/free-solid-svg-icons';
 
 function MenuList() {
 
@@ -33,9 +34,9 @@ function MenuList() {
             <div className="accordion" id="accordionPanelsStayOpenExample">
                 {renderMenuList}
             </div>
-            <a href="#" className="btn d-flex align-items-center justify-content-center rounded-circle shadow text-white border-0 bg-primary back-to-top">
-                <i class="fas fa-chevron-up"></i></a>
-            <FaShoppingCart className='text-purple' size={35} onClick={addToCart}/>
+            <a href="/mycart" className="btn d-flex align-items-center justify-content-center rounded-circle shadow text-white border-0 bg-primary back-to-top">
+                <FontAwesomeIcon icon={faBurger} />    
+            </a>
         </>
     );
 }
