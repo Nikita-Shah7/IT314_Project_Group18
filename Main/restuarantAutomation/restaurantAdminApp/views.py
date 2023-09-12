@@ -9,12 +9,12 @@ from rest_framework.response import Response
 class DishCategorys(APIView):
     def get(self,request):
         allItems = dishCategory.objects.all()
-        toJson = DishCategorysSerializer(allItems,many=True)
+        toJson = dishCategorySerializer(allItems,many=True)
         return Response(toJson.data)
 
     def post(self,request):
         # Deserialize the data from the request's body using the serializer
-        serializer = DishCategorysSerializer(data=request.data)
+        serializer = dishCategorySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -26,12 +26,12 @@ class DishCategorys(APIView):
 class RestaurantMenus(APIView):
     def get(self,request):
         allItems = restaurantMenu.objects.all()
-        toJson = ResturantMenusSerializer(allItems,many=True)
+        toJson = restaurantMenuSerializer(allItems,many=True)
         return Response(toJson.data)
 
     def post(self,request):
         # Deserialize the data from the request's body using the serializer
-        serializer = ResturantMenusSerializer(data=request.data)
+        serializer = restaurantMenuSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
