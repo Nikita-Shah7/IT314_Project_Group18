@@ -3,32 +3,29 @@ import { useEffect, useState } from 'react';
 import { table } from '../AxiosCreate'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
 function Table() {
 
     const [dinnTable, setDinnTable] = useState([]);
-    const [selectTable, setSelectTable] = useState(0)
+    const [selectedTable, setSelectedTable] = useState(null);
 
     const [showAvailable, setShowAvailable] = useState(false);   // for React-Modal
     const [showOccupied, setShowOccupied] = useState(false);   // for React-Modal
-    const handleClose = () => 
-    {
+
+    const handleClose = () => {
         setShowAvailable(false);
         setShowOccupied(false);
     }
 
+    const handleShowAvailable = (table) => {
+        setSelectedTable(table);
+        setShowAvailable(true);
+    }
 
-    const handleShow = (table) => {
-        console.log(table);
-        console.log("nik0")
-        console.log(table.status);
-        if(table.status=='available') {
-            console.log("nik1");
-        }
-        else {
-            console.log("nik2");
-        }
-        return;
+    const handleShowOccupied = (table) => {
+        setSelectedTable(table);
+        setShowOccupied(true);
     }
 
     useEffect(() => {
@@ -45,10 +42,19 @@ function Table() {
                 <td>{item.tableID}</td>
                 <td>{item.capacity}</td>
                 <td>
-                    <span onClick={handleShow(item)} className={`status ${item.status === 'occupied' ? 'occupied' : item.status === 'reserved' ? 'reserved' : 'available'}`}>{item.status}</span>
+                <span
+                        onClick={() => {
+                            if (item.status === 'occupied' || item.state === 'reserved') {
+                                handleShowOccupied(item);
+                            } else if (item.status === 'available') {
+                                handleShowAvailable(item);
+                            }
+                        }}
+                        className={`status ${item.status === 'occupied' ? 'occupied' : item.status === 'reserved' ? 'reserved' : 'available'}`}>
+                        {item.status}
+                    </span>
                 </td>
             </tr>
-            // </Link>
         );
     });
 
@@ -56,33 +62,34 @@ function Table() {
         <>
             <Modal show={showAvailable} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Get Table</Modal.Title>
+                    <Modal.Title>Confirm Reservation</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure to dine at table-{} ?</Modal.Body>
+                <Modal.Body>Are you sure you want to reserve table {selectedTable?.tableID}?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Yup!
-                    </Button>
+                    <Link to={'/menu'} state={selectedTable?.tableID}>
+                        <Button variant="primary" onClick={handleClose}>
+                            Yup!
+                        </Button>
+                    </Link>
                 </Modal.Footer>
             </Modal>
 
+            {/* 
+            <!--works perfectly fine; but i don't think i need it-->
             <Modal show={showOccupied} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Occupied!</Modal.Title>
+                    <Modal.Title>Table Occupied</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure to dine at table-{} ?</Modal.Body>
+                <Modal.Body>Table {selectedTable?.tableID} is currently occupied.</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Yup!
+                        Close
                     </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
 
 
             <table className="table">

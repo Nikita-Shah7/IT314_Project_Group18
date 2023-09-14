@@ -7,11 +7,13 @@
 .occupied {
     background-color: red;
     color: white;
+    cursor: not-allowed;
 }
 
 .reserved {
     background-color: blue;
     color: white;
+    cursor: not-allowed;
 }
 
 .available {
