@@ -5,6 +5,7 @@ import Home from './components/Home/Home'
 import MenuList from './components/Menu/MenuList'
 import MenuListDetails from './components/Menu/MenuItemDetails'
 import Cart from './components/Cart/Cart'
+import Table from './components/Table/Table';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/menu' element={<MenuList/>} />
         <Route path='/menu/:id' element={<MenuListDetails/>} />
         <Route path='/mycart' element={<Cart/>}/>
+        <Route path='/table' element={<Table/>} />
       </Routes>
     </Router>
     </>
