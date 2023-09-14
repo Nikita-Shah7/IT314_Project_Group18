@@ -5,10 +5,17 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 
+// // to set tableID variable that is declared globally
+import { useContext } from 'react';
+import { Context } from '../../context';
+import ContextProvider from '../../context';
+
+
 function Table() {
 
     const [dinnTable, setDinnTable] = useState([]);
-    const [selectedTable, setSelectedTable] = useState(null);
+    // const [selectedTable, setSelectedTable] = useState(null);  // get it from context.jsx
+    const { selectedTable, setSelectedTable } = useContext(Context)
 
     const [showAvailable, setShowAvailable] = useState(false);   // for React-Modal
     const [showOccupied, setShowOccupied] = useState(false);   // for React-Modal
@@ -69,7 +76,8 @@ function Table() {
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Link to={'/menu'} state={selectedTable?.tableID}>
+                    {/* <Link to={'/menu'} state={selectedTable?.tableID}> */}
+                    <Link to={'/menu'}>
                         <Button variant="primary" onClick={handleClose}>
                             Yup!
                         </Button>

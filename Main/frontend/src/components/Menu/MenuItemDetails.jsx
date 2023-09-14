@@ -4,8 +4,27 @@ import './MenuItemDetails.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBurger } from '@fortawesome/free-solid-svg-icons';
 
+// to get tableID
+import { useContext } from 'react';
+import { Context } from '../../context';
+import ContextProvider from '../../context';
+
+
 function MenuItemDetails() {
     console.log("nik in MenuListDetails.jsx")
+
+    // i use context.jsx since i have made the tableID variable
+    // to be available globally
+    const { selectedTable } = useContext(Context)
+    console.log("selectedTable => ",selectedTable)
+    if(selectedTable) {
+        console.log(selectedTable)
+        console.log(selectedTable.tableID)
+    }
+    else 
+        console.log("table yet not selected!!")
+
+    // to get details of a menuListItem selected
     const location = useLocation();
     console.log(location.state)
 
