@@ -11,9 +11,10 @@ function MenuList() {
 
     useEffect(() => {
         dishCategory.get('').then((response) => {
+            console.log("nik1 in MenuList.jsx")
             setdishCategoryItem(response.data);
         })
-    }, [dishCategoryItem]);
+    }, []);
 
 
     const renderMenuList = dishCategoryItem.map((item) => {

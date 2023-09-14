@@ -13,10 +13,11 @@ function CategoryList(props) {
 
     useEffect(() => {
         restaurantMenu.get('').then((response) => {
+            console.log('nik1 in CategoryList.jsx')
             const filteredData = response.data.filter(item => item.category === props.categoryID);
             setCategoryItems(filteredData);
         })
-    }, [categoryItems]);
+    }, []);
 
 
     const renderCategoryList = categoryItems.map((item) => {
