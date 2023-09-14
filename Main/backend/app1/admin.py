@@ -5,12 +5,37 @@ from .resources import *
 
 
 # Register your models here.
+class DishCategoryAdmin(ImportExportModelAdmin):
+    resource_class = DishCategoryResource
+
+admin.site.register(dishCategory, DishCategoryAdmin)
+
+
 class RestaurantMenuAdmin(ImportExportModelAdmin):
     resource_class = RestaurantMenuResource
 
 admin.site.register(restaurantMenu, RestaurantMenuAdmin)
 
-admin.site.register(table)
-admin.site.register(dishCategory)
-admin.site.register(FoodCart)
-admin.site.register(cartItems)
+
+class TableAdmin(ImportExportModelAdmin):
+    resource_class = TableResource
+
+admin.site.register(table, TableAdmin)
+
+
+class FoodCartAdmin(ImportExportModelAdmin):
+    resource_class = FoodCartResource
+
+admin.site.register(FoodCart, FoodCartAdmin)
+
+
+class CartItemsAdmin(ImportExportModelAdmin):
+    resource_class = CartItemsResource
+
+admin.site.register(cartItems, CartItemsAdmin)
+
+
+# admin.site.register(table)
+# admin.site.register(dishCategory)
+# admin.site.register(FoodCart)
+# admin.site.register(cartItems)
