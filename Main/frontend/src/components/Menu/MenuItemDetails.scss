@@ -5,3 +5,16 @@
         }
     }
 }
+
+.back-to-top{
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+    width: 35px;
+    height: 35px;
+    &:hover{
+        // color: $white;
+        color: white;
+        background-color: rgba(#6b2a9d,1);
+    }
+}

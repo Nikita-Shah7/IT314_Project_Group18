@@ -11,3 +11,7 @@ export const restaurantMenu = axios.create({
 export const cart = axios.create({
     baseURL: "http://127.0.0.1:8000/api/mycart"
 });
+
+export const table = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/table"
+});
