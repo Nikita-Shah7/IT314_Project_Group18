@@ -42,35 +42,3 @@ class dishCategory(models.Model):
 
     def __str__(self):
         return self.categoryName
-    
-
-class FoodCart(models.Model):
-    class Meta:
-        verbose_name = "FoodCart"
-    cartID = models.IntegerField(primary_key=True)
-    totalBillAmount = models.IntegerField()
-
-    def __str__(self):
-        return str(self.cartID)
-    
-
-class cartItems(models.Model):
-    cartID = models.ForeignKey(FoodCart, on_delete=models.CASCADE,default=0)
-    dishID = models.IntegerField(primary_key=True)
-    dishName = models.CharField(max_length=30)
-    quantity = models.IntegerField(default=0)
-    itemCost = models.BigIntegerField(default=0)
-    totalItemCost = models.BigIntegerField(default=0)
-    class Meta:
-        verbose_name = "cartItem"
-        unique_together = [['cartID', 'dishID']]
-
-    def __str__(self):
-        return self.dishName
-    
-    
-
-   
-
-# null=True parameter -> field can be left as NULL in the database,.
-# blank=True parameter-> the field can be left blank in forms.

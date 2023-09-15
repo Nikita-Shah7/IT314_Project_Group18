@@ -23,19 +23,3 @@ class tableSerializer(serializers.ModelSerializer):
         model = table
         fields = ['tableID','capacity','status']
         # fields = '__all__'
-
-
-class FoodCartSerializer(serializers.ModelSerializer):
-    # Model Meta is basically the inner class of your model class.
-    class Meta:
-        model = FoodCart
-        fields = ['cartID','totalBillAmount']
-        # fields = '__all__'
-
-
-class cartItemsSerializer(serializers.ModelSerializer):
-    # Model Meta is basically the inner class of your model class.
-    class Meta:
-        model = cartItems
-        fields = ['cartID','dishID','dishName','quantity','itemCost','totalItemCost']
-        # fields = '__all__'
