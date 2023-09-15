@@ -42,3 +42,14 @@ class dishCategory(models.Model):
 
     def __str__(self):
         return self.categoryName
+    
+
+class FoodCart(models.Model):
+    class Meta:
+        verbose_name = "FoodCart"
+    cartID = models.IntegerField(primary_key=True)
+    totalBillAmount = models.IntegerField()
+
+    def __str__(self):
+        return str(self.cartID)
+    
