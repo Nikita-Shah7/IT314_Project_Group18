@@ -1,0 +1,13 @@
+- SMS auth
+- email notifi
+- relation between tables -> https://chat.openai.com/c/b4c630ac-3019-43c8-b049-307897dd4aa2
+- learn ORM system in django
+- twilio.com
+- access of one app to another
+- create 2 diff admin sites for 2 diff apps
+- website khule etle occupied
+- payment pati jay to avilable
+- give IDs accord. to pattern
+- print a bill and send email/SMS to cust
+- manage the "choices" options in models
+- 404 not found page

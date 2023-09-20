@@ -1,0 +1,66 @@
+import './Table.scss'
+import { useEffect, useState } from 'react';
+import { table } from '../AxiosCreate'
+import { OccupiedModal, ReservedModal, AvailableModal } from './TableModal';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+function Table() {
+
+    const [dinnTable, setDinnTable] = useState([]);
+    const [selectTable, setSelectTable] = useState(0)
+    
+    const [selectedStatus, setSelectedStatus] = useState('');
+
+    const [showModal, setShowModal] = useState(false);   // for React-Modal
+    const handleClose = () => setShowModal(false);  // for React-Modal
+    const handleShow = (status) => {
+        setShowModal(true);  // for React-Modal
+        setSelectedStatus(status);
+    }
+
+    useEffect(() => {
+        table.get('').then((response) => {
+            setDinnTable(response.data);
+        })
+    }, []);
+
+    const renderTableList = dinnTable.map((item) => {
+        console.log(item);
+        return (
+            // <Link to={`/menu/${item.dishID}`} state={item}>
+            <tr key={item.tableID}>
+                <td>{item.tableID}</td>
+                <td>{item.capacity}</td>
+                <td>
+                    <span onClick={handleShow} className={`status ${item.status === 'occupied' ? 'occupied' : item.status === 'reserved' ? 'reserved' : 'available'}`}>{item.status}</span>
+                </td>
+            </tr>
+            // </Link>
+        );
+    });
+
+    return (
+        <>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Table ID</th>
+                        <th>Capacity</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderTableList}
+                </tbody>
+            </table>
+
+            {/* Conditional rendering of modals */}
+            {selectedStatus === 'occupied' && <OccupiedModal show={showModal} handleClose={handleClose} />}
+            {selectedStatus === 'reserved' && <ReservedModal show={showModal} handleClose={handleClose} />}
+            {selectedStatus === 'available' && <AvailableModal show={showModal} handleClose={handleClose} />}
+        </>
+    );
+}
+
+export default Table;

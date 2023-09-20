@@ -1,0 +1,15 @@
+<h1>SignIn</h1>
+
+{% for message in messages %}
+<h5>{{message}}</h5>
+{% endfor %}
+<form method = "POST" action = "signin">
+    {% csrf_token %}
+    <p>UserName :</p>
+    <input type="text" name="username"/>
+    <p>Passward :</p>
+    <input type="password" name="password"/>
+    <br/>
+    <input type="submit"/>
+    <p>If you want to <a href="/signup">SignUp</a></p>
+</form>
