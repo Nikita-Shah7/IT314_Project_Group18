@@ -20,6 +20,7 @@ admin.site.register(restaurantMenu, RestaurantMenuAdmin)
 class TableAdmin(ImportExportModelAdmin):
     resource_class = TableResource
 
+
 admin.site.register(table, TableAdmin)
 
 
@@ -30,7 +31,8 @@ admin.site.register(FoodCart, FoodCartAdmin)
 
 
 
-# admin.site.register(table)
-# admin.site.register(dishCategory)
+admin.site.register(order)
+admin.site.register(orderitem)
+admin.site.register(verify)
 # admin.site.register(FoodCart)
 # admin.site.register(cartItems)

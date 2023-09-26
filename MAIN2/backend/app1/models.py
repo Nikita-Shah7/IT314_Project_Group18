@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class restaurantMenu(models.Model):
     class Meta:
@@ -12,11 +12,17 @@ class restaurantMenu(models.Model):
     quantity = models.IntegerField()   # in grams
     rate = models.IntegerField()
     # estTime = models.IntegerField()  # estimated time in minutes
-
     def __str__(self):
         return self.dishName
-
-
+class orderitem(models.Model):
+    items =  models.ForeignKey(restaurantMenu,on_delete=models.CASCADE)
+    pass
+class order(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    items = models.ManyToManyField(orderitem)
+    ordered = models.BooleanField(default=False)
+    ordered_date =  models.DateField()
+    pass
 class table(models.Model):
     TABLE_AVAILABILITY_STATUS = [  # -> (value stored in DB, human readable value)
         ('available','AVAILABLE'),
@@ -42,7 +48,6 @@ class dishCategory(models.Model):
 
     def __str__(self):
         return self.categoryName
-    
 
 class FoodCart(models.Model):
     class Meta:
@@ -53,3 +58,9 @@ class FoodCart(models.Model):
     def __str__(self):
         return str(self.cartID)
     
+class verify(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    auth_token = models.CharField(max_length=100)
+    is_verified = models.BooleanField(default=False) 
+    def __str__(self) :
+        return self.user.username

@@ -14,5 +14,9 @@ urlpatterns = [
     path('signup',views.signup,name='signup'),
     path('signin',views.signin,name='signin'),
     path('logout',views.logout,name='logout'),
+    path('success',views.success,name='success'),
+    path('token_send',views.token_send,name='token_send'),
+    path('veri/<auth_token>' , views.veri , name="veri"),
+    path('error',views.error,name='error'),
     # path('api/cartitems',views.CartItems.as_view()),
 ]
