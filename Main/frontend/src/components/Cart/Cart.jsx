@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cartItems } from "../AxiosCreate";
+import { cartItems, cartItemsUpdate, cartItemsDelete, foodCart } from "../AxiosCreate";
+
+
+// to set tableID variable that is declared globally
+import { useContext } from 'react';
+import { Context } from '../../context';
+import ContextProvider from '../../context';
 
 function Cart() {
     console.log('nik enter')
+
+    const { selectedTable } = useContext(Context)
+
     /*
     const [cart, setCart] = useState([{
         id: 1,
@@ -30,20 +39,14 @@ function Cart() {
       const [cart, setCart] = useState([]);
 
       useEffect(() => {
-        console.log("nik in getAxios")
+        // console.log("nik in getAxios")
         cartItems.get('').then((response) => {
             setCart(response.data);
         })
     }, []);
-
-
-    // update quantity of items
-    // useEffect( () => {
-
-    // },[]);
     
 
-    console.log(cart)
+    // console.log(cart)
 
     const [totalBillAmt, setTotalBillAmt] = useState(cart.reduce((total, item) => total + item.itemCost*item.quantity, 0));
     
@@ -56,7 +59,6 @@ function Cart() {
     
     const updateTotalBillAmount = (updatedCart) => {
         // make the changes to get reflected on frontend
-        console.log("nik in updateFunc")
         const totalAmount = updatedCart.reduce((total, item) => total + item.itemCost * item.quantity, 0);
         setTotalBillAmt(totalAmount);
 
@@ -65,14 +67,38 @@ function Cart() {
 
     }
 
-
+    // cannot a dish with quantity range [1-10]
     const handleDecrement = (cart_id,dish_id) => {
+        // console.log("nik in decre")
         // console.log(cart)
-        // updateCartQuantity(cart_id, "dec");
+
+        var updatedData = {}
+        const updatedCart = cart.map( (item) => {
+            if (dish_id === item.dishID && cart_id==item.cartID) {
+                updatedData = {
+                    "cartID": cart_id,
+                    "dishID": dish_id,
+                    "dishName": item.dishName,
+                    "quantity": Math.max(item.quantity - (item.quantity > 1 ? 1 : 0), 1),
+                    "itemCost": item.itemCost,
+                    "totalItemCost": (item.quantity - (item.quantity < 10 ? 1 : 0)) * item.itemCost,
+                };
+                return updatedData; // Return the updated item
+            } else {
+                return item; // Return the original item
+            }
+        });
         
-        const updatedCart = cart.map((item) =>
-        cart_id === item.id ? { ...item, quantity: item.quantity - (item.quantity > 1 ? 1 : 0) } : item
-        );
+        console.log(updatedData)
+
+        // make the changes to server also
+        // PUT request
+        cartItemsUpdate.put(`${dish_id}/`, updatedData).then( (response) => {
+            console.log("Item quantity incremented successfully!!", response.data);
+        }).catch( (error) => {
+            console.error("ERROR MESSAGE::", error);
+        });
+
         setCart(updatedCart);
         updateTotalBillAmount(cart);
     }
@@ -80,28 +106,53 @@ function Cart() {
     const handleIncrement = (cart_id,dish_id) => {
         // console.log("nik in incre")
         // console.log(cart)
-        // updateCartQuantity(cart_id, "inc");
         
-        // make the changes to get reflected on frontend
-        const updatedCart = cart.map((item) =>
-            cart_id === item.id ? { ...item, quantity: item.quantity + (item.quantity < 10 ? 1 : 0) } : item
-        );
+        var updatedData = {}
+        const updatedCart = cart.map( (item) => {
+            if (dish_id === item.dishID && cart_id==item.cartID) {
+                updatedData = {
+                    "cartID": cart_id,
+                    "dishID": dish_id,
+                    "dishName": item.dishName,
+                    "quantity": item.quantity + (item.quantity < 10 ? 1 : 0) ,
+                    "itemCost": item.itemCost,
+                    "totalItemCost": (item.quantity + (item.quantity < 10 ? 1 : 0)) * item.itemCost,
+                };
+                return updatedData; // Return the updated item
+            } else {
+                return item; // Return the original item
+            }
+        });
+        
+        console.log(updatedData)
+
+        // make the changes to server also
+        // PUT request
+        cartItemsUpdate.put(`${dish_id}/`, updatedData).then( (response) => {
+            console.log("Item quantity incremented successfully!!", response.data);
+        }).catch( (error) => {
+            console.error("ERROR MESSAGE::", error);
+        });
+
         setCart(updatedCart);
         updateTotalBillAmount(cart);
-
-        // post the changes to server also
-        // cartItems.post('',);
     }
+
 
     const deleteCartItem = (cart_id,dish_id) => {
         console.log(cart_id,dish_id)
 
-        const updatedCart = cart.filter((item) => item.id !== cart_id);
+        const updatedCart = cart.filter((item) => item.cartID !== cart_id || item.dishID !== dish_id);
+        
+        cartItemsDelete.delete(`${dish_id}/`).then((response) => {
+            console.log("Item deleted successfully from the server!", response.data);
+        }).catch((error) => {
+            console.error("Error deleting item from the server", error);
+        });
+        
         setCart(updatedCart)
-        // console.log(cart);
         updateTotalBillAmount(updatedCart);
-        console.log(updatedCart)
-        console.log('nik0')
+        // console.log(updatedCart)
     }
         
     
@@ -256,6 +307,7 @@ function Cart() {
                                     <div className="card card-body py-5 text-center shadow-sm">
                                         <h4>Your Shopping Cart is Empty</h4>
                                     </div>
+                                    <Link to="/menu" className="btn btn-primary">Back</Link>
                                 </div>
                             )}
                         </div>

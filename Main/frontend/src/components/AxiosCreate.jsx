@@ -8,8 +8,8 @@ export const restaurantMenu = axios.create({
     baseURL: "http://127.0.0.1:8000/api/restaurantmenu"
 });
 
-export const cart = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/mycart"
+export const foodCart = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/foodcart"
 });
 
 export const table = axios.create({
@@ -18,4 +18,12 @@ export const table = axios.create({
 
 export const cartItems = axios.create({
     baseURL: "http://127.0.0.1:8000/api/cartitems"
+});
+
+export const cartItemsUpdate = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/cartitems-update"
+});
+
+export const cartItemsDelete = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/cartitems-delete"
 });
