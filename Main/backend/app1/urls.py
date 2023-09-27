@@ -11,4 +11,7 @@ urlpatterns = [
     path('api/table',views.Table.as_view()),
     path('api/foodcart',views.foodCart.as_view()),
     path('api/cartitems',views.CartItems.as_view()),
+
+    path('api/cartitems-update/<int:pk>/',views.CartItems.as_view()),
+    path('api/cartitems-delete/<int:pk>/',views.CartItems.as_view()),
 ]
