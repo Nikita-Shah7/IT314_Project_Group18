@@ -15,3 +15,7 @@ export const cart = axios.create({
 export const table = axios.create({
     baseURL: "http://127.0.0.1:8000/api/table"
 });
+
+export const cartItems = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/cartitems"
+});
