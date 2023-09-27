@@ -20,6 +20,7 @@ function MenuItemDetails() {
     const [tableID, setTableID] = useState(null)
     const [newItem, setnewItem] = useState({})
     const [cart, setCart] = useState([]);
+    
     const { selectedTable } = useContext(Context)
 
     console.log("selectedTable => ", selectedTable)
@@ -90,6 +91,7 @@ function MenuItemDetails() {
                 console.log("ERROR MESSAGE::",error)
             });
     }, [newItem]);
+
 
 
     return (

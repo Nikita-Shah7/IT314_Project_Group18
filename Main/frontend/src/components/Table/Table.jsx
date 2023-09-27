@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 
-// // to set tableID variable that is declared globally
+// to set tableID variable that is declared globally
 import { useContext } from 'react';
 import { Context } from '../../context';
 import ContextProvider from '../../context';
@@ -40,6 +40,7 @@ function Table() {
             setDinnTable(response.data);
         })
     }, []);
+    
 
     const renderTableList = dinnTable.map((item) => {
         console.log(item);

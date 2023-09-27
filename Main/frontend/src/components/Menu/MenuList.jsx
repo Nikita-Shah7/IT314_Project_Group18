@@ -32,6 +32,7 @@ function MenuList() {
     // i use context.jsx since i have made the tableID variable
     // to be available globally
     const { selectedTable } = useContext(Context)
+
     console.log("selectedTable => ",selectedTable)
     if(selectedTable) {
         console.log(selectedTable)
@@ -68,9 +69,11 @@ function MenuList() {
             <div className="accordion" id="accordionPanelsStayOpenExample">
                 {renderMenuList}
             </div>
-            <a href="/mycart" className="btn d-flex align-items-center justify-content-center rounded-circle shadow text-white border-0 bg-primary back-to-top">
-                <FontAwesomeIcon icon={faBurger} />    
-            </a>
+            { selectedTable ? (
+                <a href="/mycart" className="btn d-flex align-items-center justify-content-center rounded-circle shadow text-white border-0 bg-primary back-to-top">
+                    <FontAwesomeIcon icon={faBurger} />    
+                </a>
+            ) : ( <></>) } 
         </>
     );
 }
