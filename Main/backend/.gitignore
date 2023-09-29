@@ -1,2 +1,3 @@
 /packages
-settings.py
+/Main/backend/backend/setting.py
+.DS_Store
