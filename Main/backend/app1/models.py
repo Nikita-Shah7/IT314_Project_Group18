@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class restaurantMenu(models.Model):
     class Meta:
@@ -52,4 +52,9 @@ class FoodCart(models.Model):
 
     def __str__(self):
         return str(self.cartID)
-    
+class verify(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    auth_token = models.CharField(max_length=100)
+    is_verified = models.BooleanField(default=False) 
+    def __str__(self) :
+        return self.user.username

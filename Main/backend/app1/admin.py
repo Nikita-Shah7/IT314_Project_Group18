@@ -28,7 +28,7 @@ class FoodCartAdmin(ImportExportModelAdmin):
 
 admin.site.register(FoodCart, FoodCartAdmin)
 
-
+admin.site.register(verify)
 
 # admin.site.register(table)
 # admin.site.register(dishCategory)
