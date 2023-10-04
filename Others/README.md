@@ -1,7 +1,7 @@
 # IT314_Group18
 > Mentor: Dr. Saurabh Tiwari
 
-##  Restaurant Automation Website
+##  Restaurant Automation Website 👨‍🍳
 ![gif](https://media.giphy.com/media/13LlAxmDwAkopO/giphy.gif)
 
 ## Description of the project:
@@ -10,3 +10,37 @@
 ## Lab Work:
 
 ### Lab2: Design Thinking Activity
+
+### 1. Stakeholders & Users
+* CUstomer
+* Chef
+* Manager
+* Employee
+* Developer
+* Restaurant Owner
+
+ ### 2. Functional Requirements
+ * User Authentication
+ * Restaurent Menu
+ * Cart
+ * Table allocation
+ * Payment
+ * Revising the Menu items
+ * Profit - loss analysis
+
+ ### 3. Non-Functional Requirements
+ * Scalability
+ * User - accessibility
+ * Privacy
+ * Reliability
+
+### 4. Tools & Technology
+* HTML/CSS/JS
+* Python
+* Figma
+* Django
+
+### 5. Roles
+* Web - designer
+* Front - end developer
+
