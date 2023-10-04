@@ -1,11 +1,12 @@
 # IT314_Group18
 > Mentor: Dr. Saurabh Tiwari
+> Group - Mentor: Khushi
 
 ##  Restaurant Automation Website 👨‍🍳
 ![gif](https://media.giphy.com/media/13LlAxmDwAkopO/giphy.gif)
 
 ## Description of the project:
-> We are designing and developing a web-based application for a hotel personnel and customers to make the hotel management automated and efficient. The functionalities such as profit-loss analysis, menu management and employee management eases and automatize the work of hotel manager and the functionalities such as book a table, order the food, cancel the order and pay the bills online makes the working flow effiencient and easy for the customers. This project aims to capture the basic requirements for users as well as hotel personnel and to make the website userfriendly, responsive and supportive. 
+> We are designing and developing a web-based application for a hotel personnel and customers to make the hotel management automated and efficient. The functionalities such as profit-loss analysis, menu management and employee management eases and automatize the work of hotel manager and the functionalities such as book a table, order the food, cancel the order and pay the bills online makes the working flow effiencient and easy for the customers. This project aims to capture the basic requirements of users as well as hotel personnel and to make the website userfriendly, responsive and supportive. 
 
 ## Lab Work:
 
@@ -94,6 +95,7 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/5fa1
 > In this activity, We have identified the process interactions arranged by the time sequences which depicts the involvements of process and objects.
 > We have created 5 sequence diagram in total to show the flow and interaction of our project.
 > which includes,
+
 * Feedback diagram
 * Login diagram
 * Signup diagram
@@ -103,7 +105,17 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/5fa1
 Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/5fa12f8d2a5b10fa96461298339690ce03694339/Others/Sequence_Diagrams
 
 ### Use Case Diagram
-> In this activity, 
+> In this activity, We have identified the different usecases for our project. Use case basically depicts the interaction between actor and system. In our project, there are total 3 actors including customer, hotel admin and hotel employees.
+> Here's the list of the name of use-cases:
+* Login
+* Table Management
+* Payment
+* Order Management
+* Order Food
+* Menu Management
+* Profit-loss analysis
+
+> Here's the link: 
 
 
 ### Formated By:
