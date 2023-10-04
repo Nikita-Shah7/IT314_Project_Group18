@@ -13,7 +13,7 @@
 ### Lab02: Design Thinking Activity
 
 ### 1. Stakeholders & Users
-* CUstomer
+* Customer
 * Chef
 * Manager
 * Employee
@@ -67,7 +67,7 @@ Here's the link : https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/5fa
 Concept Poster : https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/5fa12f8d2a5b10fa96461298339690ce03694339/Others/Silent%20Brainstorming/Group_18_3.pdf
 
 ### Lab03 User Stories 
-> In this lab, we have created the user-side stories along with their accpetance criteria covering mandatory requirements in perspective of user. Here user includes hotel manager, employees and restaurant customer. Total 14 different requirements have been counted as final at the end of the group discussion.
+> In this lab, we have created the user-side stories along with their acceptance criteria covering mandatory requirements in perspective of user. Here user includes hotel manager, employees and restaurant customer. Total 14 different requirements have been counted as final at the end of the group discussion.
 
 Here's the link : https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/5fa12f8d2a5b10fa96461298339690ce03694339/Others/Lab3_UserStory.pdf
 
@@ -123,11 +123,6 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/5fa1
 
 > Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/626af1659fa508991f757c14277b3b3bb24ed4ba/Others/Class%20Diagram/class_diagram.pdf
 
-
-### Formated By:
-> Dhruvi Gohel (20210101188)
-
-
 ### Group Picture 😀
 ![Group_18](https://github.com/Nikita-Shah7/IT314_Project_Group18/assets/97607646/1c642c8c-e894-4206-9940-a276967610d6)
 
@@ -143,4 +138,7 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/5fa1
 * 202101210 MAHARSHI PIPALIYA
 * 202101212 RAVAT NAITIK SUMANBHAI
 * 202101220 MEHTA JAHNAVI NAVNITRAY
+
+### Formated By:
+> Dhruvi Gohel (20210101188)
 
