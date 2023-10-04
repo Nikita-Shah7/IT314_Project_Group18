@@ -1,6 +1,6 @@
 # IT314_Group18
-> Mentor: Dr. Saurabh Tiwari
-> Group - Mentor: Khushi
+* Mentor: Dr. Saurabh Tiwari
+* Group - Mentor: Khushi
 
 ##  Restaurant Automation Website 👨‍🍳
 ![gif](https://media.giphy.com/media/13LlAxmDwAkopO/giphy.gif)
