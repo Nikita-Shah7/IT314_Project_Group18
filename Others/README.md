@@ -115,7 +115,13 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/5fa1
 * Menu Management
 * Profit-loss analysis
 
-> Here's the link: 
+> Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/626af1659fa508991f757c14277b3b3bb24ed4ba/Others/Usecase%20Diagram
+
+
+### Class Diagram
+> In this activity, we have identified the object of particular class and also found some relations like aggregation, composition between them.
+
+> Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/blob/626af1659fa508991f757c14277b3b3bb24ed4ba/Others/Class%20Diagram/class_diagram.pdf
 
 
 ### Formated By:
@@ -125,4 +131,16 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/5fa1
 ### Group Picture 😀
 ![Group_18](https://github.com/Nikita-Shah7/IT314_Project_Group18/assets/97607646/1c642c8c-e894-4206-9940-a276967610d6)
 
+### Group Members
+* 202101179 PARMAR MEET RAJESHBHAI
+* 202101188 GOHEL DHRUVI DHARMESHKUMAR
+* 202101192 PATEL DHIRAJKUMAR TULSIBHAI
+* 202101194 PATEL KENI DHARMESHBHAI
+* 202101197 SONI KIRTAN BRIJESHBHAI
+* 202101204 RATHOD DEVANG KIRITBHAI
+* 202101216 PATEL NISARG CHIRAGBHAI
+* 202101209 NIKITA RITESHBHAI SHAH
+* 202101210 MAHARSHI PIPALIYA
+* 202101212 RAVAT NAITIK SUMANBHAI
+* 202101220 MEHTA JAHNAVI NAVNITRAY
 
