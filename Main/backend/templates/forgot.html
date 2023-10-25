@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<h1>Reset Your password</h1>
+{% for message in messages %}
+<h5>{{message}}</h5>
+{% endfor %}
+<form method = "POST">
+    {% csrf_token %}
+    <p>New Password :</p>
+    <input type="password" name="password"/>
+    <p>Reenter Passward :</p>
+    <input type="password" name="password2"/>
+    <br/>
+    <input type="hidden" name="user_id" value="{{userid}}">
+    <input type="submit"/>
+</form>

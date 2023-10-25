@@ -1,19 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<h1>SignUp</h1>
+<h1>Forgot your passward don't worry</h1>
 {% for message in messages %}
 <h5>{{message}}</h5>
 {% endfor %}
-<form method = "POST" action = "signup">
+<form method = "POST" action = "forget">
     {% csrf_token %}
-    <p>UserName :</p>
+    <p>Username :</p>
     <input type="text" name="username"/>
     <p>Email :</p>
     <input type="email" name="email"/>
-    <p>Passward :</p>
-    <input type="password" name="password"/>
-    <p>Re-Enter Passward</p>
-    <input type="password" name="repassword"/>
     <br/>
     <input type="submit"/>
     <p>If you want to <a href="/signin">SignIn</a></p>

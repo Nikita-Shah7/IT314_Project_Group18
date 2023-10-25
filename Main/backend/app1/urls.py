@@ -10,17 +10,14 @@ urlpatterns = [
     path('api/restaurantmenu',views.RestaurantMenus.as_view()),
     path('api/table',views.Table.as_view()),
     path('api/foodcart',views.foodCart.as_view()),
-    path('api/cartitems',views.CartItems.as_view()),
-
-    path('api/cartitems-update/<int:pk>/',views.CartItems.as_view()),
-    path('api/cartitems-delete/<int:pk>/',views.CartItems.as_view()),
     path('',views.index,name='index'),
     path('signup',views.signup,name='signup'),
     path('signin',views.signin,name='signin'),
     path('logout',views.logout,name='logout'),
     path('success',views.success,name='success'),
     path('token_send',views.token_send,name='token_send'),
-    path('veri/<auth_token>' , views.veri , name="veri"),
+    path('veri/<token>' , views.veri , name="veri"),
+    path('forgot/<token>' , views.forgot , name="forgot"),
     path('error',views.error,name='error'),
-    
+    path('forget',views.forget,name='forget')
 ]

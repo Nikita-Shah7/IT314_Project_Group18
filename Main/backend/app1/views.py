@@ -14,7 +14,6 @@ from django.contrib.auth.decorators import login_required
 # a convention followed(except in case of foodCart)::
 # model names start with lower case
 # view-class name start with upper case
-
 # Create your views here.
 class DishCategorys(APIView):
     def get(self,request):
@@ -80,49 +79,6 @@ class foodCart(APIView):
             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
         
 
-class CartItems(APIView):
-    def get(self,request,pk=None):
-        if pk is None:
-            allItems = cartItems.objects.all()
-            toJson = cartItemsSerializer(allItems,many=True)
-            return Response(toJson.data)
-        else:
-            try:
-                item = cartItems.objects.get(pk=pk)
-                serializer = cartItemsSerializer(item)
-                return Response(serializer.data)
-            except cartItems.DoesNotExist:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-
-    def post(self,request):
-        # Deserialize the data from the request's body using the serializer
-        serializer = cartItemsSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-        
-    def put(self,request,pk):
-        try:
-            itemToBeUpdated = cartItems.objects.get(pk=pk)
-            serializer = cartItemsSerializer(itemToBeUpdated, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)    # status=status.HTTP....
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except:
-            raise status.HTTP_404_NOT_FOUND
-        
-    def delete(self,request,pk):
-        try:
-            itemToBeDeleted = cartItems.objects.get(pk=pk)
-            itemToBeDeleted.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
 def signup(request):
 
     if request.method == 'POST':
@@ -175,10 +131,40 @@ def send_mail_verify(email , token):
     recipient_list = [email]
     auth_password = settings.EMAIL_HOST_PASSWORD
     send_mail(subject, message , email_from ,recipient_list, auth_password=auth_password )
+def send_mail_forget(email , token):
+    subject = 'Forgot Your password'
+    message = f'Hi paste the link and rest your password http://127.0.0.1:8000/forgot/{token}'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [email]
+    auth_password = settings.EMAIL_HOST_PASSWORD
+    send_mail(subject, message , email_from ,recipient_list, auth_password=auth_password )
 
-def veri(request , auth_token):
+def forgot(request , token):
+    context = {}
     try:
-        profile_obj = verify.objects.filter(auth_token = auth_token).first()
+        profile_obj = verify.objects.filter(auth_token = token).first()
+        context = {'userid':profile_obj.user.id}
+        if request.method == 'POST' :
+            password= request.POST['password']
+            password2= request.POST['password2']
+            user_id = request.POST['user_id']
+            if user_id is None :
+                messages.success(request,'User Not found')
+                return redirect(f'/forgot/{token}')
+            if password != password2 :
+                messages.success(request,'Password Not same')
+                return redirect(f'/forgot/{token}') 
+            user_object = User.objects.get(id=user_id)
+            user_object.set_password(password)
+            user_object.save()
+            messages.success(request,'Password has been reset successfully')
+            return redirect('/signin')
+    except Exception as e:
+        print(e)
+    return render(request,'forgot.html',context)
+def veri(request , token):
+    try:
+        profile_obj = verify.objects.filter(auth_token = token).first()
         if profile_obj:
             if profile_obj.is_verified:
                 messages.success(request, 'Your account is already verified.')
@@ -192,6 +178,7 @@ def veri(request , auth_token):
     except Exception as e:
         print(e)
         return redirect('/')
+
 def error(request):
     return  render(request , 'error.html')    
 def token_send(request):
@@ -199,3 +186,23 @@ def token_send(request):
 
 def success(request):
     return render(request,'success.html')
+def forget(request):
+    if request.method == 'POST':
+        username= request.POST['username']
+        email= request.POST['email']
+        if User.objects.filter(username=username,email=email).exists():
+            user = User.objects.get(username=username,email=email)
+            verif = verify.objects.get(user=user)
+            if verif.is_verified == True :
+                send_mail_forget(email,verif.auth_token)
+                return render(request,'token_send.html')
+            else :
+                print(verif.auth_token)
+                send_mail_verify(email,verif.auth_token)
+                messages.success(request,'Email Not been verified adn link has been sent')
+                return redirect('/forget')
+        else :
+            messages.success(request,'Email or User is Invalid')
+            return redirect('/forget')
+    else :
+        return render(request,'forget.html')
