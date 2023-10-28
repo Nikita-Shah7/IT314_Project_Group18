@@ -28,3 +28,9 @@ class FoodCartResource(resources.ModelResource):
         model = FoodCart
         fields = ('cartID', 'totalBillAmount')
         import_id_fields = ['cartID']
+
+class orderResource(resources.ModelResource):
+    class Meta:
+        model = order
+        fields = ('user', 'total_amount','payment_status','order_id','datetime_of_payment','razorpay_order_id','razorpay_payment_id','razorpay_signature')
+        import_id_fields = ['orderid']

@@ -30,6 +30,12 @@ admin.site.register(FoodCart, FoodCartAdmin)
 
 admin.site.register(verify)
 
+class orderAdmin(ImportExportModelAdmin):
+    resource_class = order
+
+admin.site.register(order, orderAdmin)
+
+
 # admin.site.register(table)
 # admin.site.register(dishCategory)
 # admin.site.register(FoodCart)

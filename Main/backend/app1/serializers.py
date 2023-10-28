@@ -32,3 +32,9 @@ class FoodCartSerializer(serializers.ModelSerializer):
         fields = ['cartID','totalBillAmount']
         # fields = '__all__'
 
+class orderSerializer(serializers.ModelSerializer):
+    # Model Meta is basically the inner class of your model class.
+    class Meta:
+        model = order
+        fields = '__all__'
+        # fields = '__all__'

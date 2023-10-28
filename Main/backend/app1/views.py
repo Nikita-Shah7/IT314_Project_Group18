@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 from rest_framework import status
 from rest_framework.views import APIView
 from .models import *
+from django.http import HttpResponse
 from .serializers import *
+from django.contrib.sites.shortcuts import get_current_site
 from rest_framework.response import Response
 from django.contrib.auth.models import User,auth
 import uuid
@@ -11,10 +13,19 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
+import calendar
+from calendar import HTMLCalendar
 # a convention followed(except in case of foodCart)::
 # model names start with lower case
 # view-class name start with upper case
 # Create your views here.
+
+def index(request,year,month):
+    month = month.capitalize()
+    month_num = list(calendar.month_name).index(month)
+    month_num = int(month_num)
+    cal = HTMLCalendar().formatmonth(year,month_num)
+    return render(request,'index.html',{"year":year,"month":month_num,"cal":cal})
 class DishCategorys(APIView):
     def get(self,request):
         allItems = dishCategory.objects.all()
@@ -121,8 +132,6 @@ def signin(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-def index(request):
-    return render(request,'index.html')
 
 def send_mail_verify(email , token):
     subject = 'Your accounts need to be verified'
@@ -186,6 +195,7 @@ def token_send(request):
 
 def success(request):
     return render(request,'success.html')
+
 def forget(request):
     if request.method == 'POST':
         username= request.POST['username']
@@ -206,3 +216,24 @@ def forget(request):
             return redirect('/forget')
     else :
         return render(request,'forget.html')
+import razorpay
+razorpay_client = razorpay.Client(auth=(settings.R_ID, settings.R_C_ID))
+@login_required
+def payment(request):
+    amount = 100
+    orders = order.objects.create(user=request.user,total_amount=amount)
+    orders.save()
+    order_currency = 'INR'
+    callback_url = 'http://'+ str(get_current_site(request))+"/handlerequest"
+    print (callback_url)
+    notes = {'order-type': "basic order from the website"}
+    razorpay_order = razorpay_client.order.create(dict(amount=amount*100,currency=order_currency,notes = notes, receipt=orders.order_id, payment_capture='0'))
+    print (razorpay_order['id'])
+    orders.razorpay_order_id = razorpay_order['id']
+    orders.save()
+    return render(request,'payment.html', {'order' :orders,'order_id':razorpay_order['id'],'orderId' : orders.order_id, 'final_price':amount, 'razorpay_merchant_id':settings.R_ID,'callback_url' :callback_url})
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt   
+def handlerequest(request):
+    return  render(request , 'suc.html') 
+    

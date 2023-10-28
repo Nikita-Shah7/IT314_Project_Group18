@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
 class restaurantMenu(models.Model):
     class Meta:
@@ -58,3 +59,26 @@ class verify(models.Model):
     is_verified = models.BooleanField(default=False) 
     def __str__(self) :
         return self.user.username
+    
+class order(models.Model):
+    class Meta:
+        verbose_name = "order"
+    payment_stat = (
+        (1,'SUCCESS'),
+        (2,'FAILURE'),
+        (3,'PENDING'),
+    )
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    total_amount = models.FloatField()
+    payment_status = models.IntegerField(choices=payment_stat,default=1)
+    order_id = models.CharField(unique=True,max_length=100,null=True,blank=True,default=None)
+    datetime_of_payment = models.DateTimeField(default=timezone.now)
+    razorpay_order_id = models.CharField(max_length=500,null=True,blank=True)
+    razorpay_payment_id = models.CharField(max_length=500,null=True,blank=True)
+    razorpay_signature = models.CharField(max_length=500,null=True,blank=True)
+    def save(self, *args,**kwargs):
+        if self.order_id is None and self.datetime_of_payment and self.id:
+            self.order_id = self.datetime_of_payment.strftime('PAY2ME%Y%m%dODR') + str(self.id) 
+        return super().save(*args,**kwargs)
+    def __str__(self):
+        return self.user.email + " " + str(self.id) 
