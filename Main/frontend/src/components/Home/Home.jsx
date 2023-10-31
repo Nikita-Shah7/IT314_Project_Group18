@@ -1,7 +1,22 @@
-function Home() {
-    return (
-        <h2>Home</h2>
-    );
-}
+import React from "react";
+import { PRODUCTS } from "../../products";
+import { Product } from "./product";
+import "./Home.scss";
 
-export default Home;
+function Shop() {
+  return (
+    <div className="shop">
+      <div className="shopTitle">
+        <h1>Restaurant Menu</h1>
+      </div>
+
+      <div className="products">
+        {PRODUCTS.map((product) => (
+          <Product data={product} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Shop;

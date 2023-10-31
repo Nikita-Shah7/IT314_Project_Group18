@@ -1,0 +1,130 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    background-color: #EBF2D5;
+  }
+  
+  .cart1 {
+    display: flex;
+    background-color: #EBF2D5;
+    flex-direction: row;
+  
+  }
+  
+  .totals {
+    line-height: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    flex-shrink: 0;
+    background: #942D2D;
+    margin-top: 40px;
+    font-family: Darker Grotesque;
+    font-size: 15px;
+  }
+  
+  .checkout {
+    background-color: #EBF2D5;
+  }
+  
+  .flexrow {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    color: #EBF2D5;
+  }
+  
+  .foodcart {
+    color: #942D2D;
+    font-family: Darker Grotesque;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 40px;
+  }
+  
+  .cartItem {
+    width: 750px;
+    height: 180px;
+    display: flex;
+    background-color: #EBF2D5;
+    border: 2px solid #942D2D;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+  
+  .cartItem img {
+    width: 200px;
+  }
+  
+  .cartItem .description {
+    color: #942D2D;
+    font-family: Darker Grotesque;
+    font-size: 30px;
+    margin-top: 15px;
+  }
+  
+  .countHandler {
+    font-size: 30px;
+    align-items: center;
+    margin-top: 67px;
+  }
+  
+  .countHandler input {
+    margin:5px;
+    width: 50px;
+    text-align: center;
+    font-weight: bolder;
+    color: #942D2D;
+    font-family: Darker Grotesque;
+  }
+  
+  .countHandler button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-color: #942D2D;
+    background-color: #EBF2D5;
+  }
+  
+  .checkout button {
+    width: 135px;
+    height: 50px;
+    font-family: Darker Grotesque;
+    border: none;
+    /* border-radius: 8px; */
+    margin: auto;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #942D2D;
+    color: #942D2D;
+    background-color: #EBF2D5;
+  }
+  
+  .html {
+    width: 100%;
+    height: 100%;
+    background-color: #EBF2D5;
+  }
+  
+  .body {
+    width: 100%;
+    height: 100%;
+    background-color: #EBF2D5;
+  }
+  
+  .itemname {
+    margin-top: 15px;
+  }
+  
+  /* .checkingout button {
+    border: 1px solid #942D2D;
+    color: #942D2D;
+    background-color: #EBF2D5;
+    width: 150px;
+  } */

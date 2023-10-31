@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { ContextProvider } from './context';
 
-import Home from './components/Home/Home'
+import Shop from './components/Home/Home'
 import MenuList from './components/Menu/MenuList'
 import MenuListDetails from './components/Menu/MenuItemDetails'
 import Cart from './components/Cart/Cart'
@@ -16,7 +16,7 @@ function App() {
       <ContextProvider>
         <Router>
           <Routes>
-            <Route path='/home' element={<Home />} />
+            <Route path='/home' element={<Shop />} />
             <Route path='/menu' element={<MenuList />} />
             <Route path='/menu/:id' element={<MenuListDetails />} />
             <Route path='/mycart' element={<Cart />} />
