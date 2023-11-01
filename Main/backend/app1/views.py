@@ -41,10 +41,43 @@ class DishCategorys(APIView):
         else:
             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
         
+class Order(APIView):
+    def get(self,request,*args,**kwrags):
+        allItems = order.objects.all()
+        toJson = orderSerializer(allItems,many=True)
+        return Response(toJson.data)
+
+    def post(self,request):
+        serializer = orderSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST) 
+
+class Users(APIView):
+    def get(self,request,*args,**kwrags):
+        allItems = User.objects.all()
+        is_superuser = self.request.query_params.get('is_superuser',None)
+        if is_superuser:
+            allItems = allItems.filter(is_superuser=is_superuser)
+        toJson = userSerializer(allItems,many=True)
+        return Response(toJson.data)
+
+    def post(self,request):
+        serializer = userSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST) 
 
 class RestaurantMenus(APIView):
     def get(self,request):
         allItems = restaurantMenu.objects.all()
+        dishID = self.request.query_params.get('dishID',None)
+        if dishID:
+            allItems = allItems.filter(dishID=dishID)
         toJson = restaurantMenuSerializer(allItems,many=True)
         return Response(toJson.data)
 
