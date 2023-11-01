@@ -1,19 +1,21 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { ContextProvider } from './context';
+import { ContextProvider } from './context/context';
 
 import Shop from './components/Home/Home'
 import MenuList from './components/Menu/MenuList'
 import MenuListDetails from './components/Menu/MenuItemDetails'
 import Cart from './components/Cart/Cart'
 import Table from './components/Table/Table';
-
+import { ShopContextProvider } from './context/shop-context';
+import { Navbar } from "./Navigations/navbar";
 
 function App() {
   return (
     <>
       <ContextProvider>
+        <ShopContextProvider>
         <Router>
           <Routes>
             <Route path='/home' element={<Shop />} />
@@ -23,6 +25,7 @@ function App() {
             <Route path='/table' element={<Table />} />
           </Routes>
         </Router>
+        </ShopContextProvider>
       </ContextProvider>
     </>
   );

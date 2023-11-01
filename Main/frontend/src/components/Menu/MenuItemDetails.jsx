@@ -8,8 +8,8 @@ import { faBurger } from '@fortawesome/free-solid-svg-icons';
 import { cartItems } from '../AxiosCreate';
 
 // to get tableID
-import { Context } from '../../context';
-import ContextProvider from '../../context';
+import { Context } from '../../context/context';
+import ContextProvider from '../../context/context';
 
 
 function MenuItemDetails() {

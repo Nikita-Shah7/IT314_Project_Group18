@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 
 // to set tableID variable that is declared globally
 import { useContext } from 'react';
-import { Context } from '../../context';
-import ContextProvider from '../../context';
+import { Context } from '../../context/context';
+import ContextProvider from '../../context/context';
 
 
 function Table() {
