@@ -1,0 +1,31 @@
+{  
+    "cartItem": 
+    [
+        {
+            "menu_name" : "Machurian", 
+            "quantity" : 2, 
+            "item_price" : 150, 
+            "price" : 300, 
+            "profit" : 70, 
+            "time_stamp" : "2023-02-15T15:09:52.932416-08:00"
+        }, 
+        {
+            "menu_name" : "White Sauce Pasta ", 
+            "quantity" : 4, 
+            "item_price" : 150, 
+            "price" : 600, 
+            "profit" : 140, 
+            "time_stamp" : "2023-09-30T22:13:33.537821+02:00"
+        },
+        {
+            "menu_name" : "Margherita Pizza", 
+            "quantity" : 1, 
+            "item_price" : 220, 
+            "price" : 220, 
+            "profit" : 115, 
+            "time_stamp" : "2023-12-25T12:50:30.126589+07:00"
+        }
+
+
+    ]
+}

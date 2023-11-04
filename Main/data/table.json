@@ -1,0 +1,155 @@
+{
+    "table": [
+      {
+        "table_id": 1,
+        "capacity": 4,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 2,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 3,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 4,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 5,
+        "capacity": 8,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 6,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 7,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 8,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 9,
+        "capacity": 8,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 10,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 11,
+        "capacity": 4,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 12,
+        "capacity": 4,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 13,
+        "capacity": 12,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 14,
+        "capacity": 12,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 15,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 16,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 17,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 18,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 19,
+        "capacity": 4,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 20,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 21,
+        "capacity": 8,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 22,
+        "capacity": 10,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 23,
+        "capacity": 8,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 24,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 25,
+        "capacity": 10,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 26,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 27,
+        "capacity": 4,
+        "availibility_status": "Available"
+      },
+      {
+        "table_id": 28,
+        "capacity": 4,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 29,
+        "capacity": 8,
+        "availibility_status": "Occupied"
+      },
+      {
+        "table_id": 30,
+        "capacity": 4,
+        "availibility_status": "Available"
+      }
+    ]
+  }
+  

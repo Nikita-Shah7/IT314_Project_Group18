@@ -1,0 +1,22 @@
+{  
+    "feedback": 
+    [
+        {
+            "starRate" : 3, 
+            "comments" : "Love this place and the food is just awesome. great food, great services, perfect location, what else do you expect? To me, this is one of the best places to dine out.", 
+            "time_stamp" : "2023-02-15T15:09:52.932416-08:00"
+        }, 
+        {
+            "starRate" : 4, 
+            "message" : null, 
+            "time_stamp" : "2023-09-30T22:13:33.537821+02:00"
+        }, 
+        {
+            "starRate" : 5, 
+            "message" : "I have the best dining experience with this place. Full five starts for the food.", 
+            "time_stamp" : "2023-12-25T12:50:30.126589+07:00"
+        }
+
+
+    ]
+}
