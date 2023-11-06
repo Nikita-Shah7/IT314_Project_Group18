@@ -1,0 +1,28 @@
+{
+    "category":[
+        {
+            "categoryName" : "Soups & Starters"
+        }, 
+        {
+            "categoryName" : "Sabz e bahar"
+        }, 
+        {
+            "categoryName" : "Pizzas & Pastas"
+        },
+        {
+            "categoryName" : "Chinese & Fast Food"
+        }, 
+        {
+            "categoryName" : "Bread & Roti"
+        }, 
+        {
+            "categoryName" : "South Indian"
+        }, 
+        {
+            "categoryName" : "Mocktails"
+        }, 
+        {
+            "categoryName" : "Dessert & Delight"
+        }
+    ]
+}

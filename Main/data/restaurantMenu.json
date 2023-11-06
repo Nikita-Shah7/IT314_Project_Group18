@@ -1,0 +1,420 @@
+{
+    "restaurantMenu":[
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Monchow Soup", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Indulge in the exotic flavors of the Far East with our tantalizing Manchow Soup. This aromatic masterpiece combines a rich broth simmered to perfection with a medley of fresh vegetables, soy sauce, and a secret blend of spices. Topped with crispy fried noodles for that perfect crunch, it's an authentic Asian delight that will leave your taste buds craving for more.", 
+            "unitProfit" : 60,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Mushroom Soup", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Elevate your culinary experience with our velvety Mushroom Soup, a symphony of earthy flavors. Freshly picked mushrooms are sautéed to perfection, then blended into a creamy base infused with aromatic herbs. A drizzle of truffle oil and a sprinkle of chives add a touch of elegance to this gourmet delight, making it a must-try for mushroom enthusiasts.", 
+            "unitProfit" : 60,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Tomato Soup", 
+            "menuPrice" : 100,  
+            "muenuDescription" : "Savor the timeless classic, our Tomato Soup, a comforting embrace of ripe, sun-kissed tomatoes. Bursting with the essence of vine-ripened goodness, this silky soup is a heartwarming blend of tomatoes, basil, and a hint of garlic, topped with a swirl of fresh cream. It's a warm, soothing hug in a bowl that never goes out of style.", 
+            "unitProfit" : 50,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Broccoli Soup", 
+            "menuPrice" : 180, 
+            "muenuDescription" : "Embark on a journey of health and flavor with our Broccoli Soup, a green wonderland in a bowl. Fresh broccoli florets are gently simmered to preserve their vibrant color and nutrients, then transformed into a lush, creamy puree. Garnished with a sprinkling of toasted almonds, this soup is both wholesome and delicious, a perfect choice for the health-conscious diner.", 
+            "unitProfit" : 80, 
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Thai Coconut Soup", 
+            "menuPrice" : 180,  
+            "muenuDescription" : "Experience the authentic taste of Thailand with our Thai Coconut Soup, prepared using the original recipe and traditional ingredients. This mouthwatering elixir begins with the infusion of rich, creamy coconut milk with a fragrant blend of lemongrass, galangal, and kaffir lime leaves.It's a warm and comforting bowl of Southeast Asian delight that transports your taste buds to the heart of Thailand. ", 
+            "unitProfit" : 90,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Manchurian", 
+            "menuPrice" : 150,  
+            "muenuDescription" : "Satisfy your cravings for an explosion of Asian flavors with our delectable Manchurian. These delightful, deep-fried vegetable or chicken balls are generously coated in a tangy and spicy Manchurian sauce that's a harmonious blend of soy sauce, ginger, garlic, and a hint of sweetness. Each bite is a taste of the Orient, offering a symphony of textures and an irresistible umami kick.", 
+            "unitProfit" : 35,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Paneer Tikka", 
+            "menuPrice" : 150,  
+            "muenuDescription" : "Elevate your dining experience with our Paneer Tikka, a classic Indian appetizer that's a vegetarian delight. Succulent cubes of paneer cheese are marinated in a tantalizing blend of yogurt, aromatic spices, and smoky flavors. Roasted to perfection in a tandoor or on an open flame, these tikkas are a charred, spicy, and utterly satisfying treat for your taste buds.", 
+            "unitProfit" : 40,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Kabab", 
+            "menuPrice" : 170,  
+            "muenuDescription" : "Embark on a culinary journey with our fragrant and succulent Kababs. Handcrafted from a choice of marinated meats or vegetables, these kababs are skewered and grilled to perfection, releasing a burst of smoky and aromatic flavors with every bite. Whether you prefer them with a touch of spice or a milder seasoning, our kababs offer a delicious exploration of taste.", 
+            "unitProfit" : 60,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Momos", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Savor the Himalayan delight of our Momos, a beloved dumpling dish. These delicate parcels are lovingly filled with a choice of vegetables or meat, then steamed to perfection. Served with a tantalizing dipping sauce, they are a culinary delight that marries soft textures with a burst of flavor, perfect for a quick and satisfying snack.", 
+            "unitProfit" : 60,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Spring Rolls", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Embark on a journey to the streets of Asia with our crispy Spring Rolls. These golden parcels are filled with a symphony of fresh vegetables or succulent meat, skillfully wrapped in a thin, crispy wrapper. Served with a side of sweet and tangy dipping sauce, they are a delightful combination of crunch and flavor that will leave you wanting more.", 
+            "unitProfit" : 45,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Cheese Balls", 
+            "menuPrice" : 110,  
+            "muenuDescription" : "Indulge in a sensation of cheesy delight with our Cheese Balls. These golden, deep-fried orbs are a gooey revelation, featuring a molten core of melted cheese surrounded by a crispy outer layer. Each bite is a perfect fusion of textures, offering a delightful contrast between the crunchy exterior and the oozy, cheesy interior.", 
+            "unitProfit" : 75,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Soups & Starters",  
+            "menuName" : "Aloo Chat", 
+            "menuPrice" : 100,  
+            "muenuDescription" : "Tantalize your taste buds with our Aloo Chat, a beloved street food from India. This flavorful medley of diced potatoes, tangy tamarind chutney, fresh herbs, and aromatic spices creates a taste explosion that's both sweet and savory. It's a delightful combination that captures the essence of Indian street food, perfect for those who crave bold and zesty flavors.", 
+            "unitProfit" : 60,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Malai Kofta", 
+            "menuPrice" : 250,  
+            "muenuDescription" : "Elevate your dining experience with the regal Malai Kofta, a masterpiece from North Indian cuisine. Our handcrafted koftas, made from a blend of rich cottage cheese and vegetables, are gently simmered in a luscious, creamy tomato gravy infused with aromatic spices. This dish is a true indulgence, fit for royalty, with every bite promising a burst of flavor and a hint of luxury.", 
+            "unitProfit" : 135,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Veg Handi", 
+            "menuPrice" : 250,  
+            "muenuDescription" : "Dive into a culinary adventure with our Veg Handi, a tantalizing medley of garden-fresh vegetables cooked to perfection in a traditional clay pot. The vegetables are sautéed in a fragrant mix of spices, then slow-cooked in a rich, tomato-based gravy. This dish captures the essence of rustic Indian cooking, offering a harmonious blend of textures and flavors.", 
+            "unitProfit" : 120,
+            "menuImage" : ""
+        },  
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Jeera Rice", 
+            "menuPrice" : 180,  
+            "muenuDescription" : "Experience the delicate allure of Jeera Rice, a fragrant side dish that complements any Indian meal. Each grain of rice is meticulously cooked with aromatic cumin seeds, infusing it with a warm and earthy flavor. This simple yet exquisite rice dish serves as the perfect accompaniment to a variety of curries and gravies.", 
+            "unitProfit" : 100,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Dal Fry", 
+            "menuPrice" : 170,  
+            "muenuDescription" : "Embark on a journey through the rich flavors of India with our Dal Fry. This quintessential dish features lentils slow-cooked to perfection and tempered with a blend of aromatic spices and ghee. The result is a warm, soul-soothing bowl of lentil goodness, perfect as a standalone dish or paired with rice or bread.", 
+            "unitProfit" : 60,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Chinese Sizzler", 
+            "menuPrice" : 300,  
+            "muenuDescription" : "Experience an explosion of Asian flavors with our Chinese Sizzler. This sizzling sensation combines a wok-tossed medley of crisp vegetables and succulent protein of your choice, bathed in a delectable Chinese sauce. Served on a hot sizzling plate, it's a tantalizing display of sights, sounds, and tastes, guaranteed to satisfy your cravings.", 
+            "unitProfit" : 140,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Mexican Sizzler", 
+            "menuPrice" : 300,  
+            "muenuDescription" : "Transport your taste buds to the vibrant streets of Mexico with our Mexican Sizzler. A fiesta of flavors, this sizzling platter features zesty fajitas, grilled peppers, and onions, served with warm tortillas, salsa, and guacamole. It's a taste of Mexico in every sizzle, bringing the spirit of Latin America to your plate.", 
+            "unitProfit" : 130,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Chana Masala", 
+            "menuPrice" : 180,  
+            "muenuDescription" : "Delight in the robust and flavorful Chana Masala, a North Indian favorite. Tender chickpeas are simmered in a tantalizing tomato and onion gravy, infused with aromatic spices and herbs. This dish is a comforting, protein-packed choice that offers a burst of spicy and tangy notes in every bite.", 
+            "unitProfit" : 80,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Veges & staples",  
+            "menuName" : "Shahi Paneer ", 
+            "menuPrice" : 300,  
+            "muenuDescription" : "Indulge in the royal elegance of Shahi Paneer, a Mughlai-inspired delicacy. Our homemade paneer cubes are bathed in a velvety, saffron-infused gravy, rich with the essence of cream, nuts, and aromatic spices. This dish is a testament to culinary opulence, offering a taste of royalty on your plate.", 
+            "unitProfit" : 120,
+            "menuImage" : ""
+        },  
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Chapati", 
+            "menuPrice" : 15,  
+            "muenuDescription" : "Chapati, the humble unleavened flatbread, is a staple of Indian cuisine. Handcrafted from whole wheat flour, these thin, soft rounds are lovingly cooked on an open flame until they puff up, creating a delightful play of textures. Whether you use them as a versatile accompaniment or as a vessel for scooping up delicious curries, chapatis are the embodiment of simplicity and nourishment.", 
+            "unitProfit" : 6,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Naan", 
+            "menuPrice" : 20,  
+            "muenuDescription" : "Savor the quintessential Indian bread, Naan, a soft and pillowy delight that's a perfect match for aromatic curries and tandoori dishes. Made from a tender, yeast-leavened dough, these round, fluffy breads are baked in the intense heat of a tandoor oven. The result is a slightly charred exterior with a soft, chewy interior, making naan a luxurious and irresistible addition to your Indian feast.", 
+            "unitProfit" : 8,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Paratha", 
+            "menuPrice" : 22,  
+            "muenuDescription" : "Indulge in the exquisite flavors of our Paratha, a North Indian favorite. These flaky, whole wheat flatbreads are enriched with ghee, which creates layers of buttery goodness. Stuffed with a variety of fillings such as spiced potatoes, paneer, or minced meat, they are griddled to perfection, offering a delightful combination of crispy and tender textures. Parathas are the epitome of comfort and a delicious treat for any meal.", 
+            "unitProfit" : 12,
+            "menuImage" : ""
+        },
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Tandoori Roti", 
+            "menuPrice" : 30,  
+            "muenuDescription" : "Experience the rustic charm of Tandoori Roti, a traditional Indian bread cooked to perfection in a clay oven. Made from whole wheat flour, these rotis have a slightly charred exterior and a soft, chewy interior, imparting a distinct smoky flavor. They are a versatile accompaniment that complements a wide range of Indian dishes, from curries to kebabs.", 
+            "unitProfit" : 14,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Rumali Roti", 
+            "menuPrice" : 35,  
+            "muenuDescription" : "Delicate as a handkerchief, our Rumali Roti is a marvel of Indian bread craftsmanship. Crafted from a fine, unleavened dough, these paper-thin breads are skillfully stretched and cooked on a griddle until they become as soft as a dream. Rumali Roti is the ideal companion to rich curries, as it can be easily torn and used for scooping up the most exquisite flavors of Indian cuisine.", 
+            "unitProfit" : 13,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Akki Roti", 
+            "menuPrice" : 45,  
+            "muenuDescription" : "Take your taste buds on a journey to the southern regions of India with our Akki Roti. These hearty, unleavened rice flour flatbreads are a regional specialty, blended with aromatic spices, fresh vegetables, and herbs. Cooked to a crisp perfection on a griddle, each bite is a delightful combination of textures and a burst of South Indian flavors.", 
+            "unitProfit" : 15,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Bread & Roti",  
+            "menuName" : "Lavash", 
+            "menuPrice" : 45,  
+            "muenuDescription" : "Lavash, the thin and soft flatbread of Armenian and Middle Eastern origin, is a canvas for culinary creativity. Our Lavash is rolled out into large, thin sheets and baked to a delicate crispness. These versatile breads are perfect for wrapping around your choice of fillings, or breaking into pieces for dipping into a variety of dips and spreads. Lavash offers a delightful combination of lightness and versatility for your culinary adventures.", 
+            "unitProfit" : 18,
+            "menuImage" : ""
+        },
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "Cheese Corn and Bacon Pizza", 
+            "menuPrice" : 250,  
+            "muenuDescription" : "The Corn and Bacon Pizza is a delightful combination of sweet and savory flavors that work together in perfect harmony with some cheese.", 
+            "unitProfit" : 130,
+            "menuImage" : ""
+        },  
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "Margherita Pizza ", 
+            "menuPrice" : 220,  
+            "muenuDescription" : "Indulge in the simplicity of authentic Italian cuisine with our Margherita Pizza. This culinary masterpiece is a tribute to the queen of pizzas, featuring a thin, wood-fired crust topped with vibrant San Marzano tomato sauce, fresh basil leaves, and the finest mozzarella cheese. Each bite is a burst of pure, unadulterated flavors that will transport you straight to the streets of Naples.", 
+            "unitProfit" : 115,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "Three-Cheese Pizza", 
+            "menuPrice" : 270,  
+            "muenuDescription" : " If you're a fan of cheese, the Three-Cheese Pizza is a must-try. The combination of mozzarella, cheddar, and parmesan cheeses creates a symphony of flavors and textures.", 
+            "unitProfit" : 140,
+            "menuImage" : ""
+        },
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "Mushroom and Truffle Pizza", 
+            "menuPrice" : 270,  
+            "muenuDescription" : "The Mushroom and Truffle Pizza is a gourmet delight that combines the earthy flavors of mushrooms with the luxurious aroma of truffle oil. ", 
+            "unitProfit" : 140,
+            "menuImage" : ""
+        },
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "Fettuccine Alfredo", 
+            "menuPrice" : 300,  
+            "muenuDescription" : "Our Fettuccine Alfredo is a decadent and indulgent pasta dish that's sure to satisfy your cravings for something rich and creamy.", 
+            "unitProfit" : 170,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "White Sauce Pasta ", 
+            "menuPrice" : 220,  
+            "muenuDescription" : "Embark on a culinary journey to Italy with our White Sauce Pasta, a classic dish that showcases the essence of Italian cuisine. Crafted with the original recipe in mind, our pasta features al dente noodles bathed in a velvety, homemade white sauce.Served hot and garnished with a generous sprinkle of grated Parmesan, it's a timeless Italian masterpiece that's both comforting and satisfying.", 
+            "unitProfit" : 120,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Pizzas & Pastas",  
+            "menuName" : "Mac n Cheese", 
+            "menuPrice" : 350,  
+            "muenuDescription" : "Try our Siimply Classic Mac n' Cheese Pasta. It is not just cheesy but also yummy.", 
+            "unitProfit" : 170,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Chinese & Fast Food",  
+            "menuName" : "French Fries", 
+            "menuPrice" : 150,  
+            "muenuDescription" : "Experience the epitome of crispy perfection with our French Fries. These golden, hand-cut potatoes are lovingly fried to a delightful crunch, with a fluffy interior that's simply irresistible. Served with a side of our secret dipping sauce, these fries are the quintessential snack for the potato lover in you.", 
+            "unitProfit" : 80,
+            "menuImage" : ""
+        },
+        {
+            "menuCategoryName" : "Chinese & Fast Food",  
+            "menuName" : "Hakka Noodles ", 
+            "menuPrice" : 150,  
+            "muenuDescription" : "Embark on a culinary journey to the vibrant streets of Asia with our Hakka Noodles. Stir-fried to perfection, these slender noodles are tossed with a medley of fresh vegetables, garlic, and an exquisite blend of aromatic sauces. A symphony of sweet, savory, and spicy notes, it's a tantalizing experience for your taste buds.", 
+            "unitProfit" : 70,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Chinese & Fast Food",  
+            "menuName" : "Veg Sandwich ", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Discover a symphony of flavors in our Veg Sandwich. Packed with a colorful assortment of garden-fresh vegetables, this sandwich is a wholesome delight. Served on freshly baked bread and lightly toasted, it's a wholesome and satisfying option for those seeking a delightful, meat-free bite.", 
+            "unitProfit" : 50,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Chinese & Fast Food",  
+            "menuName" : "Cheese Burger", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Indulge in the ultimate comfort food with our delectable Cheese Burger. Our succulent, handcrafted patty, made from premium ground beef, is grilled to perfection and nestled between a fluffy, toasted brioche bun. Topped with melted cheddar cheese, crisp lettuce, juicy tomato slices, and a secret special sauce, it's a burger lover's dream come true. Each bite is a heavenly fusion of savory flavors that will leave you craving for more.", 
+            "unitProfit" : 70,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Pina Colada", 
+            "menuPrice" : 120,  
+            "muenuDescription" : "Escape to a tropical paradise with our Pina Colada, a refreshing and exotic cocktail that's a vacation in a glass. This delightful concoction blends the creamy richness of coconut milk with the sweet and tangy notes of fresh pineapple juice, all harmonized with a generous splash of white rum. Sip on this luscious drink, and let the island breeze whisk you away to a tranquil beach.", 
+            "unitProfit" : 40,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Sprite", 
+            "menuPrice" : 40,  
+            "muenuDescription" : "Quench your thirst with the crisp and invigorating Sprite, a timeless sparkling beverage that's pure, simple, and refreshing. This carbonated delight offers the perfect balance of zesty lemon and lime flavors, making it the ideal companion to any meal or a standalone thirst-quencher that's guaranteed to tickle your taste buds.", 
+            "unitProfit" : 6,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Coca Cola", 
+            "menuPrice" : 40,  
+            "muenuDescription" : "Savor the classic, all-American flavor of Coca Cola, an iconic soft drink that's been a favorite for generations. With its signature blend of secret spices and carbonation, this legendary beverage offers a timeless combination of sweetness and fizz. It's the perfect choice to accompany your meal or enjoy as a satisfying, ice-cold refreshment.", 
+            "unitProfit" : 6,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Coffee", 
+            "menuPrice" : 50,  
+            "muenuDescription" : "Awaken your senses with our aromatic Coffee, a warm and comforting elixir for coffee connoisseurs. Our expertly brewed coffee offers a robust and rich flavor that's the perfect start to your day or an invigorating pick-me-up. Sip on the smooth, velvety warmth that only a well-crafted cup of coffee can provide.", 
+            "unitProfit" : 20,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Tea", 
+            "menuPrice" : 40,  
+            "muenuDescription" : "Experience the soothing embrace of our Tea, a beloved and timeless beverage that transcends cultures and continents. Carefully steeped with an assortment of teas, our brew offers a comforting warmth and a delicate blend of flavors. Whether you prefer it black or with milk and sugar, this classic drink is the epitome of relaxation.", 
+            "unitProfit" : 25,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Orange Juice", 
+            "menuPrice" : 70,  
+            "muenuDescription" : "Rejuvenate your senses with our Orange Juice, a vibrant burst of sunshine in a glass. This refreshing concoction is freshly squeezed to capture the natural sweetness and tanginess of ripe oranges. Packed with vitamins and a zesty punch, it's the perfect way to kickstart your day and invigorate your taste buds.", 
+            "unitProfit" : 20,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Strawberry Milkshake", 
+            "menuPrice" : 90,  
+            "muenuDescription" : "Indulge in the sweet bliss of our Strawberry Milkshake, a creamy and dreamy dessert in a glass. This luscious treat combines ripe, juicy strawberries with rich, velvety milk and a hint of sweetness. It's a delightful symphony of flavors and textures, the perfect indulgence for those with a penchant for all things sweet and fruity.", 
+            "unitProfit" : 30,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Mocktails",  
+            "menuName" : "Buttermilk", 
+            "menuPrice" : 30,  
+            "muenuDescription" : "Embrace the soothing refreshment of Buttermilk, a timeless and nourishing drink that quenches your thirst and soothes your senses. Our buttermilk is a cooling elixir created from the creamy residue left after churning butter, expertly blended with freshly churned yogurt and a pinch of salt. ", 
+            "unitProfit" : 13,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Dessert & Delight",  
+            "menuName" : "Strawberry Cake", 
+            "menuPrice" : 250,  
+            "muenuDescription" : "Indulge in the enchanting sweetness of our Strawberry Cake, a delightful creation that's both visually stunning and a treat for the taste buds. Layers of moist, tender cake are generously spread with luscious strawberry frosting, perfectly capturing the essence of ripe, juicy strawberries. Each bite is a burst of fruity delight that's sure to satisfy your dessert cravings.", 
+            "unitProfit" : 120,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Dessert & Delight",  
+            "menuName" : "Chocolate Pudding ", 
+            "menuPrice" : 230,  
+            "muenuDescription" : "Indulge in the decadence of our Chocolate Pudding, a luscious dessert that's a dream come true for chocoholics. Made from rich, velvety chocolate, our pudding is a symphony of smooth, creamy textures and an intense cocoa flavor that will transport your taste buds to chocolate paradise.Served chilled and garnished with a dollop of fresh whipped cream, it's a heavenly conclusion to any meal or a delightful, standalone indulgence that's simply irresistible.", 
+            "unitProfit" : 90,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Dessert & Delight",  
+            "menuName" : "Chocolate Brownie ", 
+            "menuPrice" : 150,  
+            "muenuDescription" : "Satisfy your chocolate cravings with our Chocolate Brownie, a heavenly square of indulgence. Baked to perfection, these brownies are rich, fudgy, and adorned with a dusting of cocoa powder. Each bite is a harmonious blend of dense chocolate goodness and a touch of sweetness, making it a perfect choice for chocoholics.", 
+            "unitProfit" : 70,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Dessert & Delight",  
+            "menuName" : "Vanilla Ice-Cream", 
+            "menuPrice" : 100,  
+            "muenuDescription" : "Delight in the pure simplicity of our Vanilla Ice-Cream, a timeless and beloved dessert. Our creamy, dreamy ice cream is meticulously crafted to capture the essence of real vanilla beans. With its smooth texture and delicate flavor, it's the perfect accompaniment to any dessert or an exquisite treat on its own.", 
+            "unitProfit" : 50,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Dessert & Delight",  
+            "menuName" : "Chocolate Ice-Cream ", 
+            "menuPrice" : 100,  
+            "muenuDescription" : "Satisfy your chocolate cravings with our decadent Chocolate Ice-Cream, a sinfully rich and velvety treat. This indulgence is made from the finest cocoa, creating a luscious, dark chocolate flavor. Each spoonful is a symphony of creamy texture and deep, intense cocoa notes, perfect for those who appreciate the darker side of dessert.", 
+            "unitProfit" : 55,
+            "menuImage" : ""
+        }, 
+        {
+            "menuCategoryName" : "Dessert & Delight",  
+            "menuName" : "Pineapple Pastrey", 
+            "menuPrice" : 200,  
+            "muenuDescription" : "Transport your taste buds to a tropical paradise with our Pineapple Pastry, a fruity delight that's both light and refreshing. Layers of moist sponge cake are interwoven with a generous helping of pineapple filling, creating a harmonious blend of sweet and tangy. Topped with a whisper of cream, it's a charming pastry that captures the essence of sunshine and tropical breezes.", 
+            "unitProfit" : 90,
+            "menuImage" : ""
+        }
+    ]
+} 
