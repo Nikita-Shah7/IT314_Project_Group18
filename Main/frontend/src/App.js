@@ -10,6 +10,7 @@ import Cart from './components/Cart/Cart'
 import Table from './components/Table/Table';
 import { ShopContextProvider } from './context/shop-context';
 import { Navbar } from "./Navigations/navbar";
+import  _404NotFound  from './components/_404NotFound/_404NotFound'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/menu/:id' element={<MenuListDetails />} />
             <Route path='/mycart' element={<Cart />} />
             <Route path='/table' element={<Table />} />
+            <Route path='/*' element={<_404NotFound />} />
           </Routes>
         </Router>
         </ShopContextProvider>
