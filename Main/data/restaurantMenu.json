@@ -97,7 +97,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Malai Kofta", 
             "menuPrice" : 250,  
             "muenuDescription" : "Elevate your dining experience with the regal Malai Kofta, a masterpiece from North Indian cuisine. Our handcrafted koftas, made from a blend of rich cottage cheese and vegetables, are gently simmered in a luscious, creamy tomato gravy infused with aromatic spices. This dish is a true indulgence, fit for royalty, with every bite promising a burst of flavor and a hint of luxury.", 
@@ -105,7 +105,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Veg Handi", 
             "menuPrice" : 250,  
             "muenuDescription" : "Dive into a culinary adventure with our Veg Handi, a tantalizing medley of garden-fresh vegetables cooked to perfection in a traditional clay pot. The vegetables are sautéed in a fragrant mix of spices, then slow-cooked in a rich, tomato-based gravy. This dish captures the essence of rustic Indian cooking, offering a harmonious blend of textures and flavors.", 
@@ -113,7 +113,7 @@
             "menuImage" : ""
         },  
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Jeera Rice", 
             "menuPrice" : 180,  
             "muenuDescription" : "Experience the delicate allure of Jeera Rice, a fragrant side dish that complements any Indian meal. Each grain of rice is meticulously cooked with aromatic cumin seeds, infusing it with a warm and earthy flavor. This simple yet exquisite rice dish serves as the perfect accompaniment to a variety of curries and gravies.", 
@@ -121,7 +121,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Dal Fry", 
             "menuPrice" : 170,  
             "muenuDescription" : "Embark on a journey through the rich flavors of India with our Dal Fry. This quintessential dish features lentils slow-cooked to perfection and tempered with a blend of aromatic spices and ghee. The result is a warm, soul-soothing bowl of lentil goodness, perfect as a standalone dish or paired with rice or bread.", 
@@ -129,7 +129,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Chinese Sizzler", 
             "menuPrice" : 300,  
             "muenuDescription" : "Experience an explosion of Asian flavors with our Chinese Sizzler. This sizzling sensation combines a wok-tossed medley of crisp vegetables and succulent protein of your choice, bathed in a delectable Chinese sauce. Served on a hot sizzling plate, it's a tantalizing display of sights, sounds, and tastes, guaranteed to satisfy your cravings.", 
@@ -137,7 +137,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Mexican Sizzler", 
             "menuPrice" : 300,  
             "muenuDescription" : "Transport your taste buds to the vibrant streets of Mexico with our Mexican Sizzler. A fiesta of flavors, this sizzling platter features zesty fajitas, grilled peppers, and onions, served with warm tortillas, salsa, and guacamole. It's a taste of Mexico in every sizzle, bringing the spirit of Latin America to your plate.", 
@@ -145,7 +145,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Chana Masala", 
             "menuPrice" : 180,  
             "muenuDescription" : "Delight in the robust and flavorful Chana Masala, a North Indian favorite. Tender chickpeas are simmered in a tantalizing tomato and onion gravy, infused with aromatic spices and herbs. This dish is a comforting, protein-packed choice that offers a burst of spicy and tangy notes in every bite.", 
@@ -153,7 +153,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Veges & staples",  
+            "menuCategoryName" : "Curries & Staples",  
             "menuName" : "Shahi Paneer ", 
             "menuPrice" : 300,  
             "muenuDescription" : "Indulge in the royal elegance of Shahi Paneer, a Mughlai-inspired delicacy. Our homemade paneer cubes are bathed in a velvety, saffron-infused gravy, rich with the essence of cream, nuts, and aromatic spices. This dish is a testament to culinary opulence, offering a taste of royalty on your plate.", 
@@ -305,7 +305,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Pina Colada", 
             "menuPrice" : 120,  
             "muenuDescription" : "Escape to a tropical paradise with our Pina Colada, a refreshing and exotic cocktail that's a vacation in a glass. This delightful concoction blends the creamy richness of coconut milk with the sweet and tangy notes of fresh pineapple juice, all harmonized with a generous splash of white rum. Sip on this luscious drink, and let the island breeze whisk you away to a tranquil beach.", 
@@ -313,7 +313,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Sprite", 
             "menuPrice" : 40,  
             "muenuDescription" : "Quench your thirst with the crisp and invigorating Sprite, a timeless sparkling beverage that's pure, simple, and refreshing. This carbonated delight offers the perfect balance of zesty lemon and lime flavors, making it the ideal companion to any meal or a standalone thirst-quencher that's guaranteed to tickle your taste buds.", 
@@ -321,7 +321,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Coca Cola", 
             "menuPrice" : 40,  
             "muenuDescription" : "Savor the classic, all-American flavor of Coca Cola, an iconic soft drink that's been a favorite for generations. With its signature blend of secret spices and carbonation, this legendary beverage offers a timeless combination of sweetness and fizz. It's the perfect choice to accompany your meal or enjoy as a satisfying, ice-cold refreshment.", 
@@ -329,7 +329,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Coffee", 
             "menuPrice" : 50,  
             "muenuDescription" : "Awaken your senses with our aromatic Coffee, a warm and comforting elixir for coffee connoisseurs. Our expertly brewed coffee offers a robust and rich flavor that's the perfect start to your day or an invigorating pick-me-up. Sip on the smooth, velvety warmth that only a well-crafted cup of coffee can provide.", 
@@ -337,7 +337,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Tea", 
             "menuPrice" : 40,  
             "muenuDescription" : "Experience the soothing embrace of our Tea, a beloved and timeless beverage that transcends cultures and continents. Carefully steeped with an assortment of teas, our brew offers a comforting warmth and a delicate blend of flavors. Whether you prefer it black or with milk and sugar, this classic drink is the epitome of relaxation.", 
@@ -345,7 +345,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Orange Juice", 
             "menuPrice" : 70,  
             "muenuDescription" : "Rejuvenate your senses with our Orange Juice, a vibrant burst of sunshine in a glass. This refreshing concoction is freshly squeezed to capture the natural sweetness and tanginess of ripe oranges. Packed with vitamins and a zesty punch, it's the perfect way to kickstart your day and invigorate your taste buds.", 
@@ -353,7 +353,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Strawberry Milkshake", 
             "menuPrice" : 90,  
             "muenuDescription" : "Indulge in the sweet bliss of our Strawberry Milkshake, a creamy and dreamy dessert in a glass. This luscious treat combines ripe, juicy strawberries with rich, velvety milk and a hint of sweetness. It's a delightful symphony of flavors and textures, the perfect indulgence for those with a penchant for all things sweet and fruity.", 
@@ -361,7 +361,7 @@
             "menuImage" : ""
         }, 
         {
-            "menuCategoryName" : "Mocktails",  
+            "menuCategoryName" : "Beverage",  
             "menuName" : "Buttermilk", 
             "menuPrice" : 30,  
             "muenuDescription" : "Embrace the soothing refreshment of Buttermilk, a timeless and nourishing drink that quenches your thirst and soothes your senses. Our buttermilk is a cooling elixir created from the creamy residue left after churning butter, expertly blended with freshly churned yogurt and a pinch of salt. ", 
