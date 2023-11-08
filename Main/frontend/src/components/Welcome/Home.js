@@ -10,7 +10,7 @@ export default function Home(props) {
           backgroundColor: "#f0f4d4",
           minHeight: "92vh", 
           minWidth: "92vh",
-          marginBottom: "10px",  
+          marginBottom: "0px",  
           backgroundImage: `url("/Group 8516.png") ` ,
           backgroundSize:"cover", 
           backgroundPosition : "Top", 
@@ -27,7 +27,7 @@ export default function Home(props) {
             sx={{
               fontFamily: "Darker Grotesque",
               color: "#000",
-              marginTop: "100px", // Adjust this value to control the distance from the top
+              marginTop: "0px", // Adjust this value to control the distance from the top
               marginLeft: "150px",
               marginBottom: "0px",
               fontSize: 60,
