@@ -11,7 +11,8 @@ import MenuListDetails from './components/Menu/MenuItemDetails'
 import Cart from './components/Cart/Cart'
 import EnterMembers from './components/Table/EnterMembers'; 
 import SelectTable from './components/Table/SelectTable'; 
-import BookedTable from './components/Table/BookedTable';
+import BookedTable from './components/Table/BookedTable'; 
+import Home from './components/Welcome/Home';
 import { ShopContextProvider } from './context/shop-context';
 // import { Navbar } from "./Navigations/navbar";
 import  _404NotFound  from './components/_404NotFound/_404NotFound'
@@ -61,7 +62,8 @@ function App() {
           <SelectTable tables={tables} onTableSelected={handleTableSelected} />
         ) : (
           <BookedTable tableNumber={selectedTable} />
-        )} /> 
+        )} />  
+        <Route path='/' element={<Home userName="User" />} />
             {/* <Route path='/selecttable' element={<SelectTable tables={tables} onTableSelected={handleTableSelected} />} /> 
             <Route path='/bookedtable' element={<BookedTable tableNumber={selectedTable}/>} /> */}
             <Route path='/aboutus' element={<About />} />
