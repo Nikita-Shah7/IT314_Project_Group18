@@ -1,0 +1,152 @@
+.coverimg {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    background: #EBF2D5;
+}
+
+.coverimg img{
+    max-width:60%;
+    max-height:60%;
+}
+
+.aboutrest{
+    color: #942D2D;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #942D2D;
+    font-family: David Libre;
+    font-size: 3.5vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 72px; /* 144% */
+}
+
+.textabout {
+    color: #942D2D;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Darker Grotesque;
+    font-size: 1.5vw;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding: 5%;
+}
+
+
+.assetabout {
+    position: absolute;
+    width: 40%;
+    top:50%;
+    left:15%;
+}
+
+
+.chefs {
+    display: flex;
+    justify-content: center;
+    background: #EBF2D5;
+}
+
+.chef {
+    margin: 10px;
+}
+
+.aboutchef {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chefName {
+    position: absolute;
+    color: #000;
+    font-family: Darker Grotesque;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    top: 20%;
+    /* top: 30%; */
+}
+
+.chefDisc {
+    color: #000;
+    position: absolute;
+    align-self: flex-start;
+    top: 50%;
+    left:10%;
+    right: 10%;
+    font-family: Darker Grotesque;
+    font-size: 1.2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.photoChef {
+    margin: 0;
+}
+
+.openingHours {
+    display: flex;
+    justify-content: space-around; 
+}
+
+.ig {
+    color: #942D2D;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+font-family: Darker Grotesque;
+font-size: 200%;
+font-style: normal;
+font-weight: 650;
+}
+
+.open {
+    color: #942D2D;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Darker Grotesque;
+    font-size: 200%;
+    font-style: normal;
+    font-weight: 650;
+}
+
+.days {
+    color: #942D2D;
+    font-family: Darker Grotesque;
+    font-size: 150%;
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexdays {
+    position: relative;
+    display: flex;
+    justify-content: space-around; 
+    background-color: #EBF2D5;
+}
+
+.social {
+    display: flex;
+    justify-content: space-around;
+}
+
+.assetbel {
+    position: absolute;
+    left: 5%;
+    top: 20%;
+}

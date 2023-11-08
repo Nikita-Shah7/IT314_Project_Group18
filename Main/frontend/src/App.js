@@ -11,6 +11,7 @@ import Table from './components/Table/Table';
 import { ShopContextProvider } from './context/shop-context';
 import { Navbar } from "./Navigations/navbar";
 import  _404NotFound  from './components/_404NotFound/_404NotFound'
+import { About } from './components/About/About';
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
             <Route path='/home' element={<Shop />} />
             <Route path='/menu' element={<MenuList />} />
             <Route path='/menu/:id' element={<MenuListDetails />} />
-            <Route path='/mycart' element={<Cart />} />
+            <Route path='/cart' element={<Cart />} />
             <Route path='/table' element={<Table />} />
+            <Route path='/aboutus' element={<About />} />
             <Route path='/*' element={<_404NotFound />} />
           </Routes>
         </Router>
