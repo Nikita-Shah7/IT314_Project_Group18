@@ -10,7 +10,7 @@ import Cart from './components/Cart/Cart'
 import EnterMembers from './components/Table/EnterMembers';
 import SelectTable from './components/Table/SelectTable';
 import BookedTable from './components/Table/BookedTable';
-import Home from './components/Welcome/Home';
+import Home from './components/Welcome/Home'
 import { ShopContextProvider } from './context/shop-context';
 // import { Navbar } from "./Navigations/navbar";
 import _404NotFound from './components/_404NotFound/_404NotFound'

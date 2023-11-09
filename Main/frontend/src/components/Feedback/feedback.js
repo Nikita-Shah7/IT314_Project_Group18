@@ -1,46 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styles, colors } from "./FeedbackCSS.js";
 import { FaStar } from "react-icons/fa";
 import image from './Flower.png';
+import axios from "axios";
 
 
 function Feedback() {
-  console.log("nik in feedback");
-  const [currentValue, setCurrentValue] = useState(0);
+
+  const [loading, setLoading] = useState(true);
+  const [starate1, setStarate1] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
-  const [currentFoodValue, setCurrentFoodValue] = useState(0);
+  const [starate2, setStarate2] = useState(0);
   const [hoverFoodValue, setHoverFoodValue] = useState(undefined);
+  const [comments, setComments] = useState("");
   const stars = Array(5).fill(0);
 
+  useEffect(() => {
+    // console.log(starate1)
+    // console.log(starate2)
+    // console.log(comments)
+  }, [starate1, starate2, comments]);
 
   const handleClick = (value) => {
-    setCurrentValue(value);
+    setStarate1(value);
   };
-
-
-  const handleMouseOver = (newHoverValue) => {
-    setHoverValue(newHoverValue);
-  };
-
-
-  const handleMouseLeave = () => {
-    setHoverValue(undefined);
-  };
-
 
   const handleFoodClick = (value) => {
-    setCurrentFoodValue(value);
+    setStarate2(value);
   };
 
+  const handleComment = (event) => {
+    setComments(event.target.value);
+  }
 
-  const handleFoodMouseOver = (newHoverValue) => {
-    setHoverFoodValue(newHoverValue);
-  };
-
-
-  const handleFoodMouseLeave = () => {
-    setHoverFoodValue(undefined);
-  };
+  function handleSubmit() {
+    const date_time = new Date();
+    const data = {
+      starate1,
+      starate2,
+      comments,      
+      date_time,
+    }
+    axios.post(`http://localhost:5555/feedback`, data)
+      .then( () => {
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.log("ERROR MESSAGE ::", error)
+        setLoading(false);
+      });
+  }
 
 
   return (
@@ -48,7 +57,7 @@ function Feedback() {
       <h2 style={styles.title}>Feedback</h2>
       <div style={styles.ratingSectionsContainer}>
         <div style={styles.ratingSection}>
-        <p style={{ marginRight: "35px" }}>Rate Our services:</p>
+          <p style={{ marginRight: "35px" }}>Rate Our services:</p>
           <div style={styles.stars}>
             {stars.map((_, index) => {
               return (
@@ -56,9 +65,7 @@ function Feedback() {
                   key={index}
                   size={24}
                   onClick={() => handleClick(index + 1)}
-                  onMouseOver={() => handleMouseOver(index + 1)}
-                  onMouseLeave={handleMouseLeave}
-                  color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+                  color={(hoverValue || starate1) > index ? colors.orange : colors.grey}
                   style={{
                     marginRight: 10,
                     cursor: "pointer"
@@ -77,9 +84,7 @@ function Feedback() {
                   key={index}
                   size={24}
                   onClick={() => handleFoodClick(index + 1)}
-                  onMouseOver={() => handleFoodMouseOver(index + 1)}
-                  onMouseLeave={handleFoodMouseLeave}
-                  color={(hoverFoodValue || currentFoodValue) > index ? colors.orange : colors.grey}
+                  color={(hoverFoodValue || starate2) > index ? colors.orange : colors.grey}
                   style={{
                     marginRight: 10,
                     cursor: "pointer"
@@ -93,7 +98,7 @@ function Feedback() {
       <p> </p>
       <textarea
         placeholder="Share your experience with us !"
-        style={styles.textarea}
+        style={styles.textarea} onChange={handleComment}
       />
       <p> </p>
       <button
@@ -102,6 +107,7 @@ function Feedback() {
           backgroundColor: colors.maroon,
           borderColor: colors.maroon
         }}
+        onClick={handleSubmit}
       >
         Submit
       </button>

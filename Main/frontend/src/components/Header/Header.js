@@ -47,7 +47,7 @@ export default function Header() {
               width: "100%",
             }}
           >
-            <Link href="/home" color="inherit" sx={{ m: 2, ...linkStyle }}>
+            <Link href="/" color="inherit" sx={{ m: 2, ...linkStyle }}>
               Home
             </Link>
             <Link href="/menu" color="inherit" sx={{ m: 2, ...linkStyle }}>
@@ -56,10 +56,10 @@ export default function Header() {
             <Link href="/cart" color="inherit" sx={{ m: 2, ...linkStyle }}>
               Cart
             </Link>
-            <Link href="/bookTable" color="inherit" sx={{ m: 2, ...linkStyle }}>
+            <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
               Book a Table
             </Link>
-            <Link href="/about" color="inherit" sx={{ m: 2, ...linkStyle }}>
+            <Link href="/aboutus" color="inherit" sx={{ m: 2, ...linkStyle }}>
               About
             </Link>
           </Box>
