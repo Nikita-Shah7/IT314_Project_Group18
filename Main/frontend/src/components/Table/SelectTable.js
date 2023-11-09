@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import Sheet from "@mui/material/Table";
 import Box from "@mui/material/Box";
@@ -9,6 +9,9 @@ import Dialog from "@mui/material/Dialog";
 // import DialogContent from "@mui/material/DialogContent";
 // import DialogContentText from "@mui/material/DialogContentText";
 // import DialogTitle from "@mui/material/DialogTitle";
+
+import axios from "axios";
+
 
 const styles = {
   popupContainer: {
@@ -36,9 +39,25 @@ const styles = {
 };  
 
 
-const SelectTable = ({ tables, onTableSelected }) => {
-  const [showConfirmation, setShowConfirmation] = useState(false);
+const SelectTable = ({ onTableSelected, totalMembers }) => {
+
+  const [loading, setLoading] = useState(true);
   const [selectedTable, setSelectedTable] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [tablesData, setTablesData] = useState([]);
+
+  useEffect( () => {
+    axios.get(`http://localhost:5555/table/capacity/${totalMembers}`)
+      .then( (response) => {
+        console.log([response.data][0].data);
+        setTablesData([response.data][0].data)
+        setLoading(false)
+      })
+      .catch( (error) => {
+        console.log("ERROR MESSAGE ::", error)
+        setLoading(false);
+      });
+  },[]);
 
   const handleSelectTable = (tableNumber) => {
     setSelectedTable(tableNumber);
@@ -141,9 +160,9 @@ const SelectTable = ({ tables, onTableSelected }) => {
                 </tr>
               </thead>
               <tbody>
-                {tables.map((table) => (
+                {tablesData.map( (table) => (
                   <tr
-                    key={table.number}
+                    key={table.table_id}
                     style={{
                       border: "2px solid #942D2D",
                     }}
@@ -162,7 +181,7 @@ const SelectTable = ({ tables, onTableSelected }) => {
                         borderCollapse: "separate",
                       }}
                     >
-                      {table.number}
+                      {table.table_id}
                     </td>
                     <td
                       style={{
@@ -196,7 +215,7 @@ const SelectTable = ({ tables, onTableSelected }) => {
                     >
                       <Button
                         variant="contained"
-                        onClick={() => handleSelectTable(table.number)}
+                        onClick={() => handleSelectTable(table.table_id)}
                         style={{
                           color: "#FFF",
                           fontFamily: "Darker Grotesque",
