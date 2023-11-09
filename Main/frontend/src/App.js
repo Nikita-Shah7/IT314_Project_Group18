@@ -14,7 +14,9 @@ import Home from './components/Welcome/Home';
 import { ShopContextProvider } from './context/shop-context';
 // import { Navbar } from "./Navigations/navbar";
 import  _404NotFound  from './components/_404NotFound/_404NotFound'
+import Feedback from './components/Feedback/Feedback'
 import { About } from './components/About/About'; 
+import { Feed } from '@mui/icons-material';
 
 
 
@@ -63,6 +65,7 @@ function App() {
             {/* <Route path='/selecttable' element={<SelectTable tables={tables} onTableSelected={handleTableSelected} />} /> 
             <Route path='/bookedtable' element={<BookedTable tableNumber={selectedTable}/>} /> */}
             <Route path='/aboutus' element={<About />} />
+            <Route path='/feedback' element={<Feedback />} />
             <Route path='/*' element={<_404NotFound />} />
           </Routes>
         </Router>
