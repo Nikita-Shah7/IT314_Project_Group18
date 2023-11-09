@@ -5,9 +5,7 @@ import { ContextProvider } from './context/context';
 
 import Header from './components/Header/Header' 
 import Footer from './components/Footer/Footer'
-import Shop from './components/Home/Home'
-import MenuList from './components/Menu/MenuList'
-import MenuListDetails from './components/Menu/MenuItemDetails'
+import RestaurantMenu from './components/RestaurantMenu/RestaurantMenu'
 import Cart from './components/Cart/Cart'
 import EnterMembers from './components/Table/EnterMembers'; 
 import SelectTable from './components/Table/SelectTable'; 
@@ -52,9 +50,7 @@ function App() {
         <ShopContextProvider>
         <Router>
           <Routes>
-            <Route path='/home' element={<Shop />} />
-            <Route path='/menu' element={<MenuList />} />
-            <Route path='/menu/:id' element={<MenuListDetails />} />
+            <Route path='/menu' element={<RestaurantMenu />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/tablebooking' element={totalMembers === null ? (
           <EnterMembers onMembersConfirmed={handleMembersConfirmed} />
