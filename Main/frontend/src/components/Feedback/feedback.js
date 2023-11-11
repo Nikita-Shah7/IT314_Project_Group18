@@ -3,6 +3,7 @@ import { styles, colors } from "./FeedbackCSS.js";
 import { FaStar } from "react-icons/fa";
 import image from './Flower.png';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function Feedback() {
@@ -14,6 +15,14 @@ function Feedback() {
   const [hoverFoodValue, setHoverFoodValue] = useState(undefined);
   const [comments, setComments] = useState("");
   const stars = Array(5).fill(0);
+
+  const navigate = useNavigate();
+  
+  useEffect( () => {
+    if(!localStorage.getItem("table_id")) {
+      navigate("/");
+    }
+  },[]);
 
   useEffect(() => {
     // console.log(starate1)

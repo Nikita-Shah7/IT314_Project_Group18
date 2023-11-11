@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ShopContext } from "../../context/shop-context"; // Import shop context
 
+
 export const Product = (props) => {
   
   // console.log(props.data);
@@ -19,7 +20,7 @@ export const Product = (props) => {
       <div className="individual-product" key={props.data.menu_id}>
         <img
           className="product-image"
-          src={props.data.img}
+          src={"data:image/jpg;base64," + props.data.img}
           alt={props.data.menu_name}
           onClick={togglePopup}
         />{" "}
@@ -29,11 +30,13 @@ export const Product = (props) => {
           </p>
           <p style={{ marginTop: "1px", marginBottom: "5px" }}>₹{props.data.price}</p>
         </div>
-        <div className="cartbutton">
-          <button className="addToCartBttn" onClick={() => addToCart(props.data.menu_id)}>
-            Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
-          </button>
-        </div>
+        { !localStorage.getItem("table_id") ?(<></>) :
+          (<div className="cartbutton">
+            <button className="addToCartBttn" onClick={() => addToCart(props.data.menu_id)}>
+              Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
+            </button>
+          </div>)
+        }
       </div>
 
       {isPopupOpen && (
@@ -41,7 +44,7 @@ export const Product = (props) => {
           <div className="popup">
             <div className="popup-content ">
               <div className="popup-image">
-                <img src={props.data.menu_name} alt={props.data.menu_name} />
+                <img src={"data:image/jpg;base64," + props.data.img} alt={props.data.menu_name} />
               </div>
               <div className="popup-sidebar">
                 <h2>{props.data.menu_name}</h2>
@@ -52,12 +55,14 @@ export const Product = (props) => {
               </div>
             </div>
             <div className="popup-bottom">
-              <div>
-                <button className="addToCartBttn" onClick={() => addToCart(props.data.menu_id)}>
-                  Add to Cart
-                  {cartItemCount > 0 && <> ({cartItemCount})</>}
-                </button>
-              </div>
+              { !localStorage.getItem("table_id") ? (<></>) :
+                (<div>
+                  <button className="addToCartBttn" onClick={() => addToCart(props.data.menu_id)}>
+                    Add to Cart
+                    {cartItemCount > 0 && <> ({cartItemCount})</>}
+                  </button>
+                </div>)
+              }
               <div>
                 <button className="popupbutton" onClick={togglePopup}>
                   Close

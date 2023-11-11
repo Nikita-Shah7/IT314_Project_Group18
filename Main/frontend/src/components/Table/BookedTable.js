@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-const BookedTable = ({ tableNumber }) => {
+const BookedTable = () => {
   return (
     <Box
       display="flex"
@@ -18,7 +18,7 @@ const BookedTable = ({ tableNumber }) => {
         textAlign="center"
         fontSize={70}
       >
-        You have booked table No. {tableNumber}
+        You have booked table No. {localStorage.getItem("table_id")}
       </Typography>
     </Box>
   );

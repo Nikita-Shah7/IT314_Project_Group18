@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Product } from "./product";
-import { ShopContext } from "../../context/shop-context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './RestaurantMenu.scss';
@@ -18,7 +17,7 @@ function RestaurantMenu() {
     setLoading(true)
     axios.get(`http://localhost:5555/menu`)
       .then((response) => {
-        console.log([response.data][0].data)
+        // console.log([response.data][0].data)
         setProducts([response.data][0].data)
         setLoading(false);
       })
@@ -32,7 +31,7 @@ function RestaurantMenu() {
     setLoading(true)
     axios.get(`http://localhost:5555/category`)
       .then((response) => {
-        console.log([response.data][0].data)
+        // console.log([response.data][0].data)
         setCategories([response.data][0].data)
         setLoading(false);
       })
@@ -46,7 +45,7 @@ function RestaurantMenu() {
     console.log(selectedCategory);
     axios.get(`http://localhost:5555/menu/category/${selectedCategory}`)
       .then( (response) => {
-        console.log([response.data][0].data);
+        // console.log([response.data][0].data);
         setProducts([response.data][0].data)
         setLoading(false)
       })

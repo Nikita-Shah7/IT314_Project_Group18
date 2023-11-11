@@ -53,12 +53,16 @@ export default function Header() {
             <Link href="/menu" color="inherit" sx={{ m: 2, ...linkStyle }}>
               Menu
             </Link>
-            <Link href="/cart" color="inherit" sx={{ m: 2, ...linkStyle }}>
-              Cart
-            </Link>
-            <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
-              Book a Table
-            </Link>
+            { !localStorage.getItem("table_id") ? <></> :
+              <Link href="/cart" color="inherit" sx={{ m: 2, ...linkStyle }}>
+                Cart
+              </Link>
+            }
+            { localStorage.getItem("table_id") ? <></> :
+              <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
+                Book a Table
+              </Link>
+            }
             <Link href="/aboutus" color="inherit" sx={{ m: 2, ...linkStyle }}>
               About
             </Link>

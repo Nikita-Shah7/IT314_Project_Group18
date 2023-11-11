@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import SelectTable from "./SelectTable";
 
 const styles = {
   popupContainer: {
@@ -29,69 +30,74 @@ const styles = {
   },
 };
 
-const EnterMembers = ({ onMembersConfirmed }) => {
-  const [totalMembers, setTotalMembers] = useState("");
+const EnterMembers = () => {
+  const [totalMember, setTotalMember] = useState(0);
+  const [totalMembers, setTotalMembers] = useState(null);
 
   const handleConfirm = () => {
     if (
-      totalMembers === "" ||
-      totalMembers <= 0 ||
-      !Number.isInteger(parseFloat(totalMembers))
+      totalMember <= 0 ||
+      !Number.isInteger(totalMember)
     ) {
       alert("Please enter a valid positive integer number of members.");
-    } else {
-      onMembersConfirmed(parseInt(totalMembers));
+    }
+    else {
+      setTotalMembers(totalMember);
     }
   };
 
-  return (
-    <Box sx={{ ...styles.popupContainer }}>
-      <Box
-        sx={{
-          ...styles.popupContent,
-          bgcolor: "#f0f4d4", // Replace the background color
-          border: "2px solid #942D2D", // Replace the border color
-          marginBottom: "120px", // Add margin bottom
-          marginTop: "20px", // Add margin top
-        }}
-      >
-        <Typography
-          variant="h6"
-          fontSize={40}
+  if(totalMembers) {
+    return (<SelectTable totalMembers={totalMembers} />);
+  } else {
+    return (
+      <Box sx={{ ...styles.popupContainer }}>
+        <Box
           sx={{
-            fontFamily: "Darker Grotesque", // Set font-family
-            marginBottom: "40px",
+            ...styles.popupContent,
+            bgcolor: "#f0f4d4", // Replace the background color
+            border: "2px solid #942D2D", // Replace the border color
+            marginBottom: "120px", // Add margin bottom
+            marginTop: "20px", // Add margin top
           }}
         >
-          Enter Total Members
-        </Typography>
-        <form>
-          <TextField
-            type="number"
-            variant="outlined"
-            value={totalMembers}
-            onChange={(e) => setTotalMembers(e.target.value)}
-            fullWidth
-            inputProps={{ style: { background: "#FFF" } }}
-            placeholder="Enter Total Members"
-          />
-          <Button
-            type="button"
-            onClick={handleConfirm}
-            fullWidth
+          <Typography
+            variant="h6"
+            fontSize={40}
             sx={{
-              marginTop: "20px",
-              color: "#FFF",
-              bgcolor: "#942D2D",
               fontFamily: "Darker Grotesque", // Set font-family
+              marginBottom: "40px",
             }}
           >
-            <Typography fontSize={20}>Confirm</Typography>
-          </Button>
-        </form>
+            Enter Total Members
+          </Typography>
+          <form>
+            <TextField
+              type="number"
+              variant="outlined"
+              value={totalMember}
+              onChange={(e) => setTotalMember(parseInt(e.target.value))}
+              fullWidth
+              inputProps={{ style: { background: "#FFF" } }}
+              placeholder="Enter Total Members"
+            />
+            <Button
+              type="button"
+              onClick={handleConfirm}
+              fullWidth
+              sx={{
+                marginTop: "20px",
+                color: "#FFF",
+                bgcolor: "#942D2D",
+                fontFamily: "Darker Grotesque", // Set font-family
+              }}
+            >
+              <Typography fontSize={20}>Confirm</Typography>
+            </Button>
+          </form>
+        </Box>
       </Box>
-    </Box>
-  );
+    );
+  }
 };
 
 export default EnterMembers;
