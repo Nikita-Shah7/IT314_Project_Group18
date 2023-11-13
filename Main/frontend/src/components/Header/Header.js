@@ -58,11 +58,9 @@ export default function Header() {
                 Cart
               </Link>
             }
-            { localStorage.getItem("table_id") ? <></> :
               <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
                 Book a Table
               </Link>
-            }
             <Link href="/aboutus" color="inherit" sx={{ m: 2, ...linkStyle }}>
               About
             </Link>
