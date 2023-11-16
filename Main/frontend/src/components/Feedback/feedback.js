@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { styles, colors } from "./FeedbackCSS.js";
 import { FaStar } from "react-icons/fa";
-import image from './Flower.png';
+import image from './flower.png';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

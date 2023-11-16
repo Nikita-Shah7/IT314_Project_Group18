@@ -1,0 +1,107 @@
+.item-list{
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: 550px;
+    background-color: #EBF2D5;
+}
+.adm{
+    margin: 0px;
+    height: 100vh;
+    background-color: #EBF2D5;
+    font-family: 'David Libre';
+    color: #942D2D;
+}
+
+.ti-ad{
+    margin: 60px 0px 50px 60px;
+    font-weight: 600;
+}
+.addi-ad{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    background-color: #EBF2D5;
+}
+.mrow-ad{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vm;
+    height: 100%;
+}
+.overlay-ad{
+    width: 100vw;
+    height: 100vh;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom: 0;
+    position: fixed;
+    background-color: rgba(42, 42, 42, 0.573);
+}
+.content-ad{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top : 7%;
+    text-align: center;
+    /* transform: translate(-50%,-50%); */
+    line-height: 1.4;
+    background: #EBF2D5;
+    width: 1200px;
+    height: 700px;
+    padding: 14px 28px; 
+    border: 1px solid #942D2D; 
+}
+.in-ad{
+    width: 484px;
+    height: 50px;
+    margin: 0px;
+    font-size: 15px;
+    padding-left: 10px;
+    margin-left: 10px;
+    background: #ffffff;
+    font-family: 'Darker Grotesque';
+}
+.row-ad{
+    display: flex;
+    flex-direction: row;
+    margin :10px auto;
+    align-items: center;
+    justify-content: center;
+    font-family: 'David Libre';
+    font-size: 25px;
+    font-weight: 800;
+}
+.but-list-ad{
+    margin-top: 15px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 0px;
+    width: 127px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 1px solid #942D2D;
+    color: #942D2D;
+    background-color: #EBF2D5;
+    font-family: 'Darker Grotesque';
+    font-size: 20px;
+}
+.but-list-ad:hover {
+    margin-top: 15px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 0px;
+    width: 127px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 0px;
+    background-color: #942D2D;
+    color: #EBF2D5;
+    font-family: 'Darker Grotesque';
+    font-size: 20px;
+    cursor: pointer;
+  }

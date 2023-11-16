@@ -1,0 +1,125 @@
+.card-it{
+    margin: 25px 0px 0px 60px;
+    width: 80%;
+    height: 135px;
+    display: flex;
+    flex-direction: row;
+    font-family: 'David Libre';
+    align-items: center;
+    border: 1px solid #942D2D;
+    background-color: #EBF2D5;
+    justify-content: space-around;
+}
+.mrow-it{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vm;
+    height: 100%;
+}
+.in-it{
+    width: 484px;
+    height: 50px;
+    margin: 0px;
+    font-size: 15px;
+    padding-left: 10px;
+    margin-left: 10px;
+    border: 1px solid #942D2D;
+    font-family: 'Darker Grotesque';
+    background: #FFF;
+}
+.row-it {
+    display: flex;
+    flex-direction: row;
+    margin :10px auto;
+    align-items: center;
+    justify-content: center;
+    font-family: 'David Libre';
+    font-size: 25px;
+    font-weight: 800;
+}
+.im-it{
+    width: 75px;
+    height: 75px;
+}
+.te-it{
+    color: #942D2D;
+    font-family: 'Darker Grotesque';
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0px;
+}
+.cat-it{
+    color: #942D2D;
+    margin: 0px;
+    font-family: 'Darker Grotesque';
+    font-size: 15px;
+    font-weight: 300;
+}
+.cat2-it{
+    color: #942D2D;
+    margin: 0px;
+    font-family: 'Darker Grotesque';
+    font-size: 15px;
+    font-weight: 300;
+    margin:0px;
+}
+.wrp-it{
+    margin: 0px;
+}
+.modal-it,.overlay-it{
+    width: 100vw;
+    height: 100vh;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom: 0;
+    position: fixed;
+}
+.overlay-it{
+    background-color: rgba(42, 42, 42, 0.573);
+}
+.content-it{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top : 7%;
+    text-align: center;
+    /* transform: translate(-50%,-50%); */
+    line-height: 1.4;
+    background: #EBF2D5;
+    width: 1200px;
+    height: 700px;
+    padding: 14px 28px; 
+    border: 1px solid #942D2D; 
+    font-family: 'Darker Grotesque';
+}
+.but-it{
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 0px;
+    width: 127px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 1px solid #942D2D;
+    background-color: #EBF2D5;
+    color: #942D2D;
+    font-family: 'Darker Grotesque';
+    font-size: 20px;
+}
+.but-it:hover{
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 0px;
+    width: 127px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 0px;
+    background-color: #942D2D;
+    color: #EBF2D5;
+    font-family: 'Darker Grotesque';
+    font-size: 20px;
+}

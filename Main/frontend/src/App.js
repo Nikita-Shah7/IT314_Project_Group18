@@ -12,8 +12,9 @@ import BookedTable from './components/Table/BookedTable';
 import Home from './components/Welcome/Home'
 // import { Navbar } from "./Navigations/navbar";
 import _404NotFound from './components/_404NotFound/_404NotFound'
-import Feedback from './components/Feedback/Feedback'
+import Feedback from './components/Feedback/feedback'
 import { About } from './components/About/About';
+import  AdminMenu from './components/AdminMenu/AdminMenu'
 import { Feed } from '@mui/icons-material';
 
 
@@ -36,6 +37,7 @@ function App() {
               }
               <Route path='/' element={<Home userName="User" />} />
               <Route path='/aboutus' element={<About />} />
+              <Route path='/adminmenu' element={<AdminMenu />} />
               <Route path='/feedback' element={<Feedback />} />
               <Route path='/*' element={<_404NotFound />} />
             </Routes>
