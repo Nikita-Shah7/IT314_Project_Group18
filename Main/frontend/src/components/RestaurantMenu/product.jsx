@@ -41,7 +41,7 @@ export const Product = (props) => {
       <div className="individual-product" key={props.data.menu_id}>
         <img
           className="product-image"
-          src={"data:image/jpg;base64," + props.data.img}
+          src={props.data.img}
           alt={props.data.menu_name}
           onClick={togglePopup}
         />{" "}

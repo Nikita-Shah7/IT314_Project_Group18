@@ -13,7 +13,7 @@ restaurantMenuRouter.post("/", async (req, res) => {
         }
         const id = uuidv4();
         const newMenuItem = await pool.query("INSERT INTO \"restaurantMenu\"(menu_id,\"categoryName\",\"menu_name\",description,price,profit,img) VALUES($1,$2,$3,$4,$5,$6,$7)",
-            [id, req.body.categoryName, req.body.menu_name, req.body.description, req.body.price, req.body.profit, req.body.img]);
+            [id, req.body.categoryName, req.body.menu_name, req.body.description, parseInt(req.body.price), parseInt(req.body.profit), req.body.img]);
         res.status(201).json({
             message: "MenuItem created successfully !!",
             // data: newMenuItem
