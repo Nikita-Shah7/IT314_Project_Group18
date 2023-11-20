@@ -10,13 +10,13 @@ import Cart from './components/Cart/Cart'
 import EnterMembers from './components/Table/EnterMembers';
 import BookedTable from './components/Table/BookedTable';
 import Home from './components/Welcome/Home'
-// import { Navbar } from "./Navigations/navbar";
 import _404NotFound from './components/_404NotFound/_404NotFound'
 import Feedback from './components/Feedback/feedback'
 import { About } from './components/About/About';
-import  AdminMenu from './components/AdminMenu/AdminMenu'
 import { Feed } from '@mui/icons-material';
-
+import UserLogin from './components/UserLogin/UserLogin';
+import AdminLogin from './components/AdminLogin/AdminLogin';
+import  AdminMenu from './components/AdminMenu/AdminMenu'
 
 
 function App() {
@@ -25,27 +25,28 @@ function App() {
   
   return (
     <>
-      <Header />
       <ContextProvider>
           <Router>
             <Routes>
-              <Route path='/menu' element={<RestaurantMenu />} />
-              <Route path='/cart' element={<Cart />} />
+              <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
+              <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />
               { localStorage.getItem("table_id") ? 
-                (<Route path='/tablebooking' element={<BookedTable />} />) :
-                (<Route path='/tablebooking' element={<EnterMembers />} />)
+                (<Route path='/tablebooking' element={<><Header/> <BookedTable/> <Footer/></>} />) :
+                (<Route path='/tablebooking' element={<><Header/> <EnterMembers/> <Footer/></>} />)
               }
-              <Route path='/' element={<Home userName="User" />} />
-              <Route path='/aboutus' element={<About />} />
-              <Route path='/adminmenu' element={<AdminMenu />} />
+              <Route path='/' element={ <><Header/> <Home userName="User" /> <Footer/></>} />
+              <Route path='/aboutus' element={<><Header/> <About/> <Footer/></>} />
+              <Route path='/adminmenu' element={<><Header/> <AdminMenu/> <Footer/></>} />
               <Route path='/feedback' element={<Feedback />} />
+              <Route path='/userlogin' element={<><UserLogin /> <Footer/></>} />
+              <Route path='/adminlogin' element={<AdminLogin />} />            
               <Route path='/*' element={<_404NotFound />} />
             </Routes>
           </Router>
       </ContextProvider>
-      <Footer />
     </>
   );
 }
 
+              
 export default App;

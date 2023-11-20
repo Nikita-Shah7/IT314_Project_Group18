@@ -1,11 +1,13 @@
 const express = require("express");
 const pool = require("../db.js")
 const { v4: uuidv4 } = require('uuid');
+const jwt = require('jsonwebtoken');
+const { ACCESS_TOKEN_SECRET } = require('../config.js');
 
 const restaurantMenuRouter = express.Router();
 
 
-restaurantMenuRouter.post("/", async (req, res) => {
+restaurantMenuRouter.post("/", authenticateToken, async (req, res) => {
     // console.log(req.body)
     try {
         if (!req.body.categoryName || !req.body.menu_name || !req.body.price || !req.body.profit || !req.body.img) {
@@ -98,7 +100,7 @@ restaurantMenuRouter.get("/:id", async (req, res) => {
 });
 
 
-restaurantMenuRouter.put("/:id", async (req, res) => {
+restaurantMenuRouter.put("/:id", authenticateToken, async (req, res) => {
     try {
         // validating the input
         if (!req.body.categoryName || !req.body.menu_name || !req.body.price || !req.body.profit || !req.body.img) {
@@ -121,7 +123,7 @@ restaurantMenuRouter.put("/:id", async (req, res) => {
 });
 
 
-restaurantMenuRouter.delete("/:id", async (req, res) => {
+restaurantMenuRouter.delete("/:id", authenticateToken, async (req, res) => {
     try {
         const { id } = req.params
         const deleteMenuItem = await pool.query("DELETE FROM \"restaurantMenu\" WHERE menu_id = $1;", [id]);
@@ -138,5 +140,25 @@ restaurantMenuRouter.delete("/:id", async (req, res) => {
     }
 });
 
+
+// authentication of the token when loggedIn as Admin
+function authenticateToken(req, res, next) {
+    // console.log(req.headers)
+    const authHeader = req.headers['authorization']
+    // console.log(authHeader)
+    if(authHeader) {
+        const accessToken = authHeader.split(' ')[1]
+        // console.log(accessToken)
+        jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (err, payload) => {
+            // console.log("ERROR MESSAGE ::",err)
+            if(err) {
+                // meaning that you have accessToken but it is not valid(moght be expired)
+                return res.status(403).json({message: "Invalid accessToken !!"})
+            }
+            else next()
+        })
+    }
+    else return res.status(401).json({message: "Unauthorized !!"})
+}
 
 module.exports = restaurantMenuRouter;

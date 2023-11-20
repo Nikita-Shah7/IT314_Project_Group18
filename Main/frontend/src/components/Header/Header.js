@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { useMediaQuery } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const textColor = "#982c2c"; // Define the text color
@@ -16,6 +17,15 @@ export default function Header() {
   };
 
   const isSmallScreen = useMediaQuery("(max-width:750px)");
+
+  const navigate = useNavigate();
+  const handleAdminLogin = () => {
+    if(localStorage.getItem("isAdminAuth")) {
+      localStorage.removeItem("isAdminAuth");
+      localStorage.removeItem("accessToken");      
+    }
+    navigate('/adminlogin');
+  }
 
   return (
     <Box sx={{ marginBottom: 0, flexGrow: 1 }}>
@@ -76,8 +86,9 @@ export default function Header() {
               border: "1px solid #982c2c",
               minWidth: 150,
             }}
+            onClick={handleAdminLogin}
           >
-            Login/SignUp
+            { !localStorage.getItem("isAdminAuth") ? "Login/SignUp" : "Logout" }
           </Button>
         </Toolbar>
       </AppBar>

@@ -1,5 +1,5 @@
 const SERVER_PORT = 5555;
-const USER = "<user>";
+const USER = "<username>";
 const PASSWORD = "<password>";
 const HOST = "<host>";
 const DB_PORT = 5432;
@@ -14,9 +14,10 @@ const RELATION7 = "cart";
 const RELATION8 = "payment";
 const RELATION9 = "orders";
 const CONNECTION_STRING = `postgresql://${USER}:${PASSWORD}@${HOST}:${DB_PORT}/${DB1}`;
+const ACCESS_TOKEN_SECRET = "<access_token_secret>";
 
 module.exports = {
-    SERVER_PORT, USER, PASSWORD, HOST, DB_PORT, DB1, CONNECTION_STRING, 
+    SERVER_PORT, USER, PASSWORD, HOST, DB_PORT, DB1, CONNECTION_STRING, ACCESS_TOKEN_SECRET,
     RELATION1, RELATION2, RELATION3, RELATION4, RELATION5, RELATION6, RELATION7, RELATION8, RELATION9
 }
 

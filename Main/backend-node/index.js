@@ -7,7 +7,7 @@ const categoryRouter = require("./routes/categoryRoute.js");
 const restaurantMenuRouter = require("./routes/restaurantMenuRoute.js");
 const tableRouter = require("./routes/table.js");
 const feedbackRouter = require("./routes/feedbackRoute.js");
-// const adminRouter = require("./routes/adminRoute.js");
+const adminRouter = require("./routes/adminRoute.js");
 const cartRouter = require("./routes/cartRoute.js");
 const cartItemsRouter = require("./routes/cartItemsRoute.js");
 // const ordersRouter = require("./routes/ordersRoute.js");
@@ -23,7 +23,7 @@ app.use("/menu",restaurantMenuRouter)
 app.use("/category",categoryRouter)
 app.use("/table",tableRouter)
 app.use("/feedback",feedbackRouter)
-// app.use("/admin",adminRouter)
+app.use("/admin",adminRouter)
 app.use("/cart",cartRouter)
 app.use("/cart_items",cartItemsRouter)
 // app.use("/orders",ordersRouter)

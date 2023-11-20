@@ -1,10 +1,12 @@
 const express = require("express");
-const pool = require("../db.js")
+const pool = require("../db.js");
+const jwt = require('jsonwebtoken');
+const { ACCESS_TOKEN_SECRET } = require('../config.js');
 
 const tableRouter = express.Router();
 
 
-tableRouter.post("/", async (req, res) => {
+tableRouter.post("/", authenticateToken, async (req, res) => {
     // console.log(req.body)
     try {
         if (!req.body.table_id || !req.body.capacity || !req.body.availability_status) {
@@ -91,7 +93,7 @@ tableRouter.get("/:id", async (req, res) => {
 });
 
 
-tableRouter.put("/:id", async (req, res) => {
+tableRouter.put("/:id", authenticateToken, async (req, res) => {
     try {
         if (!req.body.table_id || !req.body.capacity || !req.body.availability_status) {
             return res.status(400).json({ message: "All fields are mandatory !!" })
@@ -113,7 +115,7 @@ tableRouter.put("/:id", async (req, res) => {
 });
 
 
-tableRouter.delete("/:id", async (req, res) => {
+tableRouter.delete("/:id", authenticateToken, async (req, res) => {
     try {
         const { id } = req.params
         const deleteTable = await pool.query("DELETE FROM \"table\" WHERE table_id = $1;", [id]);
@@ -129,6 +131,27 @@ tableRouter.delete("/:id", async (req, res) => {
         res.status(500).json({ message: "Can't delete!!" })
     }
 });
+
+
+// authentication of the token when loggedIn as Admin
+function authenticateToken(req, res, next) {
+    // console.log(req.headers)
+    const authHeader = req.headers['authorization']
+    // console.log(authHeader)
+    if(authHeader) {
+        const accessToken = authHeader.split(' ')[1]
+        // console.log(accessToken)
+        jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (err, payload) => {
+            // console.log("ERROR MESSAGE ::",err)
+            if(err) {
+                // meaning that you have accessToken but it is not valid(moght be expired)
+                return res.status(403).json({message: "Invalid accessToken !!"})
+            }
+            else next()
+        })
+    }
+    else return res.status(401).json({message: "Unauthorized !!"})
+}
 
 
 module.exports = tableRouter;

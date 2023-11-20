@@ -1,11 +1,18 @@
 import React,{ useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './AdminMenu.css'
 import Product from './product';
 
 export default function() {
 
-    console.log("nik in admin menu");
+    // console.log("nik in admin menu");
+    const navigate = useNavigate();
+
+    if(!localStorage.getItem("isAdminAuth")) {
+        navigate('/adminlogin');
+    }
+
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [menuItemsCnt, setMenuItemsCnt] = useState(0);
@@ -57,6 +64,18 @@ export default function() {
     const addItem = async(e) => {
         e.preventDefault();
         setLoading(true)
+        
+        const accessToken = localStorage.getItem("accessToken");
+        // console.log(accessToken)
+        if(!accessToken)
+        {
+            setLoading(false);
+            // alert('An error happened. Please Check console');
+            // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+            console.log("UNAUTHORIZED!!");
+            return;
+        }
+
         if(!img) img = "abc";
         const data = {
             menu_name: menuName,
@@ -66,7 +85,11 @@ export default function() {
             profit,
             img: img
         }
-        await axios.post(`http://localhost:5555/menu`, data)
+        await axios.post(`http://localhost:5555/menu`, data, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        })
             .then((response) => {
             // console.log([response.data][0].data)
             setMenuItemsCnt(menuItemsCnt + 1);

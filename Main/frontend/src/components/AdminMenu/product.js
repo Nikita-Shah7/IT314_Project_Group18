@@ -35,6 +35,18 @@ export default function Product(props) {
 
     const editProduct = async(e) => {
         e.preventDefault();
+
+        const accessToken = localStorage.getItem("accessToken");
+        // console.log(accessToken)
+        if(!accessToken)
+        {
+            setLoading(false);
+            // alert('An error happened. Please Check console');
+            // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+            console.log("UNAUTHORIZED!!");
+            return;
+        }
+
         const data = {
             menu_name: menuName,
             categoryName: category,
@@ -43,7 +55,11 @@ export default function Product(props) {
             profit,
             img: img
         }
-        await axios.put(`http://localhost:5555/menu/${props.data.menu_id}`, data)
+        await axios.put(`http://localhost:5555/menu/${props.data.menu_id}`, data, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        })
             .then((response) => {
             // console.log([response.data][0].data)
             console.log([response.data][0].message);
@@ -60,7 +76,22 @@ export default function Product(props) {
     }
 
     const deleteProduct = async () => {
-        await axios.delete(`http://localhost:5555/menu/${props.data.menu_id}`)
+        const accessToken = localStorage.getItem("accessToken");
+        // console.log(accessToken)
+        if(!accessToken)
+        {
+            setLoading(false);
+            // alert('An error happened. Please Check console');
+            // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+            console.log("UNAUTHORIZED!!");
+            return;
+        }
+
+        await axios.delete(`http://localhost:5555/menu/${props.data.menu_id}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        })
             .then((response) => {
             // console.log([response.data][0].data)
             console.log([response.data][0].message);
