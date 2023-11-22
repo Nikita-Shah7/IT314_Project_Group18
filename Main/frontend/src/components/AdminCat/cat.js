@@ -1,0 +1,120 @@
+import React,{ useState } from 'react';
+import axios from 'axios';
+import './Cat.css'
+
+export default function Product(props) {
+
+    // // console.log(props.data)
+    // const [loading, setLoading] = useState(true);
+    // const [menuName, setMenuName] = useState(props.data.menu_name);
+    // const [category, setCategory] = useState(props.data.categoryName);
+    // const [description, setDescription] = useState(props.data.description);
+    // const [price, setPrice] = useState(props.data.price);
+    // const [profit, setProfit] = useState(props.data.profit);
+    // const [img, setImg] = useState(props.data.img);
+
+    const [modal,setModal] = useState(false);
+    const toggleModal = () => {
+        setModal(!modal)
+    }
+    // const editProduct = async(e) => {
+    //     e.preventDefault();
+
+    //     const accessToken = localStorage.getItem("accessToken");
+    //     // console.log(accessToken)
+    //     if(!accessToken)
+    //     {
+    //         setLoading(false);
+    //         // alert('An error happened. Please Check console');
+    //         // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+    //         console.log("UNAUTHORIZED!!");
+    //         return;
+    //     }
+
+        // const data = {
+        //     menu_name: menuName,
+        //     categoryName: category,
+        //     description: description,
+        //     price: price,
+        //     profit,
+        //     img: img
+        // }
+        // await axios.put(`http://localhost:5555/menu/${props.data.menu_id}`, data, {
+        //     headers: {
+        //         Authorization: `Bearer ${accessToken}`,
+        //     }
+        // })
+    //         .then((response) => {
+    //         // console.log([response.data][0].data)
+    //         console.log([response.data][0].message);
+    //         setModal(!modal)
+    //         // just re-render all items
+    //         props.setMenuItemsCnt(props.menuItemsCnt+1);
+    //         props.setMenuItemsCnt(props.menuItemsCnt-1);
+    //         setLoading(false);
+    //         })
+    //         .catch((error) => {
+    //         console.log("ERROR MESSAGE ::", error)
+    //         setLoading(false);
+    //         });
+    // }
+
+    // const deleteProduct = async () => {
+    //     const accessToken = localStorage.getItem("accessToken");
+    //     // console.log(accessToken)
+    //     if(!accessToken)
+    //     {
+    //         setLoading(false);
+    //         // alert('An error happened. Please Check console');
+    //         // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+    //         console.log("UNAUTHORIZED!!");
+    //         return;
+    //     }
+
+    //     await axios.delete(`http://localhost:5555/menu/${props.data.menu_id}`, {
+    //         headers: {
+    //             Authorization: `Bearer ${accessToken}`,
+    //         }
+    //     })
+    //         .then((response) => {
+    //         // console.log([response.data][0].data)
+    //         console.log([response.data][0].message);
+    //         props.setMenuItemsCnt(props.menuItemsCnt-1);
+    //         setLoading(false);
+    //         })
+    //         .catch((error) => {
+    //         console.log("ERROR MESSAGE ::", error)
+    //         setLoading(false);
+    //         });
+    // }
+
+    return(
+        <div className='card-cat'>
+                <div className='wrp-cat'>
+                    <h3 className='te-cat'>{props.catname}</h3>
+                    <p className='cat-cat'>Item count : {props.cnt}</p>
+                </div>
+            <button className='but-cat' onClick={toggleModal}>Edit</button>
+            <button className='but-cat'>Delete</button>
+            { modal && (
+            <div className='overlay-cat' onClick={toggleModal}>
+                <div className='content-ct' onClick={(event) => event.stopPropagation()} >
+                <form className='mrow-cat'>
+                <div className="row-cat">
+                    <div >
+                        <label htmlFor="title" ><p>Category Name : </p></label>
+                    </div>
+                    <div>
+                    <input type="text" placeholder={props.catname} className='in-ca' name="categoryName"/>
+                    </div>
+                </div>
+                <div className='bu-fo-cat'>
+                    <button className="but2-list-cat" type="submit">Edit</button>
+                    <button className="but2-list-cat" onClick={toggleModal}>CLOSE</button>
+                </div>
+            </form>
+                </div>
+        </div>)}
+        </div>
+    )
+}

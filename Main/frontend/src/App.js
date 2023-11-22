@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState } from "react";
 import { ContextProvider } from './context/context';
-
+import Cat from './components/AdminCat/AdminCat'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import RestaurantMenu from './components/RestaurantMenu/RestaurantMenu'
@@ -18,7 +18,7 @@ import UserLogin from './components/UserLogin/UserLogin';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import  AdminMenu from './components/AdminMenu/AdminMenu'
 
-
+import Reviewlist from "./components/Reviews/Reviewlist";
 function App() {
 
   const [loading, setLoading] = useState(true);
@@ -30,6 +30,8 @@ function App() {
             <Routes>
               <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
               <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />
+              <Route path='/cat' element={<><Header/> <Cat/> <Footer/></>} />
+              <Route path='/review' element={<><Header/> <Reviewlist/> <Footer/></>} />
               { localStorage.getItem("table_id") ? 
                 (<Route path='/tablebooking' element={<><Header/> <BookedTable/> <Footer/></>} />) :
                 (<Route path='/tablebooking' element={<><Header/> <EnterMembers/> <Footer/></>} />)

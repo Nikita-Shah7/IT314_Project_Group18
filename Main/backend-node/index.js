@@ -96,6 +96,6 @@ app.get('/', async (req, res) => {
         return res.status(234).send("Welcome to PERN !!");        
     } catch (error) {
         console.log("ERROR MESSAGE ::", error.message)
-        res.status(500).json({ message: "Can't connect to DB!!" });
+        res.status(500).json({ message: "Can'`t connect to DB!!" });
     }
 });
