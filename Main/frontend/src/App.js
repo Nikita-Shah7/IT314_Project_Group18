@@ -17,6 +17,7 @@ import { Feed } from '@mui/icons-material';
 import UserLogin from './components/UserLogin/UserLogin';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import  AdminMenu from './components/AdminMenu/AdminMenu'
+import  AdminTab from './components/AdminTable/AdminTab'
 
 import Reviewlist from "./components/Reviews/Reviewlist";
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Router>
             <Routes>
               <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
+              <Route path='/tab' element={<><Header/> <AdminTab/> <Footer/></>} />
               <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />
               <Route path='/cat' element={<><Header/> <Cat/> <Footer/></>} />
               <Route path='/review' element={<><Header/> <Reviewlist/> <Footer/></>} />
