@@ -26,7 +26,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   
   return (
-    <>
+    <div style={{'backgroundColor': '#EBF2D5'}}>
       <ContextProvider>
           <Router>
             <Routes>
@@ -49,7 +49,7 @@ function App() {
             </Routes>
           </Router>
       </ContextProvider>
-    </>
+    </div>
   );
 }
 

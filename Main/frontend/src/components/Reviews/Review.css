@@ -1,11 +1,18 @@
-.bd{
+body{
     margin: 0px;
     font-family: 'Poppins';
     background-color: #EBF2D5;
     color: #942D2D;
-    padding-top: 60px;
-    padding-bottom: 10%;
 }
+.bg {
+    background-color: #EBF2D5;
+}
+
+.ti-re {
+    background-color: #EBF2D5;
+    color: #942D2D;
+} 
+
 .im-re{
     width: 23px;
     height: 30px;
@@ -50,11 +57,11 @@
 .rev-list{
     overflow-y: scroll;
     height: 530px;
+    margin-bottom: 50px;
 }
 .ti-re{
     font-family: 'David Libre';
-    padding-left: 50px;
-    /* margin: 60px 0px 50px 60px; */
+    margin: 60px 0px 50px 60px;
 }
 .da-re{
     display: flex;
@@ -72,7 +79,34 @@
     align-items: center;
     border: 1px solid #942D2D;
     padding-left: 50px;
+    color: #942D2D;
 }
 .wrp-re2{
     width: 100vw;
 }
+
+.button-container {
+    display: flex;
+    gap: 10px; 
+    justify-content: center; 
+    margin-bottom: 20px; 
+  }
+  
+  .button-container button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #942D2D;
+    color: #EBF2D5;
+    border: none;
+    /* border-radius: 5px; */
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #EBF2D5;
+    transform: scale(1.06); 
+    color: #942D2D;
+    border: 1px solid;
+  }
+  
