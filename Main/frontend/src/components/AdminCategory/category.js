@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import './Cat.css'
 
-export default function Product(props) {
+export default function Category(props) {
 
     // // console.log(props.data)
     // const [loading, setLoading] = useState(true);

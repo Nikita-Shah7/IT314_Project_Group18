@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState } from "react";
 import { ContextProvider } from './context/context';
-import Cat from './components/AdminCat/AdminCat'
+import AdminCategory from './components/AdminCategory/AdminCategory'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import RestaurantMenu from './components/RestaurantMenu/RestaurantMenu'
@@ -17,9 +17,10 @@ import { Feed } from '@mui/icons-material';
 import UserLogin from './components/UserLogin/UserLogin';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import  AdminMenu from './components/AdminMenu/AdminMenu'
-import  AdminTab from './components/AdminTable/AdminTab'
-
+import  AdminTable from './components/AdminTable/AdminTable'
 import Reviewlist from "./components/Reviews/Reviewlist";
+
+
 function App() {
 
   const [loading, setLoading] = useState(true);
@@ -30,20 +31,20 @@ function App() {
           <Router>
             <Routes>
               <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
-              <Route path='/tab' element={<><Header/> <AdminTab/> <Footer/></>} />
               <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />
-              <Route path='/cat' element={<><Header/> <Cat/> <Footer/></>} />
-              <Route path='/review' element={<><Header/> <Reviewlist/> <Footer/></>} />
               { localStorage.getItem("table_id") ? 
                 (<Route path='/tablebooking' element={<><Header/> <BookedTable/> <Footer/></>} />) :
                 (<Route path='/tablebooking' element={<><Header/> <EnterMembers/> <Footer/></>} />)
               }
               <Route path='/' element={ <><Header/> <Home userName="User" /> <Footer/></>} />
               <Route path='/aboutus' element={<><Header/> <About/> <Footer/></>} />
-              <Route path='/adminmenu' element={<><Header/> <AdminMenu/> <Footer/></>} />
               <Route path='/feedback' element={<Feedback />} />
               <Route path='/userlogin' element={<><UserLogin /> <Footer/></>} />
               <Route path='/adminlogin' element={<AdminLogin />} />            
+              <Route path='/admintable' element={<><Header/> <AdminTable/> <Footer/></>} />
+              <Route path='/adminmenu' element={<><Header/> <AdminMenu/> <Footer/></>} />
+              <Route path='/admincategory' element={<><Header/> <AdminCategory/> <Footer/></>} />
+              <Route path='/adminfeedback' element={<><Header/> <Reviewlist/> <Footer/></>} />
               <Route path='/*' element={<_404NotFound />} />
             </Routes>
           </Router>

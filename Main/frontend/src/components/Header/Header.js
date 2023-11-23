@@ -33,7 +33,9 @@ export default function Header() {
         position="static"
         sx={{ backgroundColor: "#f0f4d4", boxShadow: "none" }}
       >
-        <Toolbar>
+      { !localStorage.getItem("isAdminAuth") ?
+        (
+          <Toolbar>
           {/* Left section with restaurant name and logo */}
           <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
             {/* You can replace 'logo.png' with your actual logo */}
@@ -68,9 +70,12 @@ export default function Header() {
                 Cart
               </Link>
             }
-              <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
-                Book a Table
-              </Link>
+            <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              Book a Table
+            </Link>
+            <Link href="/table" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              DinnTable
+            </Link>
             <Link href="/aboutus" color="inherit" sx={{ m: 2, ...linkStyle }}>
               About
             </Link>
@@ -88,9 +93,70 @@ export default function Header() {
             }}
             onClick={handleAdminLogin}
           >
-            { !localStorage.getItem("isAdminAuth") ? "Login/SignUp" : "Logout" }
+            Login/SignUp
           </Button>
         </Toolbar>
+        ) : (
+          <Toolbar>
+          {/* Left section with restaurant name and logo */}
+          <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+            {/* You can replace 'logo.png' with your actual logo */}
+            <img
+              src="logo.png"
+              alt="Restaurant Logo"
+              style={{ width: 40, height: 40, marginRight: 8 }}
+            />
+            <Typography variant="h6" component="div" sx={{ color: textColor }}>
+              Restaurant
+            </Typography>
+          </Box>
+
+          {/* Middle section with hyperlinks centered in the middle of the screen */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: isSmallScreen ? "wrap" : "no-wrap",
+              width: "100%",
+            }}
+          >
+            <Link href="/" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              Home
+            </Link>
+            <Link href="/admincategory" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              Category
+            </Link>            
+            <Link href="/adminmenu" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              Menu
+            </Link>            
+            <Link href="/admintable" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              DinnTable
+            </Link>
+            <Link href="/adminfeedback" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              Feedbacks
+            </Link>            
+            <Link href="/aboutus" color="inherit" sx={{ m: 2, ...linkStyle }}>
+              About
+            </Link>
+          </Box>
+
+          {/* Right section with the login button */}
+          <Button
+            color="inherit"
+            sx={{
+              borderRadius: "0",
+              color: textColor,
+              backgroundColor: "white",
+              border: "1px solid #982c2c",
+              minWidth: 150,
+            }}
+            onClick={handleAdminLogin}
+          >
+            LogOut
+          </Button>
+        </Toolbar>
+        )}        
       </AppBar>
     </Box>
   );
