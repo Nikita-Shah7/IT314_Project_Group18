@@ -9,7 +9,7 @@ export default function Review(props)
             <p className='p-re'>User{props.id}</p>
             </div>
             <div className='wrp-re2'>
-               <p className='p-re'> <span id='te-re'>Service Rating :</span> {props.sevicerate} <span id='te-re1'> Food Rating :</span> {props.foodrate}</p>
+               <p className='p-re'> <span id='te-re'>Service Rating :</span> {props.serviceRate} <span id='te-re1'> Food Rating :</span> {props.foodRate}</p>
                <p className='de-re'>{props.comments}</p>
                <p className='da-re'>{props.date}</p>
             </div>

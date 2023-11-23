@@ -10,6 +10,7 @@ body{
 
 .ti-re {
     background-color: #EBF2D5;
+    color: #942D2D;
 } 
 
 .im-re{
@@ -78,20 +79,17 @@ body{
     align-items: center;
     border: 1px solid #942D2D;
     padding-left: 50px;
+    color: #942D2D;
 }
 .wrp-re2{
     width: 100vw;
 }
 
-/* Add this CSS code to your existing styles or create a new CSS file */
-
-/* Add this CSS code to your existing styles or create a new CSS file */
-
 .button-container {
     display: flex;
-    gap: 10px; /* Adjust the gap between buttons as needed */
-    justify-content: center; /* Center the buttons horizontally */
-    margin-bottom: 20px; /* Optional margin at the bottom */
+    gap: 10px; 
+    justify-content: center; 
+    margin-bottom: 20px; 
   }
   
   .button-container button {

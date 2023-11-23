@@ -20,8 +20,8 @@ export default function Reviewlist() {
       <Review
         key={item.id}
         id={item.id}
-        serviceRate={item.sevicerate}
-        foodRate={item.foodrate}
+        serviceRate={item.starate1}
+        foodRate={item.starate2}
         comments={item.comments}
         date={item.date_time.substring(0, 9)}
       />
