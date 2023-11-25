@@ -4,13 +4,13 @@ import { PRODUCTS } from './data';
 
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
-
+const DARKER_GROTESQUE_FONT = 'Darker Grotesque';
 export default function Analysis() {
-    const [tripExpensesOccurrences, setTripExpensesOccurrences] = useState({});
+  const [tripExpensesOccurrences, setTripExpensesOccurrences] = useState({});
   const [orderAmounts, setOrderAmounts] = useState({});
   const [customerRatingData, setCustomerRatingData] = useState([]);
   const [customerRatingDeliveryData, setCustomerRatingDeliveryData] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState(null);
   const tripExpensesChartRef = useRef(null);
   const orderAmountChartRef = useRef(null);
   const customerRatingChartRef = useRef(null);
@@ -21,8 +21,10 @@ export default function Analysis() {
       const counts = {};
 
       PRODUCTS.forEach((item) => {
-        const dayValue = item.Day;
-        counts[dayValue] = (counts[dayValue] || 0) + 1;
+        if (!selectedMonth || item.Month === selectedMonth) {
+          const dayValue = item.Day;
+          counts[dayValue] = (counts[dayValue] || 0) + 1;
+        }
       });
 
       setTripExpensesOccurrences(counts);
@@ -32,10 +34,12 @@ export default function Analysis() {
       const sums = {};
 
       PRODUCTS.forEach((item) => {
-        const dayValue = item.Day;
-        const orderAmount = item['Order Amount'] || 0;
+        if (!selectedMonth || item.Month === selectedMonth) {
+          const dayValue = item.Day;
+          const orderAmount = item['Order Amount'] || 0;
 
-        sums[dayValue] = (sums[dayValue] || 0) + orderAmount;
+          sums[dayValue] = (sums[dayValue] || 0) + orderAmount;
+        }
       });
 
       setOrderAmounts(sums);
@@ -45,14 +49,16 @@ export default function Analysis() {
       const dataMap = new Map();
 
       PRODUCTS.forEach((item) => {
-        const value = item[field];
-        const sumValue = item[field] || 0;
+        if (!selectedMonth || item.Month === selectedMonth) {
+          const value = item[field];
+          const sumValue = item[field] || 0;
 
-        if (dataMap.has(value)) {
-          const currentSum = dataMap.get(value);
-          dataMap.set(value, currentSum + sumValue);
-        } else {
-          dataMap.set(value, sumValue);
+          if (dataMap.has(value)) {
+            const currentSum = dataMap.get(value);
+            dataMap.set(value, currentSum + sumValue);
+          } else {
+            dataMap.set(value, sumValue);
+          }
         }
       });
 
@@ -66,124 +72,140 @@ export default function Analysis() {
 
     countTripExpensesOccurrences();
     sumOrderAmounts();
-    setCustomerRatingData(processCustomerRating('Customer Rating-Fo'));
+    setCustomerRatingData(processCustomerRating('Customer Rating-Fo '));
     setCustomerRatingDeliveryData(processCustomerRating('Customer Rating-Delivery'));
-  }, []); // The empty dependency array ensures that this effect runs only once on component mount
+  }, [selectedMonth]);
 
   const tripExpensesOptions = {
     animationEnabled: true,
     exportEnabled: true,
     backgroundColor: '#942D2D',
     color: '#942D2D',
-    theme: "dark2",
+    theme: 'dark2',
     title: {
-      text: "Day wise Count"
+      text: 'Day wise Count',
     },
     data: [{
-      type: "pie",
-      indexLabel: "{label}: {y}%",
+      type: 'pie',
+      indexLabel: '{label}: {y}%',
       startAngle: -90,
-      dataPoints: Object.entries(tripExpensesOccurrences).map(([label, y]) => ({ y, label }))
-    }]
+      dataPoints: Object.entries(tripExpensesOccurrences).map(([label, y]) => ({ y, label })),
+    }],
   };
 
   const orderAmountOptions = {
     animationEnabled: true,
     exportEnabled: true,
     backgroundColor: '#942D2D',
-    theme: "dark2",
+    theme: 'dark2',
     title: {
-      text: "Day wise Profit"
+      text: 'Day wise Profit',
     },
     axisY: {
-      title: "Profit",
-      scaleBreaks: {
-        autoCalculate: true,
-        type: "wavy",
-        lineColor: "white"
-      }
+      title: 'Profit',
     },
     data: [{
-      type: "column",
-      indexLabel: "{y}",
-      indexLabelFontColor: "white",
-      dataPoints: Object.entries(orderAmounts).map(([label, y]) => ({ label, y }))
-    }]
+      type: 'column',
+      indexLabel: '{y}',
+      indexLabelFontColor: 'white',
+      dataPoints: Object.entries(orderAmounts).map(([label, y]) => ({ label, y })),
+    }],
   };
 
   const customerRatingOptions = {
     animationEnabled: true,
     exportEnabled: true,
     backgroundColor: '#942D2D',
-    theme: "dark2",
+    theme: 'dark2',
     title: {
-      text: "Customer Rating-Food"
+      text: 'Customer Rating-Food',
     },
     axisY: {
-      title: "Customer Rating-Food Count",
-      scaleBreaks: {
-        autoCalculate: true,
-        type: "wavy",
-        lineColor: "white"
-      }
+      title: 'Customer Rating-Food Count',
     },
     axisX: {
-      title: "Customer Rating-Food"
+      title: 'Customer Rating-Food',
     },
     data: [{
-      type: "column",
-      indexLabel: "{y}",
-      indexLabelFontColor: "white",
+      type: 'column',
+      indexLabel: '{y}',
+      indexLabelFontColor: 'white',
       dataPoints: customerRatingData,
-    }]
+    }],
   };
 
   const customerRatingDeliveryOptions = {
     animationEnabled: true,
     exportEnabled: true,
     backgroundColor: '#942D2D',
-    theme: "dark2",
+    theme: 'dark2',
     title: {
-      text: "Customer Rating-Delivery"
+      text: 'Customer Rating-Delivery',
     },
     axisY: {
-      title: "Sum of Customer Rating-Delivery",
-      scaleBreaks: {
-        autoCalculate: true,
-        type: "wavy",
-        lineColor: "white"
-      }
+      title: 'Sum of Customer Rating-Delivery',
     },
     axisX: {
-      title: "Customer Rating"
+      title: 'Customer Rating',
     },
     data: [{
-      type: "column",
-      indexLabel: "{y}",
-      indexLabelFontColor: "white",
+      type: 'column',
+      indexLabel: '{y}',
+      indexLabelFontColor: 'white',
       dataPoints: customerRatingDeliveryData,
-    }]
+    }],
   };
 
   const divStyle = {
     backgroundColor: '#EBF2D5',
-    padding: '20px', // Add some padding for better visibility
+    padding: '20px',
+    fontFamily: DARKER_GROTESQUE_FONT + ', sans-serif',
   };
 
-  const handleDownload = () => {
-    // Trigger the download for all charts
-    tripExpensesChartRef.current.exportChart({ format: "png" });
-    orderAmountChartRef.current.exportChart({ format: "png" });
-    customerRatingChartRef.current.exportChart({ format: "png" });
-    customerRatingDeliveryChartRef.current.exportChart({ format: "png" });
+  const selectContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '10px 0',
+  };
+
+  const selectStyle = {
+    padding: '8px',
+    borderRadius: '4px',
+    fontSize: '16px',
+    border: '1px solid #ccc',
+    cursor: 'pointer',
+    marginRight: '10px',
+    animation: 'fadeIn 0.5s ease-in-out',
+  };
+
+  const handleMonthChange = (event) => {
+    const selectedMonthValue = parseInt(event.target.value);
+    setSelectedMonth(selectedMonthValue);
   };
 
   return (
     <div style={divStyle}>
-      <div style={{'color': '#942D2D', 'display':'flex', 'justifyContent':'center' }}>
+      <div style={{ 'color': '#942D2D', 'display': 'flex', 'justifyContent': 'center' }}>
         <h1>Restaurant Data Analysis</h1>
       </div>
-      {/* <ReviewsML/> */}
+      <div style={selectContainerStyle}>
+        <label htmlFor="monthDropdown" style={{'color': '#942D2D','marginRight':'1%','fontWeight':'600'}}>Select Month :  </label>
+        <select id="monthDropdown" onChange={handleMonthChange} value={selectedMonth || ''} style={selectStyle}>
+          <option value="">All Months</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
       <CanvasJSChart options={tripExpensesOptions} onRef={(ref) => (tripExpensesChartRef.current = ref)} />
       <br></br>
       <br></br>
