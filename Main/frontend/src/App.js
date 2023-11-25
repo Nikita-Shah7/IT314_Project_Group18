@@ -19,6 +19,7 @@ import AdminLogin from './components/AdminLogin/AdminLogin';
 import  AdminMenu from './components/AdminMenu/AdminMenu'
 import  AdminTable from './components/AdminTable/AdminTable'
 import Reviewlist from "./components/Reviews/Reviewlist";
+import Analysis from './components/AdminAnalysis/Analysis';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
               <Route path='/adminmenu' element={<><Header/> <AdminMenu/> <Footer/></>} />
               <Route path='/admincategory' element={<><Header/> <AdminCategory/> <Footer/></>} />
               <Route path='/adminfeedback' element={<><Header/> <Reviewlist/> <Footer/></>} />
+              <Route path='/adminanalysis' element={<><Header/> <Analysis/> <Footer/></>} />
               <Route path='/*' element={<_404NotFound />} />
             </Routes>
           </Router>
