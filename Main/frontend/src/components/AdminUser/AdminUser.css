@@ -1,0 +1,38 @@
+.item-list-use{
+    overflow-y: scroll;
+    /* overflow-x: scroll; */
+    height: 70%;
+    background-color: #EBF2D5;
+    display: flex;
+    margin: 0px;
+    flex-direction: row;
+    align-items: center;
+    flex-flow: wrap;
+}
+.adm-use{
+    margin: 0px;
+    height: 100vh;
+    background-color: #EBF2D5;
+    font-family: 'David Libre';
+    color: #942D2D;
+}
+.ti-use{
+    font-weight: 600;
+    margin: 0px 66% 0px 5%;
+}
+.addi-use{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #EBF2D5;
+}
+
+.w-use{
+    margin: 3% auto 0px auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}

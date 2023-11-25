@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer'
 import RestaurantMenu from './components/RestaurantMenu/RestaurantMenu'
 import Cart from './components/Cart/Cart'
 import EnterMembers from './components/Table/EnterMembers';
+import AdminUser from './components/AdminUser/AdminUser';
 import BookedTable from './components/Table/BookedTable';
 import Home from './components/Welcome/Home'
 import _404NotFound from './components/_404NotFound/_404NotFound'
@@ -43,6 +44,7 @@ function App() {
               <Route path='/userlogin' element={<><UserLogin /> <Footer/></>} />
               <Route path='/adminlogin' element={<AdminLogin />} />            
               <Route path='/admintable' element={<><Header/> <AdminTable/> <Footer/></>} />
+              <Route path='/adminuser' element={<><Header/> <AdminUser/> <Footer/></>} />
               <Route path='/adminmenu' element={<><Header/> <AdminMenu/> <Footer/></>} />
               <Route path='/admincategory' element={<><Header/> <AdminCategory/> <Footer/></>} />
               <Route path='/adminfeedback' element={<><Header/> <Reviewlist/> <Footer/></>} />

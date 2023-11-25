@@ -1,0 +1,33 @@
+.card-use{
+    margin: 25px 0px 0px 60px;
+    width: 25%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    font-family: 'David Libre';
+    align-items: center;
+    border: 1px solid #942D2D;
+    background-color: #EBF2D5;
+    justify-content: space-around;
+}
+.te-use{
+    color: #942D2D;
+    font-family: 'Darker Grotesque';
+    font-size: 30px;
+    font-weight:400;
+    margin: 0px;
+}
+.cat-use{
+    color: #942D2D;
+    margin: 0px;
+    font-family: 'Darker Grotesque';
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.wrp-use{
+    margin: 0px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
