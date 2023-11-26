@@ -1,29 +1,34 @@
 import axios from "axios";
 
-export const dishCategory = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/dishcategory"
+const SERVER_HOST = "localhost";
+const SERVER_PORT = 5555;
+const SERVER_SOCKET_ADDRESS = "http://" + SERVER_HOST + ":" + SERVER_PORT + "/";
+
+
+export const category = axios.create({
+    baseURL: SERVER_SOCKET_ADDRESS + "category"
 });
 
 export const restaurantMenu = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/restaurantmenu"
+    baseURL: SERVER_SOCKET_ADDRESS + "menu"
 });
 
-export const foodCart = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/foodcart"
+export const cart = axios.create({
+    baseURL: SERVER_SOCKET_ADDRESS + "cart"
 });
 
 export const table = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/table"
+    baseURL: SERVER_SOCKET_ADDRESS + "table"
 });
 
 export const cartItems = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/cartitems"
+    baseURL: SERVER_SOCKET_ADDRESS + "cart_items"
 });
 
-export const cartItemsUpdate = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/cartitems-update"
+export const feedback = axios.create({
+    baseURL: SERVER_SOCKET_ADDRESS + "feedback"
 });
 
-export const cartItemsDelete = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/cartitems-delete"
+export const admin = axios.create({
+    baseURL: SERVER_SOCKET_ADDRESS + "admin"
 });
