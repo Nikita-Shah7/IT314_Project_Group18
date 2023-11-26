@@ -10,7 +10,6 @@ import assetbel from '../../assets/asssetbel.png'
 export function About() {
     return (
         <div>
-            about us
             <div className='coverimg'>
                 <img src={cover} alt='cover' />
                 <div className='aboutrest'>
@@ -23,26 +22,26 @@ export function About() {
                     <img src={aboutAsset} alt='asset_element' />
                 </div>
             </div>
-            <div className='chefs'>
+            <div>
                 <Chef/>
-                <Chef/>
-                <Chef/>
+                {/* <Chef/>
+                <Chef/> */}
             </div>
-            <div className='flexdays'>
+            <div className='flexdays' style={{'marginBottom':'50px'}}>
                 <div className='days'>
                     <div className='open'>Opening Hours</div>
                     <div>Monday-Wednesday: 11AM-9PM</div>
                     <div>Thursday-Saturday: 11PM-10PM</div>
                     <div>Happy Hour: Everyday 2PM-6PM</div>
                 </div>
-                <div>
+                {/* <div>
                     <div className='open'>Connect With Us</div>
                     <div className='social'>
                         <a href='https://www.facebook.com/'><img src={facebook} alt='facebook' width={80} height={80} /></a>
                         <a href='https://www.instagram.com'><img src={instagram} alt='instagram' width={80} height={80}/></a>
                         <a href='https://twitter.com'><img src={twitter} alt='twitter' width={80} height={80}/></a>
                     </div>
-                </div>
+                </div> */}
                 <div className='assetbel'>
                     <img src={assetbel} alt='' width={100} />
                 </div>
