@@ -1,11 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {useNavigate} from 'react-router-dom';
 import CanvasJSReact from '@canvasjs/react-charts';
 import { PRODUCTS } from './data';
 
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const DARKER_GROTESQUE_FONT = 'Darker Grotesque';
+
+
 export default function Analysis() {
+
+  // console.log("nik in admin menu");
+  const navigate = useNavigate();
+
+  if(!localStorage.getItem("isAdminAuth")) {
+      navigate('/adminlogin');
+  }
+
+  const [loading, setLoading] = useState(true);
   const [tripExpensesOccurrences, setTripExpensesOccurrences] = useState({});
   const [orderAmounts, setOrderAmounts] = useState({});
   const [customerRatingData, setCustomerRatingData] = useState([]);
