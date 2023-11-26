@@ -1,0 +1,62 @@
+.container {
+    max-width: 100%;
+    background-color: #EBF2D5;
+    margin-bottom: 5%;
+  }
+  
+  html {
+    background-color: #EBF2D5;
+  }
+  
+  .itemflex {
+    display: flex;
+    align-items: center;
+    line-height: 8px;
+  }
+  
+  .flextable {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5%;
+    margin-top: 1.5%;
+  }
+  
+  .forflex {
+    display: flex;
+    margin-left: 80%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .orders {
+    /* display: flex; */
+    flex-wrap: wrap;
+    line-height: 5%;
+  }
+  
+  .order {
+    background-color: #942D2D;
+    border: 1px solid #ccc;
+    padding-left: 3%;
+    margin-left: 3%;
+    flex: 1;
+    margin-top: 3%;
+    margin-right: 3%;
+    color: #EBF2D5;
+  }
+  
+  
+  
+  .date {
+    bottom: 0;
+    right: 0;
+    margin: 16px;
+    color: #EBF2D5;
+    opacity: 70%;
+  }
+  
+  .order:hover {
+    transform: scale(1.05);
+  }

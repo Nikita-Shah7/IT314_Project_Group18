@@ -21,7 +21,7 @@ import  AdminMenu from './components/AdminMenu/AdminMenu'
 import  AdminTable from './components/AdminTable/AdminTable'
 import Reviewlist from "./components/Reviews/Reviewlist";
 import Analysis from './components/AdminAnalysis/Analysis';
-
+import Orders from './components/AdminOrders/Orders';
 
 function App() {
 
@@ -45,6 +45,7 @@ function App() {
               <Route path='/adminlogin' element={<AdminLogin />} />            
               <Route path='/admintable' element={<><Header/> <AdminTable/> <Footer/></>} />
               <Route path='/adminuser' element={<><Header/> <AdminUser/> <Footer/></>} />
+              <Route path='/adminorders' element={<><Header/> <Orders/> <Footer/> </>} />
               <Route path='/adminmenu' element={<><Header/> <AdminMenu/> <Footer/></>} />
               <Route path='/admincategory' element={<><Header/> <AdminCategory/> <Footer/></>} />
               <Route path='/adminfeedback' element={<><Header/> <Reviewlist/> <Footer/></>} />
