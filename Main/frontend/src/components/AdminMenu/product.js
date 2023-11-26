@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
+import {restaurantMenu as menuAxios} from '../AxiosCreate';
 import './Items.css'
 
 export default function Product(props) {
@@ -55,7 +56,7 @@ export default function Product(props) {
             profit,
             img: img
         }
-        await axios.put(`http://localhost:5555/menu/${props.data.menu_id}`, data, {
+        await menuAxios.put(`/${props.data.menu_id}`, data, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }
@@ -87,7 +88,7 @@ export default function Product(props) {
             return;
         }
 
-        await axios.delete(`http://localhost:5555/menu/${props.data.menu_id}`, {
+        await menuAxios.delete(`/${props.data.menu_id}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }

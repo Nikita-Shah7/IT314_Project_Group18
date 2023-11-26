@@ -42,7 +42,9 @@ app.get('/', async (req, res) => {
                     \"categoryName\" VARCHAR NOT NULL UNIQUE);`);
         const restaurantMenuRelation = await pool.query(`CREATE TABLE IF NOT EXISTS \"${RELATION2}\"(
                     menu_id VARCHAR PRIMARY KEY, 
-                    \"categoryName\" VARCHAR NOT NULL REFERENCES category(\"categoryName\"), 
+                    \"categoryName\" VARCHAR NOT NULL REFERENCES category(\"categoryName\") 
+                        ON DELETE CASCADE
+                        ON UPDATE CASCADE, 
                     menu_name VARCHAR NOT NULL UNIQUE, 
                     description TEXT, 
                     price INT NOT NULL,

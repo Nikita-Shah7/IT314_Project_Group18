@@ -4,108 +4,98 @@ import './Cat.css'
 
 export default function Category(props) {
 
-    // // console.log(props.data)
-    // const [loading, setLoading] = useState(true);
-    // const [menuName, setMenuName] = useState(props.data.menu_name);
-    // const [category, setCategory] = useState(props.data.categoryName);
-    // const [description, setDescription] = useState(props.data.description);
-    // const [price, setPrice] = useState(props.data.price);
-    // const [profit, setProfit] = useState(props.data.profit);
-    // const [img, setImg] = useState(props.data.img);
+    // console.log(props.data)
+    const [loading, setLoading] = useState(true);
+    const [categoryName, setCategoryName] = useState(props.data.categoryName);
 
     const [modal,setModal] = useState(false);
     const toggleModal = () => {
         setModal(!modal)
     }
-    // const editProduct = async(e) => {
-    //     e.preventDefault();
+    const editCategory = async(e) => {
+        e.preventDefault();
 
-    //     const accessToken = localStorage.getItem("accessToken");
-    //     // console.log(accessToken)
-    //     if(!accessToken)
-    //     {
-    //         setLoading(false);
-    //         // alert('An error happened. Please Check console');
-    //         // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
-    //         console.log("UNAUTHORIZED!!");
-    //         return;
-    //     }
+        const accessToken = localStorage.getItem("accessToken");
+        // console.log(accessToken)
+        if(!accessToken)
+        {
+            setLoading(false);
+            // alert('An error happened. Please Check console');
+            // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+            console.log("UNAUTHORIZED!!");
+            return;
+        }
 
-        // const data = {
-        //     menu_name: menuName,
-        //     categoryName: category,
-        //     description: description,
-        //     price: price,
-        //     profit,
-        //     img: img
-        // }
-        // await axios.put(`http://localhost:5555/menu/${props.data.menu_id}`, data, {
-        //     headers: {
-        //         Authorization: `Bearer ${accessToken}`,
-        //     }
-        // })
-    //         .then((response) => {
-    //         // console.log([response.data][0].data)
-    //         console.log([response.data][0].message);
-    //         setModal(!modal)
-    //         // just re-render all items
-    //         props.setMenuItemsCnt(props.menuItemsCnt+1);
-    //         props.setMenuItemsCnt(props.menuItemsCnt-1);
-    //         setLoading(false);
-    //         })
-    //         .catch((error) => {
-    //         console.log("ERROR MESSAGE ::", error)
-    //         setLoading(false);
-    //         });
-    // }
+        const data = {
+            categoryName: categoryName
+        }
+        await axios.put(`http://localhost:5555/category/${props.data.category_id}`, data, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        })
+            .then((response) => {
+            // console.log([response.data][0].data)
+            console.log([response.data][0].message);
+            setModal(!modal)
+            // just re-render all items
+            props.setCategoryCnt(props.categoryCnt+1);
+            props.setCategoryCnt(props.categoryCnt-1);
+            setLoading(false);
+            })
+            .catch((error) => {
+            console.log("ERROR MESSAGE ::", error)
+            setLoading(false);
+            });
+    }
 
-    // const deleteProduct = async () => {
-    //     const accessToken = localStorage.getItem("accessToken");
-    //     // console.log(accessToken)
-    //     if(!accessToken)
-    //     {
-    //         setLoading(false);
-    //         // alert('An error happened. Please Check console');
-    //         // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
-    //         console.log("UNAUTHORIZED!!");
-    //         return;
-    //     }
+    const deleteCategory = async () => {
+        const accessToken = localStorage.getItem("accessToken");
+        // console.log(accessToken)
+        if(!accessToken)
+        {
+            setLoading(false);
+            // alert('An error happened. Please Check console');
+            // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
+            console.log("UNAUTHORIZED!!");
+            return;
+        }
 
-    //     await axios.delete(`http://localhost:5555/menu/${props.data.menu_id}`, {
-    //         headers: {
-    //             Authorization: `Bearer ${accessToken}`,
-    //         }
-    //     })
-    //         .then((response) => {
-    //         // console.log([response.data][0].data)
-    //         console.log([response.data][0].message);
-    //         props.setMenuItemsCnt(props.menuItemsCnt-1);
-    //         setLoading(false);
-    //         })
-    //         .catch((error) => {
-    //         console.log("ERROR MESSAGE ::", error)
-    //         setLoading(false);
-    //         });
-    // }
+        await axios.delete(`http://localhost:5555/category/${props.data.category_id}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        })
+            .then((response) => {
+            // console.log([response.data][0].data)
+            console.log([response.data][0].message);
+            props.setCategoryCnt(props.categoryCnt-1);
+            setLoading(false);
+            })
+            .catch((error) => {
+            console.log("ERROR MESSAGE ::", error)
+            setLoading(false);
+            });
+    }
 
     return(
         <div className='card-cat'>
                 <div className='wrp-cat'>
-                    <h3 className='te-cat'>{props.catname}</h3>
-                    <p className='cat-cat'>Item count : {props.cnt}</p>
+                    <h3 className='te-cat'>{props.data.categoryName}</h3>
+                    <p className='cat-cat'>Item count : {props.data.item_count}</p>
                 </div>
             <button className='but-cat' onClick={toggleModal}>Edit</button>
-            <button className='but-cat'>Delete</button>
+            <button className='but-cat' onClick={deleteCategory}>Delete</button>
             { modal && (
             <div className='overlay-cat' onClick={toggleModal}>
                 <div className='content-ct' onClick={(event) => event.stopPropagation()} >
-                <form className='mrow-cat'>
+                <form className='mrow-cat' onSubmit={editCategory}>
                 <div className="row-cat">
                     <div >
                         <label htmlFor="title" ><p>Category Name : </p></label>
                     </div>
                     <div>
-                    <input type="text" placeholder={props.catname} className='in-ca' name="categoryName"/>
+                        <input type="text" required className='in-ca' name="categoryName" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
                     </div>
                 </div>
                 <div className='bu-fo-cat'>

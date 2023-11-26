@@ -1,29 +1,58 @@
-import React, { useState } from 'react';
-import data from './data2';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { feedback as feedbackAxios } from '../AxiosCreate';
 import Review from './Reviews';
 import './Review.css';
 
 export default function Reviewlist() {
+
+  // console.log("nik in admin feedback");
+  const navigate = useNavigate();
+
+  if(!localStorage.getItem("isAdminAuth")) {
+      navigate('/adminlogin');
+  }
+
+  const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbackCnt, setFeedbackCnt] = useState([]);
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
   };
 
+  useEffect( () => {
+    feedbackAxios.get('/')
+      .then((response) => {
+        // console.log([response.data][0].data)
+        setFeedbackCnt([response.data][0].count);
+        setFeedbacks([response.data][0].data)
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("ERROR MESSAGE ::", error)
+        setLoading(false);
+      });
+  },[feedbackCnt]);
+
   const filteredData =
     activeFilter === 'all'
-      ? data
-      : data.filter((item) => item.comments.toLowerCase().includes(activeFilter.toLowerCase()));
+      ? feedbacks
+      : feedbacks.filter( (item) => {
+        if(item.comments) {
+          return item.comments.toLowerCase().includes(activeFilter.toLowerCase());
+        }
+      });
 
   const reviewlist = filteredData.map((item) => {
+    
     return (
       <Review
-        key={item.id}
-        id={item.id}
-        serviceRate={item.starate1}
-        foodRate={item.starate2}
-        comments={item.comments}
-        date={item.date_time.substring(0, 9)}
+        key={item.feedback_id}
+        data={item}
+        feedbackCnt={feedbackCnt}
+        setFeedbackCnt={setFeedbackCnt}
       />
     );
   });

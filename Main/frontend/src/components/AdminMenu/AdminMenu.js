@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import {restaurantMenu as menuAxios} from '../AxiosCreate';
 import './AdminMenu.css'
 import Product from './product';
 
@@ -25,7 +26,7 @@ export default function() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:5555/menu`)
+        menuAxios.get('/')
           .then((response) => {
             // console.log([response.data][0].data)
             setMenuItemsCnt([response.data][0].count);
@@ -85,7 +86,7 @@ export default function() {
             profit,
             img: img
         }
-        await axios.post(`http://localhost:5555/menu`, data, {
+        await menuAxios.post('/', data, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }
@@ -115,7 +116,7 @@ export default function() {
         <h2 className='ti-ad'>Menu Items : </h2>
         <button className="but-list-ad" onClick={toggleModal}>Add Item</button>
         </div>
-        { modal && (
+        { modal ? (
             <div className='overlay-ad'>
                 <div className='content-ad' onClick={(event) => event.stopPropagation()} >
                 <form className='mrow-ad' onSubmit={addItem}>
@@ -173,14 +174,14 @@ export default function() {
                 </div>
             </form>
                 </div>
-        </div>)}
+        </div>) : (
         <section className="item-list">
         {
             products.map( (product) => (
                 <Product key={product.menu_id} data={product} menuItemsCnt={menuItemsCnt} setMenuItemsCnt={setMenuItemsCnt} />
               ))
         }
-        </section>
+        </section>)}
         </div>
     )
 }
