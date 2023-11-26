@@ -12,8 +12,8 @@ feedbackRouter.post("/", async (req, res) => {
             return res.status(400).json({ message: "All fields are mandatory !!" })
         }
         const id = uuidv4();
-        const newFeedback = await pool.query("INSERT INTO feedback(feedback_id,\"starRate\", comments, date_time) VALUES($1,$2,$3,$4)",
-            [id, req.body.starRate, req.body.comments, req.body.date_time]);
+        const newFeedback = await pool.query("INSERT INTO feedback(feedback_id, starate1, starate2, comments, date_time) VALUES($1,$2,$3,$4,$5)",
+            [id, req.body.starate1, req.body.starate2, req.body.comments, req.body.date_time]);
         res.status(201).json({
             message: "Feedback created successfully !!",
             // data: newFeedback
@@ -39,11 +39,11 @@ feedbackRouter.get("/", async (req, res) => {
     }
 });
 
-// get Feedbacks based on starRating
-feedbackRouter.get("/starate/:starRate", async (req, res) => {
+// get Feedbacks based on starating1
+feedbackRouter.get("/starate/:starate1", async (req, res) => {
     try {
-        const {starRate} = req.params
-        const allFeedbacks = await pool.query(`SELECT*FROM feedback WHERE \"starRate\" = $1 ORDER BY \"starRate\" ASC`,[starRate]);
+        const {starate1} = req.params
+        const allFeedbacks = await pool.query(`SELECT*FROM feedback WHERE starate1 = $1 ORDER BY date_time ASC`,[starate1]);
         return res.status(200).json({
             message: "All Feedbacks received based on starRate !!",
             count: allFeedbacks.rows.length,
@@ -81,7 +81,7 @@ feedbackRouter.put("/:id", async (req, res) => {
             return res.status(400).json({ message: "All fields are mandatory !!" })
         }
         const { id } = req.params
-        const updateFeedback = await pool.query("UPDATE feedback SET starRate = $1, comments = $2 WHERE feedback_id = $6;", [req.body.starRate, req.body.comments, id]);
+        const updateFeedback = await pool.query("UPDATE feedback SET starate1 = $1, starate2 = $2, comments = $3 WHERE feedback_id = $4;", [req.body.starate1, req.body.starate2, req.body.comments, id]);
 
         if (updateFeedback.rowCount == 0) {
             return res.status(404).json({ message: "Feedback not found !!" })
