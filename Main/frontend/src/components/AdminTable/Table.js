@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import './Tab.css'
 
-export default function Table(props) {
+export default function AdminTable(props) {
 
     // console.log(props.data)
     const [loading, setLoading] = useState(true);
@@ -84,7 +84,6 @@ export default function Table(props) {
 
     return(
         <div className='card-tab'>
-                {props.data.availability_status=="AVAILABLE"?(<div className='g-tab'></div>):(<div className='r-tab'></div>)}
             <div className='wrp-tab-2'>
                 <div className='wrp-tab'>
                     <h3 className='te-tab'>T{props.data.table_id}</h3>

@@ -6,7 +6,7 @@ import Table from './Table';
 
 export default function() {
 
-    // // console.log("nik in admin table");
+    // console.log("nik in admin table");
     const navigate = useNavigate();
 
     if(!localStorage.getItem("isAdminAuth")) {
