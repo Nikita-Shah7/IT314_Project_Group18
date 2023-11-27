@@ -52,17 +52,29 @@
   .a-food-on-darke {
     display: none;
   }
+  
+  .uppercontainer h1 {
+    top: 2vw;
+  }
+
+  .text-wrapper-11 {
+    font-size: 35px;
+    top: 2vw;
+  }
 }
 
 @media (max-width:500px) {
 
   .uppercontainer h1 {
-    font-size: 55px;
+    font-size: 70px;
+    top: 1vw;
   }
 
   .text-wrapper-11 {
-    font-size: 20px;
+    font-size: 26px;
+    top: -1vw;
   }
+
 }
 
 // CSS for middle-container
@@ -75,6 +87,7 @@
 }
 
 .middle-container h1 {
+  position: relative;
   color: #942D2D;
   text-align: center;
   font-family: "Darker Grotesque", Helvetica;
@@ -92,6 +105,15 @@
   width: 60vw;
   font-family: "Darker Grotesque", Helvetica;
   font-size: x-large;
+}
+
+@media (max-width:500px) {
+
+  .middle-container p {
+    width: 70vw;
+    font-size: 27px;
+    font-weight: 400;
+  }  
 }
 
 // Bottom-container
