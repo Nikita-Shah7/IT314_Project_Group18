@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("../db.js");
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
-const { ACCESS_TOKEN_SECRET } = require('../config.js');
+require('dotenv').config();
 
 const adminRouter = express.Router();
 
@@ -53,7 +53,7 @@ adminRouter.get("/:admin_name", async (req, res) => {
         }
         console.log("nik1")
         const payLoad = oneAdmin.rows[0];
-        const accessToken = jwt.sign(payLoad, ACCESS_TOKEN_SECRET)
+        const accessToken = jwt.sign(payLoad, process.env.ACCESS_TOKEN_SECRET)
         return res.status(200).json({
             message: "Admin received !!",
             data: oneAdmin.rows[0],

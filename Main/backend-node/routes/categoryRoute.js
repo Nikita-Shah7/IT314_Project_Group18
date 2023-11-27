@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("../db.js");
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
-const { ACCESS_TOKEN_SECRET } = require('../config.js');
+require('dotenv').config();
 
 const categoryRouter = express.Router();
 
@@ -124,7 +124,7 @@ function authenticateToken(req, res, next) {
     if(authHeader) {
         const accessToken = authHeader.split(' ')[1]
         // console.log(accessToken)
-        jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (err, payload) => {
+        jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
             // console.log("ERROR MESSAGE ::",err)
             if(err) {
                 // meaning that you have accessToken but it is not valid(moght be expired)
