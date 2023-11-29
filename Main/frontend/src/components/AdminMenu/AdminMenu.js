@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import {restaurantMenu as menuAxios} from '../AxiosCreate';
 import './AdminMenu.css'
 import Product from './product';

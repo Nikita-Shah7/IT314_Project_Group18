@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import axios from 'axios';
+import {table as tableAxios} from '../AxiosCreate';
 import './Tab.css'
 
 export default function AdminTable(props) {
@@ -33,7 +33,7 @@ export default function AdminTable(props) {
             capacity: capacity,
             availability_status: availabilityStatus           
         }
-        await axios.put(`http://localhost:5555/table/${props.data.table_id}`, data, {
+        await tableAxios.put(`/${props.data.table_id}`, data, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }
@@ -65,7 +65,7 @@ export default function AdminTable(props) {
             return;
         }
 
-        await axios.delete(`http://localhost:5555/table/${props.data.table_id}`, {
+        await tableAxios.delete(`/${props.data.table_id}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }
