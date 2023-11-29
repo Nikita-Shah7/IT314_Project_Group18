@@ -73,9 +73,6 @@ export default function Header() {
             <Link href="/tablebooking" color="inherit" sx={{ m: 2, ...linkStyle }}>
               Book a Table
             </Link>
-            <Link href="/table" color="inherit" sx={{ m: 2, ...linkStyle }}>
-              DinnTable
-            </Link>
             <Link href="/aboutus" color="inherit" sx={{ m: 2, ...linkStyle }}>
               About
             </Link>

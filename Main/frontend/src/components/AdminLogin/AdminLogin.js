@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import {admin as adminAxios} from '../AxiosCreate';
 
 
 const loginBoxStyle = {
@@ -52,9 +52,9 @@ export default function AdminLogin() {
             admin_name: adminname,
             password,
         };
-        console.log(data);
+        // console.log(data);
         setLoading(true);
-        await axios.get(`http://localhost:5555/admin/${adminname}`)
+        await adminAxios.get(`/${adminname}`)
             .then(async (response) => {
                 // console.log(response.data.data.password,password)
                 // const passwordsMatch = await bcrypt.compare(password, response.data.data.password);

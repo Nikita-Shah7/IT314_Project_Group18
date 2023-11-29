@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { styles, colors } from "./FeedbackCSS.js";
 import { FaStar } from "react-icons/fa";
 import image from './flower.png';
-import axios from "axios";
+import {feedback as feedbackAxios} from '../AxiosCreate.jsx';
 import { useNavigate } from "react-router-dom";
 
 
@@ -42,7 +42,7 @@ function Feedback() {
     setComments(event.target.value);
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     const date_time = new Date();
     const data = {
       starate1,
@@ -50,7 +50,7 @@ function Feedback() {
       comments,      
       date_time,
     }
-    axios.post(`http://localhost:5555/feedback`, data)
+    await feedbackAxios.post('/', data)
       .then( () => {
         setLoading(false)
       })

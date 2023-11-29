@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Product } from "./product";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { restaurantMenu as menuAxios } from "../AxiosCreate";
+import { category as categoryAxios } from "../AxiosCreate";
 import './RestaurantMenu.scss';
 import image1 from "./a-food-on-darke-0-1.png";
 
@@ -15,7 +16,7 @@ function RestaurantMenu() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:5555/menu`)
+    menuAxios.get(`/`)
       .then((response) => {
         // console.log([response.data][0].data)
         setProducts([response.data][0].data)
@@ -29,9 +30,9 @@ function RestaurantMenu() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:5555/category`)
+    categoryAxios.get(`/`)
       .then((response) => {
-        // console.log([response.data][0].data)
+        console.log([response.data][0].data)
         setCategories([response.data][0].data)
         setLoading(false);
       })
@@ -43,7 +44,7 @@ function RestaurantMenu() {
 
   useEffect( () => {
     console.log(selectedCategory);
-    axios.get(`http://localhost:5555/menu/category/${selectedCategory}`)
+    categoryAxios.get(`/${selectedCategory}`)
       .then( (response) => {
         // console.log([response.data][0].data);
         setProducts([response.data][0].data)
@@ -57,9 +58,9 @@ function RestaurantMenu() {
 
   useEffect( () => {
     console.log(selectedCategory);
-    axios.get(`http://localhost:5555/menu/search/${searchInput}`)
+    menuAxios.get(`search/${searchInput}`)
       .then( (response) => {
-        console.log([response.data][0].data);
+        // console.log([response.data][0].data);
         setProducts([response.data][0].data)
         setLoading(false)
       })

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { cartItems as cartItemsAxios } from "../AxiosCreate";
 
 
 export const Product = (props) => {
@@ -26,7 +26,7 @@ export const Product = (props) => {
       "date_time": new Date().toISOString()
     }
     // console.log(data)
-    await axios.post(`http://localhost:5555/cart_items`,data)
+    await cartItemsAxios.post(`/`,data)
     .then( (response) => {
       setLoading(false)
     })

@@ -35,7 +35,7 @@ export default function Users(props) {
         //     profit,
         //     img: img
         // }
-        // await axios.put(`http://localhost:5555/menu/${props.data.menu_id}`, data, {
+        // await menuAxios.put(`${props.data.menu_id}`, data, {
         //     headers: {
         //         Authorization: `Bearer ${accessToken}`,
         //     }
@@ -67,7 +67,7 @@ export default function Users(props) {
     //         return;
     //     }
 
-    //     await axios.delete(`http://localhost:5555/menu/${props.data.menu_id}`, {
+    //     await menuAxios.delete(`${props.data.menu_id}`, {
     //         headers: {
     //             Authorization: `Bearer ${accessToken}`,
     //         }

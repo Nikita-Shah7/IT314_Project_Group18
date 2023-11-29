@@ -3,7 +3,8 @@ import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
 
 import "./Cart.scss";
-import axios from "axios";
+import { cartItems as cartItemsAxios } from "../AxiosCreate";
+import { cart as cartAxios } from "../AxiosCreate";
 
 
 function Cart() {
@@ -21,7 +22,7 @@ function Cart() {
       if(!localStorage.getItem("table_id")) {
         navigate("/");
       }
-      await axios.get(`http://localhost:5555/cart_items/cart_table/${localStorage.getItem("table_id")}`)
+      await cartItemsAxios.get(`cart_table/${localStorage.getItem("table_id")}`)
       .then( (response) => {
         setLoading(false)
         // console.log([response.data.data][0])
@@ -39,7 +40,7 @@ function Cart() {
   useEffect( () => {
     // console.log("nik in cart useeffect2");
     const func = async() => {
-      await axios.get(`http://localhost:5555/cart/${localStorage.getItem("table_id")}`)
+      await cartAxios.get(`/${localStorage.getItem("table_id")}`)
         .then( (response) => {
           setLoading(false)
           // console.log([response.data.data][0])

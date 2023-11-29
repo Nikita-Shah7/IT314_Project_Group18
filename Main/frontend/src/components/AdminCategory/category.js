@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import axios from 'axios';
+import {category as categoryAxios} from '../AxiosCreate';
 import './Cat.css'
 
 export default function Category(props) {
@@ -29,7 +29,7 @@ export default function Category(props) {
         const data = {
             categoryName: categoryName
         }
-        await axios.put(`http://localhost:5555/category/${props.data.category_id}`, data, {
+        await categoryAxios.put(`/${props.data.category_id}`, data, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }
@@ -61,7 +61,7 @@ export default function Category(props) {
             return;
         }
 
-        await axios.delete(`http://localhost:5555/category/${props.data.category_id}`, {
+        await categoryAxios.delete(`/${props.data.category_id}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }

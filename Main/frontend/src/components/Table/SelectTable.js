@@ -10,7 +10,7 @@ import Dialog from "@mui/material/Dialog";
 // import DialogContentText from "@mui/material/DialogContentText";
 // import DialogTitle from "@mui/material/DialogTitle";
 
-import axios from "axios";
+import { table as tableAxios } from "../AxiosCreate";
 import BookedTable from "./BookedTable";
 import { useNavigate } from "react-router-dom";
 
@@ -50,8 +50,8 @@ const SelectTable = ({ totalMembers }) => {
 
   const navigate = useNavigate();
 
-  useEffect( () => {
-    axios.get(`http://localhost:5555/table/capacity/${totalMembers}`)
+  useEffect( async() => {
+    await tableAxios.get(`capacity/${totalMembers}`)
       .then( (response) => {
         // console.log([response.data][0].data);
         setTablesData([response.data][0].data)
@@ -72,7 +72,7 @@ const SelectTable = ({ totalMembers }) => {
     if (confirmation) {
       localStorage.setItem("table_id",selectedTable);
       let data ={} ;
-      await axios.get(`http://localhost:5555/table/${selectedTable}`)
+      await tableAxios.get(`${selectedTable}`)
       .then( (response) => {
         setLoading(false)
         data = response.data.data;
@@ -85,7 +85,7 @@ const SelectTable = ({ totalMembers }) => {
       data = { ...data,
         "availability_status": "Occupied",
       }
-      await axios.put(`http://localhost:5555/table/${selectedTable}`,data)
+      await tableAxios.put(`${selectedTable}`,data)
       .then( (response) => {
         setLoading(false)
       })

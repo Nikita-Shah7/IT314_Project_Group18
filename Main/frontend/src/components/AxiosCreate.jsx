@@ -1,8 +1,10 @@
 import axios from "axios";
+import {API_URL} from '../config.js';
 
-const SERVER_HOST = "localhost";
-const SERVER_PORT = 5555;
-const SERVER_SOCKET_ADDRESS = "http://" + SERVER_HOST + ":" + SERVER_PORT + "/";
+// const SERVER_HOST = "localhost";
+// const SERVER_PORT = 5555;
+// const SERVER_SOCKET_ADDRESS = "http://" + SERVER_HOST + ":" + SERVER_PORT + "/";
+const SERVER_SOCKET_ADDRESS = API_URL
 
 
 export const category = axios.create({
@@ -31,4 +33,8 @@ export const feedback = axios.create({
 
 export const admin = axios.create({
     baseURL: SERVER_SOCKET_ADDRESS + "admin"
+});
+
+export const users = axios.create({
+    baseURL: SERVER_SOCKET_ADDRESS + "users"
 });

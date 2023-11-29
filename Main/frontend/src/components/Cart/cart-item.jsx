@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { cartItems as cartItemsAxios } from "../AxiosCreate";
+import { cart as cartAxios } from "../AxiosCreate";
 
 export const CartItem = (props) => {
   // console.log(props.data)
@@ -23,7 +24,7 @@ export const CartItem = (props) => {
           "date_time": new Date().toISOString()
         };
   
-        await axios.put(`http://localhost:5555/cart_items`,data)
+        await cartItemsAxios.put(`/`,data)
         .then( (response) => {          
           setLoading(false)
         })
@@ -32,7 +33,7 @@ export const CartItem = (props) => {
           setLoading(false);
         });
 
-        await axios.get(`http://localhost:5555/cart/${localStorage.getItem("table_id")}`)
+        await cartAxios.get(`/${localStorage.getItem("table_id")}`)
         .then( (response) => {
           setLoading(false)
           // console.log([response.data.data][0])
@@ -51,7 +52,7 @@ export const CartItem = (props) => {
 
   const deleteCartItem = async() => {
     // console.log(menu_name);
-    await axios.delete(`http://localhost:5555/cart_items/${table_id}/${menu_name}`)
+    await cartItemsAxios.delete(`${table_id}/${menu_name}`)
     .then( (response) => {
       props.setCartItemsCnt(props.cartItemsCnt-1);      
       setLoading(false);

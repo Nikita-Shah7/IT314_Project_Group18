@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import {table as tableAxios} from '../AxiosCreate';
 import './AdminTab.css'
 import Table from './Table';
 
@@ -22,7 +22,7 @@ export default function() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:5555/table`)
+        tableAxios.get(`/`)
           .then((response) => {
             // console.log([response.data][0].data)
             setDinnTableCnt([response.data][0].count);
@@ -63,7 +63,7 @@ export default function() {
             capacity: capacity,
             availability_status: availabilityStatus,
         }
-        await axios.post(`http://localhost:5555/table`, data, {
+        await tableAxios.post(`/`, data, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             }

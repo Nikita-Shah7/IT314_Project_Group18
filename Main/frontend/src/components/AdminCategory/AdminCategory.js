@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import {category as categoryAxios} from '../AxiosCreate';
 import './AdminCat.css'
 import Category from './category';
