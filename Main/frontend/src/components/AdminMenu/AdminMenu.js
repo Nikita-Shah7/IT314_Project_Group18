@@ -117,7 +117,7 @@ export default function() {
         <button className="but-list-ad" onClick={toggleModal}>Add Item</button>
         </div>
         { modal ? (
-            <div className='overlay-ad'>
+            <div className='overlay-ad' onClick={toggleModal}>
                 <div className='content-ad' onClick={(event) => event.stopPropagation()} >
                 <form className='mrow-ad' onSubmit={addItem}>
                 <div className="row-ad">

@@ -1,7 +1,6 @@
 .item-list{
     overflow-y: scroll;
-    overflow-x: scroll;
-    height: 550px;
+    height: 70%;
     background-color: #EBF2D5;
 }
 .adm{
@@ -35,6 +34,11 @@
 .overlay-ad{
     width: 100vw;
     height: 100vh;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom: 0;
+    position: fixed;
     background-color: rgba(42, 42, 42, 0.573);
 }
 .content-ad{
@@ -45,7 +49,6 @@
     right: 0;
     top : 7%;
     text-align: center;
-    /* transform: translate(-50%,-50%); */
     line-height: 1.4;
     background: #EBF2D5;
     width: 1200px;
