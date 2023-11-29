@@ -84,6 +84,7 @@ export default function AdminTable(props) {
 
     return(
         <div className='card-tab'>
+        {props.data.availability_status=="Available"?(<div className='g-tab'></div>):(<div className='r-tab'></div>)}
             <div className='wrp-tab-2'>
                 <div className='wrp-tab'>
                     <h3 className='te-tab'>T{props.data.table_id}</h3>

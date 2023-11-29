@@ -114,13 +114,13 @@ export default function Product(props) {
                     <h3 className='te-it'>{props.data.menu_name}</h3>
                     <p className='cat-it'>{props.data.categoryName}</p>
                 </div>
-            <p className='cat2-it'><span className='te-it'>Price :</span> {props.data.price}$</p>
-            <p className='cat2-it'><span className='te-it'>Profit :</span> {props.data.profit}$</p>
+            <p className='cat2-it-1'><span className='te-it-1'>Price :</span> {props.data.price}$</p>
+            <p className='cat2-it-1'><span className='te-it-1'>Profit :</span> {props.data.profit}$</p>
             <button className='but-it'onClick={toggleModal}>Edit</button>
             <button className='but-it'onClick={deleteProduct}>Delete</button>
             {modal && (
          
-         <div className='overlay-it'>
+         <div className='overlay-it' onClick={toggleModal}>
              <div className='content-it' onClick={(event) => event.stopPropagation()} >
              <form className='mrow-it' onSubmit={editProduct}>
              <div className="row-it">

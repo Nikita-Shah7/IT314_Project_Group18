@@ -50,9 +50,7 @@ const loginTextStyle = {
 };
 
 export default function SignUpBox() {
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
 
     const validateEmail = (email) => {
@@ -62,18 +60,10 @@ export default function SignUpBox() {
         return isValid;
     };
 
-    const validateName = (name) => {
-        const hasNoNumbers = !/[0-9]/.test(name);
-        setNameError(hasNoNumbers ? '' : 'Name cannot contain numbers');
-        return hasNoNumbers;
-    };
-
     const handleSubmit = () => {
-        const isNameValid = validateName(name);
         const isEmailValid = validateEmail(email);
 
-        if (isNameValid && isEmailValid) {
-            setName('');
+        if (isEmailValid) {
             setEmail('');
         }
     };
@@ -84,16 +74,6 @@ export default function SignUpBox() {
                 User Validation
             </Typography>
             <div style={loginBoxStyle}>
-                <TextField
-                    label="Enter Your Name"
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    value={name}
-                    sx={textFieldStyle}
-                    onChange={(e) => setName(e.target.value)}
-                />
-                {nameError && <Typography variant="caption" color="error">{nameError}</Typography>}
                 <TextField
                     label="Enter Your Email"
                     variant="outlined"
@@ -112,7 +92,6 @@ export default function SignUpBox() {
                     Submit
                 </Button>
 
-
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', height: '60px' }}>
                     <Box borderTop={1} borderColor="maroon" p={2} width={94} ml={3} mb={4} mt={6}>
                         {/* Content for the first box */}
@@ -128,12 +107,12 @@ export default function SignUpBox() {
 
                 <Grid container spacing={1} justifyContent="center" alignItems="center">
                     <Grid item>
-                        <span>Previously Visited ?</span>
+                        <span>New User ?</span>
                     </Grid>
                     <Grid item>
                         <Link href="#" style={{ display: 'flex', alignItems: 'center' }}>
                             <LoginIcon style={{ marginRight: '8px' }} />
-                            Login
+                            Sign Up
                         </Link>
                     </Grid>
                 </Grid>
@@ -153,4 +132,3 @@ export default function SignUpBox() {
         </div>
     );
 }
-
