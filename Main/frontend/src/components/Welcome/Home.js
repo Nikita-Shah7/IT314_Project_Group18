@@ -14,7 +14,6 @@ export default function Home(props) {
       <div className="imageset"
         style={{ 
           backgroundImage: `url("/Group 8516.png") ` ,
-         
         }}
       > 
       

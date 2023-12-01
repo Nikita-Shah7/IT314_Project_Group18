@@ -22,7 +22,7 @@ export default function Header() {
     textDecoration: "none",
   };
 
-  const isSmallScreen = useMediaQuery("(max-width:750px)");
+  const isSmallScreen = useMediaQuery("(max-width:1000px)");
   const isAdmin = localStorage.getItem("isAdminAuth") === "true";
   const navigate = useNavigate();
 
@@ -175,7 +175,7 @@ export default function Header() {
                 color: textColor,
                 backgroundColor: "white",
                 border: "1px solid #982c2c",
-                minWidth: 150,
+                minWidth: 120,
               }}
               onClick={handleAdminLogin}
             >

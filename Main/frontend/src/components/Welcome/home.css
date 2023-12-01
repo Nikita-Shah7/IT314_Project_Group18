@@ -1,12 +1,11 @@
 
 .imageset {
     background-color: #f0f4d4;
-    min-height: 92vh;
-          min-width: 92vh;
+    
+          min-height: 100vh;
           margin-bottom: 0px;
           background-size:cover;
-          background-position : Top; 
-           height : "101vh"
+          background-position : Top;
 }
 
 .welcomee {
@@ -24,7 +23,7 @@
 }
 
 .viewMenu {
-    margin-top: 380px;
+    margin-top: 10%;
 }
 
 
@@ -34,6 +33,7 @@
       height: auto;
       background-size: 80%;
       background-repeat: no-repeat;
+      background-size: 180%;
     }
 
     .welcometext {
@@ -42,7 +42,8 @@
     }
 
     .viewMenu {
-        margin-top: 100px;
+        margin-bottom: 5%;
+    
     }
 
     .welcomee {
