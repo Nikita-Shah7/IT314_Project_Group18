@@ -110,7 +110,7 @@ export default function SignUpBox() {
                         <span>New User ?</span>
                     </Grid>
                     <Grid item>
-                        <Link href="#" style={{ display: 'flex', alignItems: 'center' }}>
+                        <Link href="userlogin" style={{ display: 'flex', alignItems: 'center' }}>
                             <LoginIcon style={{ marginRight: '8px' }} />
                             Sign Up
                         </Link>
@@ -122,7 +122,7 @@ export default function SignUpBox() {
                         <span>Admin Login</span>
                     </Grid>
                     <Grid item>
-                        <Link href="#" style={{ display: 'flex', alignItems: 'center' }}>
+                        <Link href="adminlogin" style={{ display: 'flex', alignItems: 'center' }}>
                             <SupervisorAccountIcon style={{ marginRight: '8px', marginTop: '8px' }} />
                             Login
                         </Link>

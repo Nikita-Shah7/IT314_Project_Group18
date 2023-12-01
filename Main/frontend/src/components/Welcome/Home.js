@@ -1,21 +1,19 @@
 import React from "react";
 import Typography from "@mui/material/Typography";  
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import './home.css';
 
 export default function Home(props) {
+  let navigate = useNavigate();
+  function navigatetoMenu() {
+    navigate('/menu')
+  }
   return (
     <>
-      <div
-        style={{
-          backgroundColor: "#f0f4d4",
-          minHeight: "92vh", 
-          minWidth: "92vh",
-          marginBottom: "0px",  
+      <div className="imageset"
+        style={{ 
           backgroundImage: `url("/Group 8516.png") ` ,
-          backgroundSize:"cover", 
-          backgroundPosition : "Top", 
-           height : "101vh"
-         
         }}
       > 
       
@@ -23,14 +21,12 @@ export default function Home(props) {
     
         <div >
           <Typography
+            className="welcomee"
             variant="body1"
             sx={{
               fontFamily: "Darker Grotesque",
-              color: "#000",
-              marginTop: "0px", // Adjust this value to control the distance from the top
-              marginLeft: "150px",
-              marginBottom: "0px",
               fontSize: 60,
+              marginLeft: '12%',
             }}
           >
             {/* Welcome { !localStorage.getItem("isAdminAuth") ? (`${props.userName}`) :("Admin") }, */}
@@ -38,15 +34,11 @@ export default function Home(props) {
           </Typography>
         </div>
 
-        <div>
+        <div className="welcometext">
           <Typography
             variant="body1"
             sx={{
               fontFamily: "Darker Grotesque",
-              color: "#000",
-              marginTop: "0px",
-              marginLeft: "160px",
-              marginBottom: "0px",
               fontSize: 25,
             }}
           >
@@ -56,22 +48,32 @@ export default function Home(props) {
         </div> 
 
         <Button
-                  //onClick={() => handleConfirm(false)}
+                  className="viewMenu"
+                  onClick={navigatetoMenu}
                    color="primary"
                   
                   Width = {10}
                   sx={{
-                    marginTop: "180px", 
+                    marginTop: "10%", 
                     marginLeft: "150px",
                     marginBottom: "0px",
                     color: "#FFF", 
                     bgcolor: "#942D2D",
                     fontFamily: "Darker Grotesque", // Set font-family  
-                    hoverColor: "#000"
-                  }}
+                    hoverColor: "#000",
+                    width: '170px',
+                    borderRadius: '0px',
+                    ":hover": {
+                      bgcolor: '#EBF2D5',
+                      color: '#942D2D',
+                      borderColor: '#942D2D',
+                      borderWidth: '4px'
+                    } 
+                  }
+                }
                 > 
                 
-                  <Typography fontSize={20} >View Profile</Typography>
+                  <Typography fontSize={20} >View Menu</Typography>
                 </Button>
       </div>
     </>

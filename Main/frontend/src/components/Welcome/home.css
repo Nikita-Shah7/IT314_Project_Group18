@@ -1,0 +1,54 @@
+
+.imageset {
+    background-color: #f0f4d4;
+    
+          min-height: 100vh;
+          margin-bottom: 0px;
+          background-size:cover;
+          background-position : Top;
+}
+
+.welcomee {
+                margin-top: 0px;
+              margin-left: 160px;
+              margin-bottom: 0px;
+}
+
+.welcometext {
+    font-family: Darker Grotesque;
+    color: #000;
+    margin-top: 0px;
+    margin-left: 160px;
+    margin-bottom: 0px;
+}
+
+.viewMenu {
+    margin-top: 10%;
+}
+
+
+@media (max-width: 780px) {
+    .imageset {
+      width: 100%;
+      height: auto;
+      background-size: 80%;
+      background-repeat: no-repeat;
+      background-size: 180%;
+    }
+
+    .welcometext {
+        width: 55%;
+        margin-left: 50px;
+    }
+
+    .viewMenu {
+        margin-bottom: 5%;
+    
+    }
+
+    .welcomee {
+        width: 55%;
+      margin-left: 50px;
+      margin-bottom: 0px;
+}
+  }

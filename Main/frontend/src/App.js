@@ -14,17 +14,19 @@ import _404NotFound from './components/_404NotFound/_404NotFound'
 import Feedback from './components/Feedback/feedback'
 import { About } from './components/About/About';
 import UserLogin from './components/UserLogin/UserLogin';
+import UserLogin from './components/UserLogin/MainContentSignUp';
 import AdminLogin from './components/AdminLogin/AdminLogin';
-import  AdminMenu from './components/AdminMenu/AdminMenu'
-import  AdminTable from './components/AdminTable/AdminTable'
+import AdminMenu from './components/AdminMenu/AdminMenu'
+import AdminTable from './components/AdminTable/AdminTable'
 import Reviewlist from "./components/Reviews/Reviewlist";
 import Analysis from './components/AdminAnalysis/Analysis';
 import Orders from './components/AdminOrders/Orders';
+import UserSignIn from './components/Login/MainContentSignIn'
 
 function App() {
 
   const [loading, setLoading] = useState(true);
-  
+
   return (
     <div style={{'backgroundColor': '#EBF2D5'}}>
           <Router>
@@ -39,6 +41,7 @@ function App() {
               <Route path='/aboutus' element={<><Header/> <About/> <Footer/></>} />
               <Route path='/feedback' element={<Feedback />} />
               <Route path='/userlogin' element={<><UserLogin /> <Footer/></>} />
+              <Route path='/signin' element={<><Header /><UserSignIn /> <Footer /></>} />
               <Route path='/adminlogin' element={<AdminLogin />} />            
               <Route path='/admintable' element={<><Header/> <AdminTable/> <Footer/></>} />
               <Route path='/adminuser' element={<><Header/> <AdminUser/> <Footer/></>} />
@@ -54,5 +57,5 @@ function App() {
   );
 }
 
-              
+
 export default App;
