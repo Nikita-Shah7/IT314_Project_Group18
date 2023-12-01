@@ -6,6 +6,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import "./Footer.css"
 
 const footerStyle = {
   backgroundColor: "#982c2c",
@@ -42,10 +43,7 @@ export default function Footerbox() {
               About Us
             </Typography>
             <Typography variant="body2" align="center">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
-              in, consequuntur dolore, sequi pariatur aspernatur sit labore
-              architecto porro illo placeat veritatis? Vero repellat nisi
-              architecto rerum, fuga accusantium perferendis doloremque.
+            Discover a new era of dining at Automn, where culinary mastery meets cutting-edge automation. Elevate your experience with our seamless reservation system and efficient order processing. Embrace the future of flavor and convenience, exclusively at Automn.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -78,52 +76,21 @@ export default function Footerbox() {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" align="center">
-              Newsletter
+              Contact Us
             </Typography>
-            <TextField
-              type="email"
-              variant="outlined"
-              fullWidth
-              label="Enter your email"
-              InputProps={{
-                style: { background: "white", color: "white" },
-              }}
-            />
+            <Typography variant="body2" align="center">
+              Gmail: Automn123@gmail.com
+              <br></br>
+              Ph: 1800 11 1825
+              <br></br>
+              25, Reliance Cross Road, Near DAIICT, 
+              <br></br>
+              Gandhinagar - 382007
+            </Typography>
           </Grid>
         </Grid>
 
-        {/* Additional Boxes */}
-        <Box
-          display="flex"
-          justifyContent="space-around"
-          alignItems="center"
-          p={2}
-        >
-          <Box
-            borderTop={1}
-            borderColor="white"
-            p={2}
-            width={{ xs: 150, sm: 194 }}
-          >
-            {/* Content for the first box */}
-          </Box>
-          <Box
-            borderTop={1}
-            borderColor="white"
-            p={2}
-            width={{ xs: 150, sm: 104 }}
-          >
-            {/* Content for the first box */}
-          </Box>
-          <Box
-            borderTop={1}
-            borderColor="white"
-            p={2}
-            width={{ xs: 150, sm: 194 }}
-          >
-            {/* Content for the second box */}
-          </Box>
-        </Box>
+       
       </footer>
     </>
   );
