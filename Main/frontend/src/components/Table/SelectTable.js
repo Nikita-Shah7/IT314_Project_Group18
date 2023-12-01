@@ -42,7 +42,7 @@ const styles = {
 
 
 const SelectTable = ({ totalMembers }) => {
-  console.log("nik in selectTable")
+  console.log("nik in selectTable...")
   const [loading, setLoading] = useState(true);
   const [selectedTable, setSelectedTable] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -50,8 +50,8 @@ const SelectTable = ({ totalMembers }) => {
 
   const navigate = useNavigate();
 
-  useEffect( async() => {
-    await tableAxios.get(`capacity/${totalMembers}`)
+  useEffect( () => {
+    tableAxios.get(`capacity/${totalMembers}`)
       .then( (response) => {
         // console.log([response.data][0].data);
         setTablesData([response.data][0].data)
@@ -96,7 +96,7 @@ const SelectTable = ({ totalMembers }) => {
     }
     setShowConfirmation(false);
   };
-
+    
     if(localStorage.getItem("table_id")) {
       return (
         <BookedTable tableNumber={selectedTable} />

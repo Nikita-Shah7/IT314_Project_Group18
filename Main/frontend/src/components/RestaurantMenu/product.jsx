@@ -28,7 +28,8 @@ export const Product = (props) => {
     // console.log(data)
     await cartItemsAxios.post(`/`,data)
     .then( (response) => {
-      setLoading(false)
+      isPopupOpen(false);
+      setLoading(false);
     })
     .catch( (error) => {
       console.log("ERROR MESSAGE ::", error)
@@ -65,7 +66,8 @@ export const Product = (props) => {
           <div className="popup">
             <div className="popup-content ">
               <div className="popup-image">
-                <img src={"data:image/jpg;base64," + props.data.img} alt={props.data.menu_name} />
+                {/* <img src={"data:image/jpg;base64," + props.data.img} alt={props.data.menu_name} /> */}
+                <img src={props.data.img} alt={props.data.menu_name} />
               </div>
               <div className="popup-sidebar">
                 <h2>{props.data.menu_name}</h2>

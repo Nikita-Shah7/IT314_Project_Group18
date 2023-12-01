@@ -89,7 +89,7 @@ export default function() {
         <div className="addi-tab">
             <div className='w-tab'>
                 <h2 className='ti-tab'>Tables : </h2>
-                <button className="but-list-tab" onClick={toggleModal}>Add Item</button>
+                <button className="but-list-tab" onClick={toggleModal}>Add DinnTable</button>
             </div>
         </div>
         { modal ? (

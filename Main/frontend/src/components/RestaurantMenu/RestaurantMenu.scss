@@ -198,11 +198,13 @@ select#category {
 }
 
 .individual-product img {
-  width: 200px;
+  width: 35vh;
+  height: 35vh;
+  border-radius: 50%;
 }
 
 .product-image:hover {
-  transform: scale(1.15);
+  transform: scale(1.05);
   cursor: pointer;
 }
 

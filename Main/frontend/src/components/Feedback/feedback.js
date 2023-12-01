@@ -106,7 +106,7 @@ function Feedback() {
       </div>
       <p> </p>
       <textarea
-        placeholder="Share your experience with us !"
+        placeholder="Share your experience with us!"
         style={styles.textarea} onChange={handleComment}
       />
       <p> </p>

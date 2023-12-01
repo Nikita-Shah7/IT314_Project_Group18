@@ -29,7 +29,8 @@ export default function Home(props) {
               marginLeft: '12%',
             }}
           >
-            Welcome { !localStorage.getItem("isAdminAuth") ? (`${props.userName}`) :("Admin") },
+            {/* Welcome { !localStorage.getItem("isAdminAuth") ? (`${props.userName}`) :("Admin") }, */}
+            Welcome{ !localStorage.getItem("isAdminAuth") ? ("") :(" Admin") },
           </Typography>
         </div>
 
