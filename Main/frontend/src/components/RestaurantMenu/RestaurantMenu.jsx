@@ -85,17 +85,14 @@ function RestaurantMenu() {
       <div className="main-container">
         <div className="uppercontainer">
           <h1>Our Menu</h1>
-          <div className="text-wrapper-11">Order Online is easy</div>
+          <div className="text-wrapper-11">Order Online is now easy</div>
           <img className="a-food-on-darke" src={image1} />
         </div>
 
         <div className="middle-container">
           <h1>Shop Information</h1>
-          <p className="text1">
-            The restaurants in Hangzhou also catered to many northern
-            Chinese who had fled south from Kaifeng during the
-            while it is also known that many restaurants were
-            run by families formerly from Kaifeng.
+          <p className="text1" style={{textAlign:'center'}}>
+          Whether it is the cuisine of the Maharajas of yesteryear or the exotic flavours of the world over, Automn's impressive masters of culinary across the brand, weave together elevated experiences that tell an epicurean tale of the local culture, from sharing regional recipes to using offbeat ingredients with inventive menus in magical settings.
           </p>
         </div>
 
