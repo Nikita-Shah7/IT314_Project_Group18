@@ -83,7 +83,7 @@ export default function AdminCategory() {
     <div className='adm-cat'>
         <div className="addi-cat">
             <div className='w-cat'>
-                <h2 className='ti-cat'>Categories : </h2>
+                <h2 className='ti-cat'>Categories  </h2>
                 <button className="but-list-cat" onClick={toggleModal}>Add Category</button>
             </div>
         </div>
@@ -92,11 +92,11 @@ export default function AdminCategory() {
                 <div className='content-ct' onClick={ (event) => event.stopPropagation()} >
                 <form className='mrow-cat' onSubmit={addCategory}>
                 <div className="row-cat">
-                    <div >
+                    <div className='catName'>
                         <label htmlFor="title" ><p>Category Name : </p></label>
                     </div>
                     <div>
-                        <input type="text" className="in-ad" name="category" required value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
+                        <input type="text" style={{width: '100%'}} className="in-ad" name="category" required value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
                     </div>
                 </div>
                 <div className='bu-fo-cat'>

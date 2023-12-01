@@ -79,7 +79,7 @@ export default function Category(props) {
     }
 
     return(
-        <div className='card-cat'>
+        <div className='card-cat' >
                 <div className='wrp-cat'>
                     <h3 className='te-cat'>{props.data.categoryName}</h3>
                     <p className='cat-cat'>Item count : {props.data.item_count}</p>
@@ -99,7 +99,7 @@ export default function Category(props) {
                     </div>
                 </div>
                 <div className='bu-fo-cat'>
-                    <button className="but2-list-cat" type="submit">Edit</button>
+                    <button className="but2-list-cat" type="submit" style={{textAlign:'center'}}>Edit</button>
                     <button className="but2-list-cat" onClick={toggleModal}>CLOSE</button>
                 </div>
             </form>
