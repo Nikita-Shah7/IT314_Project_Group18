@@ -12,6 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./Header.css"
+import Automn_logo from "./Automn_logo.png"
 
 export default function Header() {
   const textColor = "#982c2c";
@@ -40,7 +41,7 @@ export default function Header() {
       localStorage.removeItem("isAdminAuth");
       localStorage.removeItem("accessToken");
     }
-    navigate("/adminlogin");
+    navigate("/userlogin");
   };
 
   return (
@@ -58,12 +59,12 @@ export default function Header() {
             }}
           >
             <img
-              src="logo.png"
-              alt="Restaurant Logo"
+              src={Automn_logo}
+              alt="Automn Logo"
               style={{ width: 40, height: 40, marginRight: 8 }}
             />
             <Typography variant="h6" component="div" sx={{ color: textColor }}>
-              Restaurant
+              Automn
             </Typography>
           </Box>
 
@@ -193,7 +194,7 @@ export default function Header() {
         onClose={handleDrawerClose}
         sx={{ width: "70vw" }}
       >
-        <List style={{backgroundColor: '#942D2D', height:'100%', color: '#EBF2D5'}}>
+        <List style={{ backgroundColor: '#942D2D', height: '100%', color: '#EBF2D5' }}>
           <ListItem button onClick={() => navigate("/")}>
             <ListItemText primary="Home" />
           </ListItem>

@@ -15,48 +15,50 @@ import _404NotFound from './components/_404NotFound/_404NotFound'
 import Feedback from './components/Feedback/feedback'
 import { About } from './components/About/About';
 import { Feed } from '@mui/icons-material';
-import UserLogin from './components/UserLogin/UserLogin';
+import UserLogin from './components/UserLogin/MainContentSignUp';
 import AdminLogin from './components/AdminLogin/AdminLogin';
-import  AdminMenu from './components/AdminMenu/AdminMenu'
-import  AdminTable from './components/AdminTable/AdminTable'
+import AdminMenu from './components/AdminMenu/AdminMenu'
+import AdminTable from './components/AdminTable/AdminTable'
 import Reviewlist from "./components/Reviews/Reviewlist";
 import Analysis from './components/AdminAnalysis/Analysis';
 import Orders from './components/AdminOrders/Orders';
+import UserSignIn from './components/Login/MainContentSignIn'
 
 function App() {
 
   const [loading, setLoading] = useState(true);
-  
+
   return (
-    <div style={{'backgroundColor': '#EBF2D5'}}>
+    <div style={{ 'backgroundColor': '#EBF2D5' }}>
       <ContextProvider>
-          <Router>
-            <Routes>
-              <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
-              <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />
-              { localStorage.getItem("table_id") ? 
-                (<Route path='/tablebooking' element={<><Header/> <BookedTable/> <Footer/></>} />) :
-                (<Route path='/tablebooking' element={<><Header/> <EnterMembers/> <Footer/></>} />)
-              }
-              <Route path='/' element={ <><Header/> <Home userName="User" /> <Footer/></>} />
-              <Route path='/aboutus' element={<><Header/> <About/> <Footer/></>} />
-              <Route path='/feedback' element={<Feedback />} />
-              <Route path='/userlogin' element={<><UserLogin /> <Footer/></>} />
-              <Route path='/adminlogin' element={<AdminLogin />} />            
-              <Route path='/admintable' element={<><Header/> <AdminTable/> <Footer/></>} />
-              <Route path='/adminuser' element={<><Header/> <AdminUser/> <Footer/></>} />
-              <Route path='/adminorders' element={<><Header/> <Orders/> <Footer/> </>} />
-              <Route path='/adminmenu' element={<><AdminMenu/></>} />
-              <Route path='/admincategory' element={<><Header/> <AdminCategory/> <Footer/></>} />
-              <Route path='/adminfeedback' element={<><Header/> <Reviewlist/> <Footer/></>} />
-              <Route path='/adminanalysis' element={<><Header/> <Analysis/> <Footer/></>} />
-              <Route path='/*' element={<_404NotFound />} />
-            </Routes>
-          </Router>
+        <Router>
+          <Routes>
+            <Route path='/menu' element={<><Header /> <RestaurantMenu /> <Footer /></>} />
+            <Route path='/cart' element={<><Header /> <Cart /> <Footer /></>} />
+            {localStorage.getItem("table_id") ?
+              (<Route path='/tablebooking' element={<><Header /> <BookedTable /> <Footer /></>} />) :
+              (<Route path='/tablebooking' element={<><Header /> <EnterMembers /> <Footer /></>} />)
+            }
+            <Route path='/' element={<><Header /> <Home userName="User" /> <Footer /></>} />
+            <Route path='/aboutus' element={<><Header /> <About /> <Footer /></>} />
+            <Route path='/feedback' element={<Feedback />} />
+            <Route path='/userlogin' element={<><Header /><UserLogin /> <Footer /></>} />
+            <Route path='/signin' element={<><Header /><UserSignIn /> <Footer /></>} />
+            <Route path='/adminlogin' element={<AdminLogin />} />
+            <Route path='/admintable' element={<><Header /> <AdminTable /> <Footer /></>} />
+            <Route path='/adminuser' element={<><Header /> <AdminUser /> <Footer /></>} />
+            <Route path='/adminorders' element={<><Header /> <Orders /> <Footer /> </>} />
+            <Route path='/adminmenu' element={<><Header /><AdminMenu /><Footer /></>} />
+            <Route path='/admincategory' element={<><Header /> <AdminCategory /> <Footer /></>} />
+            <Route path='/adminfeedback' element={<><Header /> <Reviewlist /> <Footer /></>} />
+            <Route path='/adminanalysis' element={<><Header /> <Analysis /> <Footer /></>} />
+            <Route path='/*' element={<_404NotFound />} />
+          </Routes>
+        </Router>
       </ContextProvider>
     </div>
   );
 }
 
-              
+
 export default App;
