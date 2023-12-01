@@ -145,10 +145,11 @@ export default function() {
                 </div>
                 <div className="row-ad">
                     <div>
-                        <label htmlFor="img"><p>Image : </p></label>
+                        <label htmlFor="img"><p>Image URL: </p></label>
                     </div>
                     <div>
-                        <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} />
+                        {/* <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} /> */}
+                        <input type="text" className="in-ad" name="img" />
                     </div>
                 </div>
                 <div className="row-ad">

@@ -33,7 +33,8 @@ export default function Home(props) {
               fontSize: 60,
             }}
           >
-            Welcome { !localStorage.getItem("isAdminAuth") ? (`${props.userName}`) :("Admin") },
+            {/* Welcome { !localStorage.getItem("isAdminAuth") ? (`${props.userName}`) :("Admin") }, */}
+            Welcome{ !localStorage.getItem("isAdminAuth") ? ("") :(" Admin") },
           </Typography>
         </div>
 

@@ -12,6 +12,7 @@ const styles = {
       flexDirection: "column",
       alignItems: "center",
       backgroundColor: "#EBF2D5",
+      marginTop: "5rem",
     },
     title: {
       marginBottom: "20px", // Add space below the title
@@ -32,12 +33,13 @@ const styles = {
       flexDirection: "row",
     },
     textarea: {
+      fontFamily: ["Lucida Console", "Courier New", "monospace"],
       border: "1px solid #a9a9a9",
       borderRadius: 5,
       padding: 10,
       margin: "20px 0",
-      minHeight: 200,
-      width: 400,
+      minHeight: "35vh",
+      minWidth: "30vw",
     },
     button: {
       border: "1px solid #942D2D",

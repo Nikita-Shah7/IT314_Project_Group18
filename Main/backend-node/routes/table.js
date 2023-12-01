@@ -27,7 +27,7 @@ tableRouter.post("/", authenticateToken, async (req, res) => {
 // get Tables
 tableRouter.get("/", async (req, res) => {
     try {
-        const allTables = await pool.query(`SELECT*FROM \"table\" `);
+        const allTables = await pool.query(`SELECT*FROM \"table\" ORDER BY table_id ASC;`);
         return res.status(200).json({
             message: "All Tables received !!",
             count: allTables.rows.length,
@@ -93,7 +93,7 @@ tableRouter.get("/:id", async (req, res) => {
 });
 
 
-tableRouter.put("/:id", authenticateToken, async (req, res) => {
+tableRouter.put("/:id", async (req, res) => {
     try {
         if (!req.body.table_id || !req.body.capacity || !req.body.availability_status) {
             return res.status(400).json({ message: "All fields are mandatory !!" })

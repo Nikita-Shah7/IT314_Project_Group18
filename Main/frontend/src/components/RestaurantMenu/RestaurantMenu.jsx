@@ -7,6 +7,7 @@ import './RestaurantMenu.scss';
 import image1 from "./a-food-on-darke-0-1.png";
 
 function RestaurantMenu() {
+  // console.log("nik in menu")
 
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
@@ -32,7 +33,7 @@ function RestaurantMenu() {
     setLoading(true)
     categoryAxios.get(`/`)
       .then((response) => {
-        console.log([response.data][0].data)
+        // console.log([response.data][0].data)
         setCategories([response.data][0].data)
         setLoading(false);
       })
@@ -44,7 +45,7 @@ function RestaurantMenu() {
 
   useEffect( () => {
     console.log(selectedCategory);
-    categoryAxios.get(`/${selectedCategory}`)
+    menuAxios.get(`/category/${selectedCategory}`)
       .then( (response) => {
         // console.log([response.data][0].data);
         setProducts([response.data][0].data)
@@ -58,17 +59,28 @@ function RestaurantMenu() {
 
   useEffect( () => {
     console.log(selectedCategory);
-    menuAxios.get(`search/${searchInput}`)
-      .then( (response) => {
-        // console.log([response.data][0].data);
-        setProducts([response.data][0].data)
-        setLoading(false)
-      })
-      .catch( (error) => {
-        console.log("ERROR MESSAGE ::", error)
-        setLoading(false);
-      });
+    console.log(searchInput);
+    const fetchData = async() => {
+      let filteredProducts = [];
+      await menuAxios.get(`/category/${selectedCategory}`)
+        .then( (response) => {
+          // console.log([response.data][0].data);
+          filteredProducts = [response.data][0].data ;
+          setLoading(false)
+        })
+        .catch( (error) => {
+          console.log("ERROR MESSAGE ::", error)
+          setLoading(false);
+        });
+        // console.log(filteredProducts)
+      filteredProducts = filteredProducts.filter( (product) =>
+        product.menu_name.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      setProducts(filteredProducts);
+    }
+    fetchData();
   },[searchInput]);
+  
 
   const handleSearchChange = (event) => {
     setSearchInput(event.target.value);
@@ -79,6 +91,7 @@ function RestaurantMenu() {
   };
 
   const navigate = useNavigate();
+  // console.log(products);
 
   return (
     <>
@@ -125,6 +138,7 @@ function RestaurantMenu() {
               </select>
             </div>
           </div>
+          <p>Total Items Found: {products.length}</p>
           <div className="scroll-container">
             <div className="product-list">
               {products.length === 0 ? (

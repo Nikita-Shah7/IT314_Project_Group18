@@ -149,10 +149,11 @@ export default function Product(props) {
              </div>
              <div className="row-it">
                  <div>
-                     <label htmlFor="img"><p>Image : </p></label>
+                     <label htmlFor="img"><p>Image URL : </p></label>
                  </div>
                  <div>
-                        <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} />
+                        {/* <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} /> */}
+                        <input type="text" className="in-ad" name="img" value={img}/>
                  </div>
              </div>
              <div className="row-it">

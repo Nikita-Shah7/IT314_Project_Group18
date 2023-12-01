@@ -71,7 +71,7 @@ export default function AdminLogin() {
                     // Here, i store the accessToken in localStorage to access it from "deleteBook" route
                     // However, it is not a good practice to do so
                     localStorage.setItem("accessToken", response.data.accessToken)
-                    navigate('/adminmenu');
+                    navigate('/');
                 }
             })
             .catch((error) => {
