@@ -6,7 +6,12 @@
     cursor: pointer;
     font-size: 24px;
     margin-right: 16px;
-  }
+    color: #942D2D;
+}
+
+.rest-name:hover {
+    cursor: pointer;
+}
 
 @media (max-width: 780px) {
     .logout {
@@ -18,3 +23,5 @@
         color: #942D2D;
       }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');

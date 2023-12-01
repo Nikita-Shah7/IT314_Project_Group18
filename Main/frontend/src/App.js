@@ -13,7 +13,6 @@ import Home from './components/Welcome/Home'
 import _404NotFound from './components/_404NotFound/_404NotFound'
 import Feedback from './components/Feedback/feedback'
 import { About } from './components/About/About';
-import UserLogin from './components/UserLogin/UserLogin';
 import UserLogin from './components/UserLogin/MainContentSignUp';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import AdminMenu from './components/AdminMenu/AdminMenu'

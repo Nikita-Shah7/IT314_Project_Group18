@@ -66,8 +66,8 @@ export default function Home(props) {
                     ":hover": {
                       bgcolor: '#EBF2D5',
                       color: '#942D2D',
-                      borderColor: '#942D2D',
-                      borderWidth: '4px'
+                      borderColor: '#FFF',
+                      borderWidth: '10px'
                     } 
                   }
                 }

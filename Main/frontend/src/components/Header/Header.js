@@ -63,7 +63,8 @@ export default function Header() {
               alt="Automn Logo"
               style={{ width: 40, height: 40, marginRight: 8 }}
             />
-            <Typography variant="h6" component="div" sx={{ color: textColor }}>
+            <Typography variant="h4" component="div" sx={{ color: textColor, fontFamily: 'Dancing Script' }} className="rest-name"
+              onClick={() => navigate('/')}>
               Automn
             </Typography>
           </Box>

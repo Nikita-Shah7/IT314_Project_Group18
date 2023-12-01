@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -50,10 +51,14 @@ const loginTextStyle = {
 };
 
 export default function SignUpBox() {
+
+    const [loading, setLoading] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
+
+    const navigate = useNavigate();
 
     const validateEmail = (email) => {
         const emailRegex = /^[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -81,7 +86,7 @@ export default function SignUpBox() {
     return (
         <div style={centerDivStyle}>
             <Typography variant="h4" gutterBottom align='center' style={loginTextStyle}>
-                User Validation
+                User Login
             </Typography>
             <div style={loginBoxStyle}>
                 <TextField
@@ -110,6 +115,13 @@ export default function SignUpBox() {
                     onClick={handleSubmit}
                 >
                     Submit
+                </Button>
+                <Button
+                    variant="contained"
+                    sx={{ width: '205px', backgroundColor: '#982c2c', margin: '0 auto', marginTop: '15px', marginBottom: '20px', display: 'block', borderRadius: '0' }}
+                    onClick={() => navigate('/')}
+                >
+                    Back
                 </Button>
 
 
