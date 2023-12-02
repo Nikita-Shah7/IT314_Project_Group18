@@ -74,7 +74,7 @@ export default function Header() {
             <Box
               className="menu-icon"
               onClick={handleDrawerOpen}
-              sx={{ cursor: "pointer", fontSize: 24, marginRight: 16 }}
+              sx={{ cursor: "pointer", fontSize: 24, marginRight: 0 }}
             >
               &#9776;
             </Box>

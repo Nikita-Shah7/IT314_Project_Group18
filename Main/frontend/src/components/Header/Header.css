@@ -2,10 +2,11 @@
     width: 160px;
 }
 
+
 .menu-icon {
     cursor: pointer;
     font-size: 24px;
-    margin-right: 16px;
+    margin: 0px;
     color: #942D2D;
 }
 
@@ -17,9 +18,12 @@
     .logout {
         width: 150px;
     }
-
+    .css-ffja5s {
+        margin-right: 0px;
+    }
     .menu-icon {
         color: #942D2D;
+        margin-right: 0px;
       }
 }
 

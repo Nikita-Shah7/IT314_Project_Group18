@@ -106,31 +106,22 @@ export default function AdminTable(props) {
             </div>
             { modal && (
             <div className='overlay-tab' onClick={toggleModal}>
-                <div className='content-ta' onClick={(event) => event.stopPropagation()} >
+                <div className='content-tab' onClick={(event) => event.stopPropagation()} >
                 <form className='mrow-tab' onSubmit={editTable}>
                 <div className="row-tab">
-                    <div >
-                        <label htmlFor="title" ><p>Table No. : </p></label>
-                    </div>
-                    <div>
+                        <label htmlFor="title" >Table No. :</label>
                         <input type="number" className="in-it" name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
-                    </div>
                 </div>
                 <div className="row-tab">
-                    <div >
-                        <label htmlFor="title" ><p>Capacity : </p></label>
-                    </div>
-                    <div>
-                        <input type="number" className="in-it" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
-                    </div>
+                    <label htmlFor="title" >Capacity :</label>
+                    <input type="number" className="in-it" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
                 </div>
                 <div className="row-tab">
-                    <div >
-                        <label htmlFor="title" ><p>Availability Status: </p></label>
-                    </div>
-                    <div>
-                        <input type="text" className="in-it" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)} />
-                    </div>
+                    <label htmlFor="title" >Availability Status:</label>
+                    <select className="in-it" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)}>
+                                        <option value="Available">Available</option>
+                                        <option value="Occupied">Occupied</option>
+                    </select>
                 </div>
                 <div className='bu-fo-tab'>
                     <button className="but2-list-tab" type="submit">EDIT</button>
