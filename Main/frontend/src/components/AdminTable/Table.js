@@ -110,15 +110,15 @@ export default function AdminTable(props) {
                 <form className='mrow-tab' onSubmit={editTable}>
                 <div className="row-tab">
                         <label htmlFor="title" >Table No. :</label>
-                        <input type="number" className="in-it" name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
+                        <input type="number" className="in-tab" name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
                 </div>
                 <div className="row-tab">
                     <label htmlFor="title" >Capacity :</label>
-                    <input type="number" className="in-it" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
+                    <input type="number" className="in-tab" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
                 </div>
                 <div className="row-tab">
                     <label htmlFor="title" >Availability Status:</label>
-                    <select className="in-it" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)}>
+                    <select className="in-tab" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)}>
                                         <option value="Available">Available</option>
                                         <option value="Occupied">Occupied</option>
                     </select>

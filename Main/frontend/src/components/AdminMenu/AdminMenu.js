@@ -1,20 +1,20 @@
-import React,{ useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
-import {restaurantMenu as menuAxios} from '../AxiosCreate';
-import './AdminMenu.css'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { restaurantMenu as menuAxios, category as categoryAxios } from '../AxiosCreate';
+import './AdminMenu.css';
 import Product from './product';
-import { toast } from "react-toastify";
+import AdminCategory from '../AdminCategory/AdminCategory'; // Import the AdminCategory component
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function() {
 
     // console.log("nik in admin menu");
     const navigate = useNavigate();
-
     if(!localStorage.getItem("isAdminAuth")) {
         navigate('/adminlogin');
     }
-
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [menuItemsCnt, setMenuItemsCnt] = useState(0);
@@ -40,7 +40,19 @@ export default function() {
           });
       }, [menuItemsCnt]);
 
-
+      useEffect(() => {
+        setLoading(true);
+        categoryAxios
+            .get('/')
+            .then((response) => {
+                setCategories(response.data.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log('ERROR MESSAGE ::', error);
+                setLoading(false);
+            });
+    }, []);
     const [modal,setModal] = useState(false);
 
     const toggleModal = () => {
@@ -118,77 +130,62 @@ export default function() {
 
     return(
         <div className='adm'>
-        <div className="addi-ad">
-        <h2 className='ti-ad'>Menu Items : </h2>
-        <button className="but-list-ad" onClick={toggleModal}>Add Item</button>
+            {/* <AdminCategory setCategory={setCategories} /> Pass setCategories as a prop */}
+        <div className="addi-a">
+        <h2>Menu Items  </h2>
+        <button className="but-list-a" onClick={toggleModal}>Add Item</button>
         </div>
-        { modal ? (
-            <div className='overlay-ad' onClick={toggleModal}>
-                <div className='content-ad' onClick={(event) => event.stopPropagation()} >
-                <form className='mrow-ad' onSubmit={addItem}>
-                <div className="row-ad">
-                    <div >
-                        <label htmlFor="title" ><p>Item Name : </p></label>
-                    </div>
-                    <div>
-                    <input type="text" className="in-ad" name="menu_name" required value={menuName} onChange={(e) => setMenuName(e.target.value)} />
-                    </div>
+        { modal && (
+            <div className='overlay-a' onClick={toggleModal}>
+                <div className='content-a' onClick={(event) => event.stopPropagation()} >
+                <form className='mrow-a' onSubmit={addItem}>
+                <div className="row-a">
+                        <label htmlFor="title" >Item Name :</label>
+                    <input type="text" className="in-a" name="menu_name" required value={menuName} onChange={(e) => setMenuName(e.target.value)} />
                 </div>
-                <div className="row-ad">
-                    <div >
-                        <label htmlFor="text" ><p>Category Name : </p></label>
-                    </div>
-                    <div>
-                    <input type="text" className="in-ad" name="categoryName" required value={category} onChange={(e) => setCategory(e.target.value)} />
-                    </div>
+                <div className="row-a">
+                <label htmlFor="text">Category Name :</label>
+                                {/* Use a dropdown for category selection */}
+                                <select className="in-a" name="categoryName" required value={category} onChange={(e) => setCategory(e.target.value)}>
+                                    <option value="">Select Category</option>
+                                    {categories.map((cat) => (
+                                        <option key={cat.category_id} value={cat.categoryName}>
+                                            {cat.categoryName}
+                                        </option>
+                                    ))}
+                                </select>
                 </div>
-                <div className="row-ad">
-                    <div>
-                        <label htmlFor="author"><p>Short Description : </p></label>
-                    </div>
-                    <div>
-                    <input type="text" className="in-ad" name="description" required value={description} onChange={(e) => setDescription(e.target.value)} />
-                    </div>
+                <div className="row-a">
+                        <label htmlFor="author">Short Description :</label>
+                    <input type="text" className="in-a" name="description" required value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
-                <div className="row-ad">
-                    <div>
-                        <label htmlFor="img"><p>Image URL: </p></label>
-                    </div>
-                    <div>
+                <div className="row-a">
+                        <label htmlFor="img">Image URL:</label>
                         {/* <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} /> */}
-                        <input type="text" className="in-ad" name="img" />
-                    </div>
+                        <input type="text" className="in-a" name="img" />
                 </div>
-                <div className="row-ad">
-                    <div>
-                        <label htmlFor="content"><p>Price : </p></label>
-                    </div>
-                    <div >
-                    <input type="text" className="in-ad" name="price" required value={price} onChange={(e) => setPrice(e.target.value)} />
-                    </div>
+                <div className="row-a">
+                    <label htmlFor="content">Price :</label>
+                    <input type="number" className="in-a" name="price" required value={price} onChange={(e) => setPrice(e.target.value)} />
                 </div>
-                <div className="row-ad">
-                    <div >
-                        <label htmlFor="content" ><p>Profit : </p></label>
-                    </div>
-                    <div>
-                    <input type="text" className="in-ad" name="profit" required value={profit} onChange={(e) => setProfit(e.target.value)} />
-                    </div>
+                <div className="row-a">
+                    <label htmlFor="content" >Profit :</label>
+                    <input type="number" className="in-a" name="profit" required value={profit} onChange={(e) => setProfit(e.target.value)} />
                 </div>
-                <div>
-                    <button className="but-it" type="submit">ADD</button>
-                    <button className="but-it" onClick={toggleModal}>CLOSE</button>
+                <div className='bu-fo-a'>
+                    <button className="but2-list-a" type="submit">ADD</button>
+                    <button className="but2-list-a" onClick={toggleModal}>CLOSE</button>
                 </div>
             </form>
                 </div>
-        </div>) : (
+        </div>)}
         <section className="item-list">
         {
             products.map( (product) => (
                 <Product key={product.menu_id} data={product} menuItemsCnt={menuItemsCnt} setMenuItemsCnt={setMenuItemsCnt} />
               ))
         }
-        </section>)}
+        </section>
         </div>
     )
 }
