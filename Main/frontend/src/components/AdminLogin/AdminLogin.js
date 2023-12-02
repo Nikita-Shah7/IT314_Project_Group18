@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import {admin as adminAxios} from '../AxiosCreate';
+import { admin as adminAxios } from '../AxiosCreate';
 
 
 const loginBoxStyle = {
@@ -18,21 +17,15 @@ const loginBoxStyle = {
     transform: 'translateY(-50%)',
 };
 
-const textFieldStyle = {
+const inputStyle = {
     backgroundColor: 'white',
-    width: '360px',
-    ml: '10px',
-    borderRadius: '0',
-
-    '& .MuiInputBase-input': {
-        border: '1px solid #982c2c', // Default border color
-        borderRadius: '4px',
-    },
-    '& :focus': {
-        border: '0px solid #982c2c', // Border color on focus 
-        outline: 'none',
-    },
+    width: '100%',
+    marginBottom: '15px',
+    border: '1px solid #982c2c',
+    borderRadius: '4px',
+    padding: '10px',
 };
+
 
 const loginTextStyle = {
     color: '#982c2c',
@@ -92,25 +85,22 @@ export default function AdminLogin() {
                 Admin Login
             </Typography>
             <div style={loginBoxStyle}>
-                <TextField
-                    label="Enter Your Adminname"
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    sx={textFieldStyle}
+                <input
+                    type="text"
+                    placeholder="Enter Your Admin Name"
+                    style={inputStyle}
                     value={adminname}
                     onChange={(e) => setAdminName(e.target.value)}
                 />
-                <TextField
-                    label="Enter Your Password"
-                    type="password"
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    sx={textFieldStyle}
+                <input
+                    type="text"
+                    placeholder="Enter Your Password"
+                    style={inputStyle}
                     value={password}
                     onChange={(e) => setPasswd(e.target.value)}
                 />
+
+
                 <Button
                     variant="contained"
                     sx={{ width: '205px', backgroundColor: '#982c2c', margin: '0 auto', marginTop: '15px', marginBottom: '25px', display: 'block', borderRadius: '0' }}
