@@ -1,6 +1,8 @@
 import React,{ useState } from 'react';
 import {table as tableAxios} from '../AxiosCreate';
-import './Tab.css'
+import './Tab.css';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AdminTable(props) {
 
@@ -46,10 +48,14 @@ export default function AdminTable(props) {
             props.setDinnTableCnt(props.dinnTableCnt+1);
             props.setDinnTableCnt(props.dinnTableCnt-1);
             setLoading(false);
+            if(response.status===200){
+                toast.success("Edited Successfully");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Database error.")
             });
     }
 
@@ -75,10 +81,14 @@ export default function AdminTable(props) {
             console.log([response.data][0].message);
             props.setDinnTableCnt(props.dinnTableCnt-1);
             setLoading(false);
+            if(response.status===200){
+                toast.success("Table removed successfully");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Database error.")
             });
     }
 

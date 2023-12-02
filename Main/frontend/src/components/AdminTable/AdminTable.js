@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import {table as tableAxios} from '../AxiosCreate';
 import './AdminTab.css'
 import Table from './Table';
@@ -77,10 +78,14 @@ export default function() {
             console.log([response.data][0].message);
             setModal(!modal)
             setLoading(false);
+            if(response.status===201){
+                toast.success("Table created successfully");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Database error. Table can't be created.")
             });
     }
 

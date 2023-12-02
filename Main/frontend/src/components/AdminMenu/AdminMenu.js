@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import {restaurantMenu as menuAxios} from '../AxiosCreate';
 import './AdminMenu.css'
 import Product from './product';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function() {
 
@@ -102,10 +104,15 @@ export default function() {
             console.log([response.data][0].message);
             setModal(!modal)
             setLoading(false);
+            if (response.status === 201) {
+                toast.success("MenuItem created successfully ");
+              } 
+
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("MenuItem can't be created.");
             });
     }
 

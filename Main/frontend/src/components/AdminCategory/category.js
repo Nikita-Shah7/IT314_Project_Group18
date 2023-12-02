@@ -1,6 +1,8 @@
 import React,{ useState } from 'react';
 import {category as categoryAxios} from '../AxiosCreate';
-import './Cat.css'
+import './Cat.css';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Category(props) {
 
@@ -42,9 +44,12 @@ export default function Category(props) {
             props.setCategoryCnt(props.categoryCnt+1);
             props.setCategoryCnt(props.categoryCnt-1);
             setLoading(false);
+            if(response.status===200)
+            toast.success("Category name edited succesfully.");
             })
             .catch((error) => {
-            console.log("ERROR MESSAGE ::", error)
+            console.log("ERROR MESSAGE ::", error);
+            toast.error("Category is not edited. Database error.");
             setLoading(false);
             });
     }
@@ -71,10 +76,13 @@ export default function Category(props) {
             console.log([response.data][0].message);
             props.setCategoryCnt(props.categoryCnt-1);
             setLoading(false);
+            if(response.status===200)
+            toast.success("Category deleted succesfully.");
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Category is not deleted due to database error.");
             });
     }
 

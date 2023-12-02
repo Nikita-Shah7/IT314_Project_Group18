@@ -1,7 +1,9 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
 import {restaurantMenu as menuAxios} from '../AxiosCreate';
-import './Items.css'
+import './Items.css';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Product(props) {
 
@@ -69,6 +71,9 @@ export default function Product(props) {
             props.setMenuItemsCnt(props.menuItemsCnt+1);
             props.setMenuItemsCnt(props.menuItemsCnt-1);
             setLoading(false);
+            if(response.status===200){
+                toast.success("MenuItem edited successfully ");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
@@ -98,10 +103,14 @@ export default function Product(props) {
             console.log([response.data][0].message);
             props.setMenuItemsCnt(props.menuItemsCnt-1);
             setLoading(false);
+            if(response.status===200){
+                toast.success("MenuItem deleted successfully ");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Database error, Can't delete.");
             });
     }
 

@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import {category as categoryAxios} from '../AxiosCreate';
 import './AdminCat.css'
 import Category from './category';
-
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AdminCategory() {
 
@@ -54,6 +55,7 @@ export default function AdminCategory() {
             // alert('An error happened. Please Check console');
             // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
             console.log("UNAUTHORIZED!!");
+            toast.error("Authorization error.");
             return;
         }
 
@@ -72,10 +74,14 @@ export default function AdminCategory() {
             console.log([response.data][0].message);
             setModal(!modal)
             setLoading(false);
+            if(response.status === 201){
+            toast.success("Category created succesfully.");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Category is not created. Database error.");
             });
     }
     
