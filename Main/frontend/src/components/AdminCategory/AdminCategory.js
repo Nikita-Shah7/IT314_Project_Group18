@@ -93,17 +93,13 @@ export default function AdminCategory() {
                 <button className="but-list-cat" onClick={toggleModal}>Add Category</button>
             </div>
         </div>
-        { modal ? (
+        { modal && (
             <div className='overlay-cat' onClick={toggleModal}>
                 <div className='content-ct' onClick={ (event) => event.stopPropagation()} >
                 <form className='mrow-cat' onSubmit={addCategory}>
                 <div className="row-cat">
-                    <div className='catName'>
-                        <label htmlFor="title" ><p>Category Name : </p></label>
-                    </div>
-                    <div>
-                        <input type="text" style={{width: '100%'}} className="in-ad" name="category" required value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
-                    </div>
+                        <label htmlFor="title" >Category Name :</label>
+                        <input type="text"  className="in-ca" name="category" required value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
                 </div>
                 <div className='bu-fo-cat'>
                     <button className="but2-list-cat" type="submit">ADD</button>
@@ -111,15 +107,14 @@ export default function AdminCategory() {
                 </div>
             </form>
                 </div>
-        </div>) : (
+        </div>)}
             <section className="item-list-cat">
             {
                 category.map( (item) => (
                     <Category key={item.category_id} data={item} categoryCnt={categoryCnt} setCategoryCnt={setCategoryCnt} />
                   ))
             }
-            </section>
-        )}    
+            </section>   
         </div>
     )
 }

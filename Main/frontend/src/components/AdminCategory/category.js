@@ -87,28 +87,27 @@ export default function Category(props) {
     }
 
     return(
-        <div className='card-cat' >
-                <div className='wrp-cat'>
-                    <h3 className='te-cat'>{props.data.categoryName}</h3>
-                    <p className='cat-cat'>Item count : {props.data.item_count}</p>
+        <div className='card-t' >
+            <div className='wrp-2-t'>
+                <div className='wrp-t'>
+                    <h3 className='te-t'>{props.data.categoryName}</h3>
+                    <p className='cat-t'>Item count : {props.data.item_count}</p>
                 </div>
-            <button className='but-cat' onClick={toggleModal}>Edit</button>
-            <button className='but-cat' onClick={deleteCategory}>Delete</button>
+            
+            <button className='but-t' onClick={toggleModal}>Edit</button>
+            <button className='but-t' onClick={deleteCategory}>Delete</button>
+            </div>
             { modal && (
-            <div className='overlay-cat' onClick={toggleModal}>
-                <div className='content-ct' onClick={(event) => event.stopPropagation()} >
-                <form className='mrow-cat' onSubmit={editCategory}>
-                <div className="row-cat">
-                    <div >
-                        <label htmlFor="title" ><p>Category Name : </p></label>
-                    </div>
-                    <div>
-                        <input type="text" required className='in-ca' name="categoryName" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
-                    </div>
+            <div className='overlay-t' onClick={toggleModal}>
+                <div className='content-t' onClick={(event) => event.stopPropagation()} >
+                <form className='mrow-t' onSubmit={editCategory}>
+                <div className="row-t">
+                        <label htmlFor="title" >Category Name : </label>
+                        <input type="text" required className='in-t' name="categoryName" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
                 </div>
-                <div className='bu-fo-cat'>
-                    <button className="but2-list-cat" type="submit" style={{textAlign:'center'}}>Edit</button>
-                    <button className="but2-list-cat" onClick={toggleModal}>CLOSE</button>
+                <div className='bu-fo-t'>
+                    <button className="but2-list-t" type="submit" style={{textAlign:'center'}}>Edit</button>
+                    <button className="but2-list-t" onClick={toggleModal}>Close</button>
                 </div>
             </form>
                 </div>
