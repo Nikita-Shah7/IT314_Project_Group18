@@ -2,7 +2,6 @@
     overflow-y: scroll;
     overflow-x: scroll;
     height: 70%;
-    background-color: #EBF2D5;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
@@ -45,7 +44,7 @@
     background-color: rgba(42, 42, 42, 0.573);
 }
 .w-cat{
-    margin: 3% auto 0px auto;
+    margin: 3% 0px 0px 5%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -92,7 +91,7 @@
 .but-list-cat{
     border-radius: 0px;
     width: 50%;
-    height: 25%;
+    height: 50%;
     flex-shrink: 0;
     border: 1px solid #942D2D;
     color: #942D2D;

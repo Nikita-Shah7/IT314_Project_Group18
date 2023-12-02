@@ -1,6 +1,5 @@
 .item-list-tab{
     overflow-y: scroll;
-    overflow-x: scroll;
     height: 70%;
     background-color: #EBF2D5;
     display: flex;

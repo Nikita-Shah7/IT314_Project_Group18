@@ -106,7 +106,7 @@ export default function() {
                         <label htmlFor="title" ><p>Table No. : </p></label>
                     </div>
                     <div>
-                    <input type="number" className="in-ad" name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
+                    <input type="number" fullwidth class='in-ad' name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
                     </div>
                 </div>
                 <div className="row-tab">
@@ -114,7 +114,7 @@ export default function() {
                         <label htmlFor="title" ><p>Capacity : </p></label>
                     </div>
                     <div>
-                    <input type="number" className="in-ad" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
+                    <input type="number" fullwidth className="in-ad" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
                     </div>
                 </div>
                 <div className="row-tab">
@@ -122,7 +122,7 @@ export default function() {
                         <label htmlFor="title" ><p>Availability Status : </p></label>
                     </div>
                     <div>
-                    <input type="text" className="in-ad" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)} />
+                    <input type='text' fullwidth className="in-ad" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)} />
                     </div>
                 </div>
                 <div className='bu-fo-tab'>
@@ -132,7 +132,7 @@ export default function() {
             </form>
                 </div>
         </div>) : (
-            <section className="item-list">
+            <section className="item-list-tab">
             {
                 dinnTable.map( (table) => (
                     <Table key={table.table_id} data={table} dinnTableCnt={dinnTableCnt} setDinnTableCnt={setDinnTableCnt} />

@@ -155,8 +155,16 @@ export default function Header() {
                   >
                     Book a Table
                   </Link>
+                  <Link
+                    href="/adminfeedback"
+                    color="inherit"
+                    sx={{ m: 2, ...linkStyle }}
+                  >
+                    Feedbacks
+                  </Link>
                 </>
               )}
+              
               <Link
                 href="/aboutus"
                 color="inherit"
@@ -230,6 +238,10 @@ export default function Header() {
               <ListItem button onClick={() => navigate("/tablebooking")}>
                 <ListItemText primary="Book a Table" />
               </ListItem>
+              <ListItem button onClick={() => navigate("/adminfeedback")}>
+                <ListItemText primary="Feedback" />
+              </ListItem>
+              
             </>
           )}
           <ListItem button onClick={() => navigate("/aboutus")}>

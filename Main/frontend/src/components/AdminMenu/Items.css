@@ -1,6 +1,6 @@
 /* Default styles for screens wider than 800px */
 .card-it {
-    margin: 25px 0 0 60px;
+    margin: 25px auto 0 auto;
     width: 80%;
     height: 135px;
     display: flex;
@@ -122,7 +122,7 @@
 @media (max-width: 900px) {
     .card-it {
         width: 90%;
-        margin: 10px;
+        margin: 10px auto;
         border: 0.5 solid #942D2D;
         height: 20%;
         justify-content: space-evenly;

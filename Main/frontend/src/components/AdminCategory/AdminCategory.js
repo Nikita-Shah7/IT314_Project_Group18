@@ -112,7 +112,7 @@ export default function AdminCategory() {
             </form>
                 </div>
         </div>) : (
-            <section className="item-list">
+            <section className="item-list-cat">
             {
                 category.map( (item) => (
                     <Category key={item.category_id} data={item} categoryCnt={categoryCnt} setCategoryCnt={setCategoryCnt} />

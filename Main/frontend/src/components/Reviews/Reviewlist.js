@@ -9,9 +9,7 @@ export default function Reviewlist() {
   // console.log("nik in admin feedback");
   const navigate = useNavigate();
 
-  if(!localStorage.getItem("isAdminAuth")) {
-      navigate('/adminlogin');
-  }
+
 
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
