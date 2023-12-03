@@ -55,7 +55,7 @@ export default function AdminTable(props) {
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
-            toast.error("Database error.")
+            toast.error("Table already exists.")
             });
     }
 

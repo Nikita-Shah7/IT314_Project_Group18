@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import { Link } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const loginBoxStyle = {
     width: '90%',
@@ -57,6 +59,7 @@ export default function SignUpBox() {
         const emailRegex = /^[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         const isValid = emailRegex.test(email);
         setEmailError(isValid ? '' : 'Invalid email address');
+        toast.error("Invalid email address");
         return isValid;
     };
 

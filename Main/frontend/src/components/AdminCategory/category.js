@@ -25,6 +25,7 @@ export default function Category(props) {
             // alert('An error happened. Please Check console');
             // enqueueSnackbar('UNAUTHORIZED !!', { variant: 'error' });
             console.log("UNAUTHORIZED!!");
+            toast.error("Authorization error.");
             return;
         }
 
@@ -49,7 +50,7 @@ export default function Category(props) {
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error);
-            toast.error("Category is not edited. Database error.");
+            toast.error("Category already exists");
             setLoading(false);
             });
     }

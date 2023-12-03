@@ -85,7 +85,7 @@ export default function() {
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
-            toast.error("Database error. Table can't be created.")
+            toast.error("Table already exists.")
             });
     }
 

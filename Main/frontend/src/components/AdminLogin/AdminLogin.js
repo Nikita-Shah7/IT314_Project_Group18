@@ -3,7 +3,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { admin as adminAxios } from '../AxiosCreate';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const loginBoxStyle = {
     width: '380px',
@@ -56,6 +57,7 @@ export default function AdminLogin() {
                     setLoading(false);
                     // enqueueSnackbar('Invalid Password !!', { variant: 'error' });
                     setPasswd('');
+                    toast.error("Password is incorrect.");
                 } else {
                     setLoading(false);
                     // enqueueSnackbar('Admin Logged In successfully', { variant: 'success' });
@@ -64,6 +66,7 @@ export default function AdminLogin() {
                     // Here, i store the accessToken in localStorage to access it from "deleteBook" route
                     // However, it is not a good practice to do so
                     localStorage.setItem("accessToken", response.data.accessToken)
+                    toast.success("Admin login successful.");
                     navigate('/');
                 }
             })
@@ -74,6 +77,7 @@ export default function AdminLogin() {
                 //     enqueueSnackbar(error.response.data.message, { variant: 'error' });
                 // else enqueueSnackbar('ERROR', { variant: 'error' });
                 console.log("ERROR MESSAGE ::", error)
+                toast.error("Admin name not found.");
                 // console.log("ERROR MESSAGE ::", error.response.data.message)
             });
     }

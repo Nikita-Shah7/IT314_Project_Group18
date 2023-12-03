@@ -81,7 +81,7 @@ export default function AdminCategory() {
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
-            toast.error("Category is not created. Database error.");
+            toast.error("Category already exists.");
             });
     }
     
