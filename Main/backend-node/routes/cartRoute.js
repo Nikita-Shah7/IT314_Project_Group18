@@ -79,7 +79,7 @@ cartRouter.put("/:table_id", async (req, res) => {
             return res.status(400).json({ message: "All fields are mandatory !!" })
         }
         const { table_id } = req.params
-        const updateCart = await pool.query("UPDATE cart SET total_bill_amount = $1, date_time = $2, WHERE table_id = $3;", [req.body.total_bill_amount, req.body.date_time, table_id]);
+        const updateCart = await pool.query("UPDATE cart SET total_bill_amount = $1, date_time = $2 WHERE table_id = $3;", [req.body.total_bill_amount, req.body.date_time, table_id]);
 
         if (updateCart.rowCount == 0) {
             return res.status(404).json({ message: "Cart not found !!" })

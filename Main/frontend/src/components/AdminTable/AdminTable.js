@@ -112,6 +112,7 @@ export default function() {
                 < div className="row-ad">
                         <label htmlFor="title" >Availability Status :</label>
                     <select className="in-ad"  name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)}>
+                                       <option value="">Select availability status</option>
                                         <option value="Available">Available</option>
                                         <option value="Occupied">Occupied</option>
                     </select>
