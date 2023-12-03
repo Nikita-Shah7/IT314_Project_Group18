@@ -35,7 +35,7 @@ cartItemRouter.post("/", async (req, res) => {
 // get all CartItems ordered by table_id
 cartItemRouter.get("/", async (req, res) => {
     try {
-        const allCartItems = await pool.query(`SELECT*FROM cart_items ORDER BY table_id DESC, menu_name ASC;`);
+        const allCartItems = await pool.query(`SELECT*FROM cart_items ORDER BY table_id ASC, menu_name ASC;`);
         return res.status(200).json({
             message: "All CartItems received !!",
             count: allCartItems.rows.length,

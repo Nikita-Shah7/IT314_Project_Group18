@@ -16,6 +16,9 @@ categoryRouter.post("/", authenticateToken, async (req, res) => {
         const category_id = uuidv4();
         const newCategory = await pool.query("INSERT INTO category(category_id,\"categoryName\") VALUES($1,$2) ON CONFLICT (\"categoryName\") DO NOTHING",
             [category_id, req.body.categoryName]);
+        if (newCategory.rowCount == 0) {
+            res.status(500).json({ message: "Category already exists!!" });
+        }
         res.status(201).json({
             message: "Category created successfully !!",
             // data: newCategory

@@ -116,6 +116,13 @@ export default function Header() {
                     DinnTable
                   </Link>
                   <Link
+                    href="/adminorders"
+                    color="inherit"
+                    sx={{ m: 2, ...linkStyle }}
+                  >
+                    Orders
+                  </Link>
+                  <Link
                     href="/adminanalysis"
                     color="inherit"
                     sx={{ m: 2, ...linkStyle }}

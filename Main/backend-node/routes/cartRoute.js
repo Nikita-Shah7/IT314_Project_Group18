@@ -26,7 +26,7 @@ cartRouter.post("/", async (req, res) => {
 // get all carts ordered by date_time
 cartRouter.get("/", async (req, res) => {
     try {
-        const allCarts = await pool.query(`SELECT*FROM cart ORDER BY date_time DESC`);
+        const allCarts = await pool.query(`SELECT*FROM cart ORDER BY table_id ASC, date_time DESC`);
         return res.status(200).json({
             message: "All Carts received !!",
             count: allCarts.rows.length,

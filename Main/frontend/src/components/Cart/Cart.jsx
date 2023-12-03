@@ -10,13 +10,18 @@ import Automn_logo from "../../assets/Automn_logo.png"
 
 
 function Cart() {
+  const navigate = useNavigate();
+
+   if(!localStorage.getItem("table_id")) {
+       navigate('/menu');
+   }
+
   const [loading, setLoading] = useState(true)
   const [totalBillAmt, setTotalBillAmt] = useState(0);
   const [totalBillProfit, setTotalBillProfit] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsCnt, setCartItemsCnt] = useState(0);
 
-  const navigate = useNavigate();
   
   useEffect( () => {
     // console.log("nik in cart useeffect1");
@@ -81,6 +86,7 @@ function Cart() {
               console.log(response)
               console.log("razorpay_payment_ID:: ",response.razorpay_payment_id)
               alert("Payment Successful!!");
+              localStorage.setItem("Payment",true);
               navigate("/feedback");
             },
             timeout: 120,   // pop up closes after 2min
@@ -106,6 +112,7 @@ function Cart() {
       <div className="foodcart">
         <h1>Food Cart</h1>
       </div>
+      {(!localStorage.getItem("Payment") && cartItems.length > 0) ? (
     <div className="cart1">
       <div style={{width: '70%', float:'right'}} className="flex1">
       <div className="cart">
@@ -121,7 +128,6 @@ function Cart() {
       </div>
       </div>
       <div style={{width: '30%', height: '50vh', float:'right'}} className="flex2">
-      {cartItems.length > 0 ? (
         <div className="checkout">
           <div className = 'totals'>
           <div className="flexrow">
@@ -148,11 +154,11 @@ function Cart() {
           </button>
           </div>
         </div>
+    </div>
+    </div>
       ) : (
         <h1 style={{color: '#942D2D'}}> Your Shopping Cart is Empty</h1>
       )}
-    </div>
-    </div>
     </div>
   );
 };
