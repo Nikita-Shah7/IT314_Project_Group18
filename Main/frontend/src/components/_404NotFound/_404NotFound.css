@@ -1,0 +1,36 @@
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px; /* Adding padding to the entire error page */
+  }
+  
+  .centered-div {
+    text-align: center;
+    padding: 20px; /* Adding padding around the image */
+  }
+  
+  .error-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 70vh;
+  }
+  
+  .content {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px; /* Adding padding around the content area */
+    font-family: 'Darker Grotesque';
+    color: #942D2D;
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .error-image {
+      max-height: 50vh;
+    }
+  }
+  
+  
