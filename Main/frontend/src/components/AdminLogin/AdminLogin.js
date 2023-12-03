@@ -93,7 +93,7 @@ export default function AdminLogin() {
                     onChange={(e) => setAdminName(e.target.value)}
                 />
                 <input
-                    type="text"
+                    type="password"
                     placeholder="Enter Your Password"
                     style={inputStyle}
                     value={password}

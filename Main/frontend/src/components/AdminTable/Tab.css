@@ -1,4 +1,5 @@
-.card-tab{
+/* Default styles for larger screens */
+.card-tab {
     margin: 25px auto 0px auto;
     width: 40%;
     height: 25%;
@@ -9,24 +10,27 @@
     border: 1px solid #942D2D;
     background-color: #EBF2D5;
 }
-.wrp-tab-2{
+
+.wrp-tab-2 {
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;   
+    justify-content: space-around;
     align-items: center;
 }
-.mrow-tab{
+
+.mrow-tab {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 100vm;
+    width: 100%;
     height: 100%;
 }
-.in-tab{
-    width: 484px;
-    height: 50px;
+
+.in-tab {
+    width: 55%;
+    height: 120%;
     margin: 0px;
     font-size: 15px;
     padding-left: 10px;
@@ -35,61 +39,63 @@
     font-family: 'Darker Grotesque';
     background: #FFF;
 }
-.row-tab{
+
+.row-tab {
     display: flex;
     flex-direction: row;
-    margin :10px auto;
+    margin: 10px 0px;
     align-items: center;
-    justify-content: center;
+    width: 90%;
+    justify-content: space-between;
     font-family: 'David Libre';
-    font-size: 25px;
+    font-size: 150%;
     font-weight: 800;
 }
-.im-tab{
+
+.im-tab {
     width: 75px;
     height: 75px;
 }
-.te-tab{
+
+.te-tab {
     color: #942D2D;
     font-family: 'Darker Grotesque';
     font-size: 30px;
     font-weight: 400;
     margin: 0px;
 }
-.cat-tab{
+
+.cat-tab,
+.cat2-tab {
     color: #942D2D;
     margin: 0px;
     font-family: 'Darker Grotesque';
     font-size: 15px;
     font-weight: 300;
 }
-.cat2-tab{
-    color: #942D2D;
-    margin: 0px;
-    font-family: 'Darker Grotesque';
-    font-size: 15px;
-    font-weight: 300;
-    margin:0px;
-}
-.wrp-tab{
+
+.wrp-tab {
     margin: 0px;
 }
-.modal-tab,.overlay-tab{
+
+.modal-tab,
+.overlay-tab {
     width: 100vw;
     height: 100vh;
 }
-.overlay-tab{
+
+.overlay-tab {
     width: 100vw;
     height: 100vh;
-    top : 0;
-    left : 0;
-    right : 0;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     position: fixed;
     background-color: rgba(42, 42, 42, 0.573);
 }
-.r-tab
-{
+
+.r-tab {
     background-color: #ff3232;
     color: rgb(255, 255, 255);
     font-weight: 600;
@@ -98,7 +104,8 @@
     width: 7px;
     height: 100%;
 }
-.g-tab{
+
+.g-tab {
     background-color: #15a94b;
     color: rgb(255, 255, 255);
     font-weight: 600;
@@ -107,64 +114,102 @@
     width: 6px;
     height: 100%;
 }
-.content-tab{
+
+.content-tab {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
-    top : 25%;
+    top: 20%;
     text-align: center;
     line-height: 1.4;
     background: #EBF2D5;
     width: 60%;
-    height: 50%;
-    padding: 14px 28px; 
-    border: 1px solid #942D2D; 
+    height: 60%;
+    padding: 14px 28px;
+    border: 1px solid #942D2D;
 }
-.but-tab{
+
+.but-tab {
     padding: 2px 10px 2px 10px;
     border-radius: 0px;
     width: 17%;
-    height:10%;
+    height: 10%;
     border: 1px solid #942D2D;
     background-color: #EBF2D5;
     color: #942D2D;
     font-family: 'Darker Grotesque';
     font-size: 20px;
 }
-.but-tab:hover{   
+
+.but-tab:hover {
     background-color: #942D2D;
     color: #EBF2D5;
 }
-.bu-fo-tab{
+
+.bu-fo-tab {
     width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-.but2-list-tab{
-    padding: 2px 10px 2px 10px;
+
+.but2-list-tab {
+    padding: 0px 10px 0px 10px;
     border-radius: 0px;
-    width: 30%;
-    height: 44px;
+    height: 115%;
     flex-shrink: 0;
     border: 1px solid #942D2D;
     color: #942D2D;
     background-color: #EBF2D5;
     font-family: 'Darker Grotesque';
-    font-size: 20px;
+    font-size: 125%;
 }
+
 .but2-list-tab:hover {
-    padding: 2px 10px 2px 10px;
+    padding: 0px 10px 0px 10px;
     border-radius: 0px;
-    width: 30%;
-    height: 44px;
+    height: 115%;
     flex-shrink: 0;
-    border: 0px;
     background-color: #942D2D;
     color: #EBF2D5;
     font-family: 'Darker Grotesque';
-    font-size: 20px;
     cursor: pointer;
+    font-size: 125%;
+}
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 800px) {
+    .card-tab {
+        width: 80%; /* Adjust the width for smaller screens */
+    }
+
+    .content-tab {
+        width: 80%; /* Adjust the width for smaller screens */
+        height: 60%; /* Adjust the height for smaller screens */
+        font-size: 14px; /* Decrease font size for smaller screens */
+    }
+
+    .row-tab {
+        font-size: 14px; /* Decrease font size for smaller screens */
+    }
+
+    .te-tab {
+        font-size: 24px; /* Decrease font size for smaller screens */
+    }
+    .r-tab,.g-tab{
+        width: 3px;
+    }
+    .cat-tab,
+    .cat2-tab {
+        font-size: 12px; /* Decrease font size for smaller screens */
+    }
+
+    .but-tab,
+    .but2-list-tab {
+        font-size: 16px; /* Decrease font size for smaller screens */
+    }
+
+    /* Add more responsive styles as needed */
 }

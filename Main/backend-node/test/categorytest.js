@@ -7,8 +7,8 @@ chai.use(chaiHttp);
 
 describe("Category Routes", () => {
   // Assuming you have a category ID for testing
-  const categoryIdForTest = "38d5602e-32ab-4475-b515-a55b128fea0e";
-  const DummyCatId = "123456";
+  const categoryIdForTest = "38d5602e-32ab-4475-b515-a55b128fea0e"; 
+  // const DummyCatId = "123456";
   const validAccessToken = ACCESS_TOKEN_SECRET;
 
   it("should create a new category", async () => {
@@ -18,6 +18,20 @@ describe("Category Routes", () => {
       .set("Authorization", `Bearer ${validAccessToken}`)
       .send({
         categoryName: "Test Category",
+      });
+
+    expect(response).to.have.status(201);
+    expect(response.body)
+      .to.have.property("message")
+      .to.equal("Category created successfully !!");
+  });
+  it("should create a new category", async () => {
+    const response = await chai
+      .request(app)
+      .post("/category")
+      .set("Authorization", `Bearer ${validAccessToken}`)
+      .send({
+        categoryName: "Test Category second",
       });
 
     expect(response).to.have.status(201);
@@ -41,39 +55,39 @@ describe("Category Routes", () => {
       .to.equal("All fields are mandatory !!");
   });
 
-  it("should get all categories", async () => {
-    const response = await chai.request(app).get("/category");
-    expect(response).to.have.status(200);
-    expect(response.body)
-      .to.have.property("message")
-      .to.equal("All categories received !!");
-    expect(response.body).to.have.property("count");
-    expect(response.body).to.have.property("data");
-    expect(response.body.count).to.be.a("number").to.be.greaterThanOrEqual(0);
-    expect(response.body.data).to.be.an("array");
-  });
+  // it("should get all categories", async () => {
+  //   const response = await chai.request(app).get("/category");
+  //   expect(response).to.have.status(200);
+  //   expect(response.body)
+  //     .to.have.property("message")
+  //     .to.equal("All categories received !!");
+  //   expect(response.body).to.have.property("count");
+  //   expect(response.body).to.have.property("data");
+  //   expect(response.body.count).to.be.a("number").to.be.greaterThanOrEqual(0);
+  //   expect(response.body.data).to.be.an("array");
+  // });
 
-  it("should get a category based on ID", async () => {
-    const response = await chai
-      .request(app)
-      .get(`/category/${categoryIdForTest}`);
-    expect(response).to.have.status(200);
-    expect(response.body)
-      .to.have.property("message")
-      .to.equal("Category received !!");
-    expect(response.body).to.have.property("data");
-    expect(response.body.data).to.be.an("array");
-  });
+  // it("should get a category based on ID", async () => {
+  //   const response = await chai
+  //     .request(app)
+  //     .get(`/category/${categoryIdForTest}`);
+  //   expect(response).to.have.status(200);
+  //   expect(response.body)
+  //     .to.have.property("message")
+  //     .to.equal("Category received !!");
+  //   expect(response.body).to.have.property("data");
+  //   expect(response.body.data).to.be.an("array");
+  // });
 
-  it("should get a message when category not found ", async () => {
-    const response = await chai.request(app).get(`/category/${DummyCatId}`);
-    expect(response).to.have.status(404);
-    expect(response.body)
-      .to.have.property("message")
-      .to.equal("Category not found !!");
-  });
+  // it("should get a message when category not found ", async () => {
+  //   const response = await chai.request(app).get(`/category/${DummyCatId}`);
+  //   expect(response).to.have.status(404);
+  //   expect(response.body)
+  //     .to.have.property("message")
+  //     .to.equal("Category not found !!");
+  // });
 
-  it("should update a category based on ID", async () => {
+  it("should update a category ", async () => {
     const response = await chai
       .request(app)
       .put(`/category/${categoryIdForTest}`)

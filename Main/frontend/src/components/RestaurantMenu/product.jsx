@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { cartItems as cartItemsAxios } from "../AxiosCreate";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const Product = (props) => {
   
   // console.log(props.data);
   const [loading, setLoading] = useState(true)
-
-  // popup
   const [isPopupOpen, setPopupOpen] = useState(false);
   const togglePopup = () => {
     setPopupOpen(!isPopupOpen);
@@ -25,17 +25,21 @@ export const Product = (props) => {
       "total_profit": props.data.profit,
       "date_time": new Date().toISOString()
     }
-    // console.log(data)
+    
     await cartItemsAxios.post(`/`,data)
     .then( (response) => {
-      isPopupOpen(false);
       setLoading(false);
+      if (response.status === 201) {
+        toast.success("Item added to Cart");
+      } 
     })
     .catch( (error) => {
-      console.log("ERROR MESSAGE ::", error)
+      // console.log("ERROR MESSAGE ::", error)
       setLoading(false);
+      toast.error("Item is already added in the cart. ");
     });
   }
+  
 
   return (
     <div>

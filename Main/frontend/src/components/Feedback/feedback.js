@@ -4,7 +4,8 @@ import { FaStar } from "react-icons/fa";
 import image from './flower.png';
 import {feedback as feedbackAxios} from '../AxiosCreate.jsx';
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function Feedback() {
 
@@ -52,11 +53,13 @@ function Feedback() {
     }
     await feedbackAxios.post('/', data)
       .then( () => {
-        setLoading(false)
+        setLoading(false);
+        toast.success("Feedback received.");
       })
       .catch((error) => {
         console.log("ERROR MESSAGE ::", error)
         setLoading(false);
+        toast.error("Feedback not received.");
       });
   }
 

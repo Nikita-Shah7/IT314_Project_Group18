@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import {table as tableAxios} from '../AxiosCreate';
 import './AdminTab.css'
 import Table from './Table';
@@ -77,64 +78,58 @@ export default function() {
             console.log([response.data][0].message);
             setModal(!modal)
             setLoading(false);
+            if(response.status===201){
+                toast.success("Table created successfully");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Database error. Table can't be created.")
             });
     }
 
     return(
-    <div className='adm-tab'>
-        <div className="addi-tab">
-            <div className='w-tab'>
-                <h2 className='ti-tab'>Tables : </h2>
-                <button className="but-list-tab" onClick={toggleModal}>Add DinnTable</button>
+    <div className='adm-ad'>
+        <div className="addi-ad">
+            <div className='w-ad'>
+                <h2 className='ti-ad'>Tables </h2>
+                <button className="but-list-ad" onClick={toggleModal}>Add DinnTable</button>
             </div>
         </div>
-        { modal ? (
-            <div className='overlay-tab' onClick={toggleModal}>
-                <div className='content-ta' onClick={(event) => event.stopPropagation()} >
-                <form className='mrow-tab' onSubmit={addTable}>
-                <div className="row-tab">
-                    <div >
-                        <label htmlFor="title" ><p>Table No. : </p></label>
-                    </div>
-                    <div>
-                    <input type="number" className="in-ad" name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
-                    </div>
+        { modal&&(
+            <div className='overlay-ad' onClick={toggleModal}>
+                <div className='content-ad' onClick={(event) => event.stopPropagation()} >
+                <form className='mrow-ad' onSubmit={addTable}>
+                <div className="row-ad">
+                        <label htmlFor="title" >Table No. : </label>
+                    <input type="number" className='in-ad' name="table_id" required value={tableid} onChange={(e) => setTableid(e.target.value)} />
                 </div>
-                <div className="row-tab">
-                    <div >
-                        <label htmlFor="title" ><p>Capacity : </p></label>
-                    </div>
-                    <div>
-                    <input type="number" className="in-ad" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
-                    </div>
+                <div className="row-ad">
+                    <label htmlFor="title" >Capacity :</label>
+                    <input type="number"  className="in-ad" name="capacity" required value={capacity} onChange={(e) => setCapacity(e.target.value)} />
                 </div>
-                <div className="row-tab">
-                    <div >
-                        <label htmlFor="title" ><p>Availability Status : </p></label>
-                    </div>
-                    <div>
-                    <input type="text" className="in-ad" name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)} />
-                    </div>
+                < div className="row-ad">
+                        <label htmlFor="title" >Availability Status :</label>
+                    <select className="in-ad"  name="avail_stat" required value={availabilityStatus} onChange={(e) => setAvailabilityStatus(e.target.value)}>
+                                        <option value="Available">Available</option>
+                                        <option value="Occupied">Occupied</option>
+                    </select>
                 </div>
-                <div className='bu-fo-tab'>
-                    <button className="but2-list-tab" type="submit">ADD</button>
-                    <button className="but2-list-tab" onClick={toggleModal}>CLOSE</button>
+                <div className='bu-fo-ad'>
+                    <button className="but2-list-ad" type="submit">ADD</button>
+                    <button className="but2-list-ad" onClick={toggleModal}>CLOSE</button>
                 </div>
             </form>
                 </div>
-        </div>) : (
-            <section className="item-list">
+        </div>)}
+            <section className="item-list-ad">
             {
                 dinnTable.map( (table) => (
                     <Table key={table.table_id} data={table} dinnTableCnt={dinnTableCnt} setDinnTableCnt={setDinnTableCnt} />
                   ))
             }
             </section>
-        )}    
         </div>
     )
 }

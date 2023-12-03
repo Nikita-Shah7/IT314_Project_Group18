@@ -20,7 +20,9 @@ import AdminTable from './components/AdminTable/AdminTable'
 import Reviewlist from "./components/Reviews/Reviewlist";
 import Analysis from './components/AdminAnalysis/Analysis';
 import Orders from './components/AdminOrders/Orders';
-import UserSignIn from './components/Login/MainContentSignIn'
+import UserSignIn from './components/Login/MainContentSignIn';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -28,7 +30,9 @@ function App() {
 
   return (
     <div style={{'backgroundColor': '#EBF2D5'}}>
+            <ToastContainer />
           <Router>
+
             <Routes>
               <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
               <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />

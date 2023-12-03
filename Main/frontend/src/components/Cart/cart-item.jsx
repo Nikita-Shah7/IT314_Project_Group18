@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { cartItems as cartItemsAxios } from "../AxiosCreate";
 import { cart as cartAxios } from "../AxiosCreate";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CartItem = (props) => {
   // console.log(props.data)
@@ -56,10 +58,15 @@ export const CartItem = (props) => {
     .then( (response) => {
       props.setCartItemsCnt(props.cartItemsCnt-1);      
       setLoading(false);
+      if (response.status === 200) {
+        toast.success("Item removed from Cart");
+      } 
+
     })
     .catch( (error) => {
       console.log("ERROR MESSAGE ::", error)
       setLoading(false);
+      toast.success("Item can't be removed from Cart because of database error.");
     });
   }
 

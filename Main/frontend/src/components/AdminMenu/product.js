@@ -1,12 +1,15 @@
-import React,{ useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {restaurantMenu as menuAxios} from '../AxiosCreate';
-import './Items.css'
-
+import './Items.css';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { restaurantMenu as menuAxios, category as categoryAxios } from '../AxiosCreate';
 export default function Product(props) {
 
     // console.log(props.data)
     const [loading, setLoading] = useState(true);
+    const [categories, setCategories] = useState([]);
     const [menuName, setMenuName] = useState(props.data.menu_name);
     const [category, setCategory] = useState(props.data.categoryName);
     const [description, setDescription] = useState(props.data.description);
@@ -18,7 +21,19 @@ export default function Product(props) {
     const toggleModal = () => {
         setModal(!modal)
     }
-
+    useEffect(() => {
+        setLoading(true);
+        categoryAxios
+            .get('/')
+            .then((response) => {
+                setCategories(response.data.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log('ERROR MESSAGE ::', error);
+                setLoading(false);
+            });
+    }, []);
     const handleImageChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
@@ -69,6 +84,9 @@ export default function Product(props) {
             props.setMenuItemsCnt(props.menuItemsCnt+1);
             props.setMenuItemsCnt(props.menuItemsCnt-1);
             setLoading(false);
+            if(response.status===200){
+                toast.success("MenuItem edited successfully ");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
@@ -98,83 +116,71 @@ export default function Product(props) {
             console.log([response.data][0].message);
             props.setMenuItemsCnt(props.menuItemsCnt-1);
             setLoading(false);
+            if(response.status===200){
+                toast.success("MenuItem deleted successfully ");
+            }
             })
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Database error, Can't delete.");
             });
     }
 
     return(
-        <div className='card-it'>
-            <img className='im-it' 
+        <div className='card-i'>
+            <img className='im-i' 
                 src={props.data.img}
                 alt={props.data.menu_name} />
-                <div className='wrp-it'>
-                    <h3 className='te-it'>{props.data.menu_name}</h3>
-                    <p className='cat-it'>{props.data.categoryName}</p>
+                <div className='wrp-i'>
+                    <h3 className='te-i'>{props.data.menu_name}</h3>
+                    <p className='cat-i'>{props.data.categoryName}</p>
                 </div>
-            <p className='cat2-it-1'><span className='te-it-1'>Price :</span> {props.data.price}$</p>
-            <p className='cat2-it-1'><span className='te-it-1'>Profit :</span> {props.data.profit}$</p>
-            <button className='but-it'onClick={toggleModal}>Edit</button>
-            <button className='but-it'onClick={deleteProduct}>Delete</button>
+            <p className='cat2-i-1'><span className='te-i-1'>Price :</span> {props.data.price}$</p>
+            <p className='cat2-i-1'><span className='te-i-1'>Profit :</span> {props.data.profit}$</p>
+            <button className='but-i'onClick={toggleModal}>Edit</button>
+            <button className='but-i'onClick={deleteProduct}>Delete</button>
             {modal && (
          
-         <div className='overlay-it' onClick={toggleModal}>
-             <div className='content-it' onClick={(event) => event.stopPropagation()} >
-             <form className='mrow-it' onSubmit={editProduct}>
-             <div className="row-it">
-                 <div>
-                     <label htmlFor="title" ><p>Item Name : </p></label>
-                 </div>
-                 <div>
-                    <input type="text" className="in-it" name="menu_name" required value={menuName} onChange={(e) => setMenuName(e.target.value)} />
-                 </div>
+         <div className='overlay-i' onClick={toggleModal}>
+             <div className='content-i' onClick={(event) => event.stopPropagation()} >
+             <form className='mrow-i' onSubmit={editProduct}>
+             <div className="row-i">
+                     <label htmlFor="title" >Item Name :</label>
+                    <input type="text" className="in-i" name="menu_name" required value={menuName} onChange={(e) => setMenuName(e.target.value)} />
              </div>
-             <div className="row-it">
-                 <div>
-                     <label htmlFor="title"><p>Category Name : </p></label>
-                 </div>
-                 <div>
-                     <input type="text" className="in-it" name="categoryName" required value={category} onChange={(e) => setCategory(e.target.value)} />
-                 </div>
+             <div className="row-i">
+                     <label htmlFor="title">Category Name :</label>
+                     {/* Use a dropdown for category selection */}
+                     <select className="in-a" name="categoryName" required value={category} onChange={(e) => setCategory(e.target.value)}>
+                                    <option value="">Select Category</option>
+                                    {categories.map((cat) => (
+                                        <option key={cat.category_id} value={cat.categoryName}>
+                                            {cat.categoryName}
+                                        </option>
+                                    ))}
+                                </select>
              </div>
-             <div className="row-it">
-                 <div>
-                     <label htmlFor="author"><p>Short Description : </p></label>
-                 </div>
-                 <div >
-                     <input type="text" className="in-it" name="description" required value={description} onChange={(e) => setDescription(e.target.value)} />
-                 </div>
+             <div className="row-i">
+                     <label htmlFor="author">Short Description :</label>
+                     <input type="text" className="in-i" name="description" required value={description} onChange={(e) => setDescription(e.target.value)} />
              </div>
-             <div className="row-it">
-                 <div>
-                     <label htmlFor="img"><p>Image URL : </p></label>
-                 </div>
-                 <div>
+             <div className="row-i">
+                     <label htmlFor="img">Image URL :</label>
                         {/* <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} /> */}
-                        <input type="text" className="in-ad" name="img" value={img}/>
-                 </div>
+                        <input type="text" className="in-i" name="img" value={img}/>
              </div>
-             <div className="row-it">
-                 <div >
-                     <label htmlFor="content" ><p>Price :</p></label>
-                 </div>
-                 <div>
-                 <input type="text" className="in-it" name="price" required value={price} onChange={(e) => setPrice(e.target.value)} />
-                 </div>
+             <div className="row-i">
+                     <label htmlFor="content" >Price :</label>
+                 <input type="number" className="in-i" name="price" required value={price} onChange={(e) => setPrice(e.target.value)} />
              </div>
-             <div className="row-it">
-                 <div>
-                     <label htmlFor="content" ><p>Profit :</p></label>
-                 </div>
-                 <div >
-                    <input type="text" className="in-it" name="profit" required value={profit} onChange={(e) => setProfit(e.target.value)} />
-                 </div>
+             <div className="row-i">
+                     <label htmlFor="content" >Profit :</label>
+                    <input type="number" className="in-i" name="profit" required value={profit} onChange={(e) => setProfit(e.target.value)} />
              </div>
-             <div>
-                 <button className="but-it" type="submit">Edit</button>
-                 <button className="but-it" onClick={toggleModal}>CLOSE</button>
+             <div className='bu-fo-i'>
+                 <button className="but-i-2" type="submit">Edit</button>
+                 <button className="but-i-2" onClick={toggleModal}>CLOSE</button>
              </div>
          </form>
              </div>
