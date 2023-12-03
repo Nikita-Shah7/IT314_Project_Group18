@@ -123,6 +123,14 @@
     font-family: 'Darker Grotesque';
     font-size: 125%;
 }
+/* Add this to your CSS stylesheet */
+
+.error-message-small {
+    font-size: 12px; /* Adjust the font size as needed */
+    color: red;
+    margin-top: 5px; /* Add margin for spacing */
+  }
+  
 .but2-list-ad {
     padding: 0px 10px 0px 10px;
     border-radius: 0px;
