@@ -91,6 +91,7 @@ export default function Product(props) {
             .catch((error) => {
             console.log("ERROR MESSAGE ::", error)
             setLoading(false);
+            toast.error("Menu item name already exists");
             });
     }
 
