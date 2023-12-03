@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
@@ -6,15 +7,17 @@ import "./Cart.scss";
 import { cartItems as cartItemsAxios } from "../AxiosCreate";
 import { cart as cartAxios } from "../AxiosCreate";
 import {RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET} from '../../config';
-import Automn_logo from "../../assets/Automn_logo.png"
+import Automn_logo from "../../assets/Automn_logo.png";
+import Button from '@mui/material/Button';
+import Typography from "@mui/material/Typography";  
 
 
 function Cart() {
-  const navigate = useNavigate();
 
-   if(!localStorage.getItem("table_id")) {
-       navigate('/menu');
-   }
+  let nav = useNavigate();
+  function navigatetoMenu() {
+    nav('/menu')
+  }
 
   const [loading, setLoading] = useState(true)
   const [totalBillAmt, setTotalBillAmt] = useState(0);
@@ -22,6 +25,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsCnt, setCartItemsCnt] = useState(0);
 
+  const navigate = useNavigate();
   
   useEffect( () => {
     // console.log("nik in cart useeffect1");
@@ -86,7 +90,6 @@ function Cart() {
               console.log(response)
               console.log("razorpay_payment_ID:: ",response.razorpay_payment_id)
               alert("Payment Successful!!");
-              localStorage.setItem("Payment",true);
               navigate("/feedback");
             },
             timeout: 120,   // pop up closes after 2min
@@ -106,62 +109,88 @@ function Cart() {
         pay.open();
     }
 }
-
-  return (
-    <div style={{backgroundColor: '#EBF2D5'}}>
-      <div className="foodcart">
-        <h1>Food Cart</h1>
-      </div>
-      {(!localStorage.getItem("Payment") && cartItems.length > 0) ? (
-    <div className="cart1">
-      <div style={{width: '70%', float:'right'}} className="flex1">
-      <div className="cart">
-        {cartItems.map( (product) => {
-            return <CartItem key={product.menu_name} item={product} 
-              cartItemsCnt={cartItemsCnt} 
-              setCartItemsCnt={setCartItemsCnt} 
-              totalBillAmt={totalBillAmt} 
-              setTotalBillAmt={setTotalBillAmt}
-              totalBillProfit={totalBillProfit}
-              setTotalBillProfit={setTotalBillProfit} />;
-        })}
-      </div>
-      </div>
-      <div style={{width: '30%', height: '50vh', float:'right'}} className="flex2">
-        <div className="checkout">
-          <div className = 'totals'>
-          <div className="flexrow">
-            <div style={{marginTop: '35px'}}>Subtotal:</div>
-            <div style={{marginLeft: '160px', marginTop: '35px'}}>  ₹{totalBillAmt} </div>
-          </div>
-          <div className="flexrow">
-            <div>Tax(5%):</div>
-            <div style={{marginLeft: '186px'}}>  ₹{totalBillAmt*0.05} </div>
-          </div>
-          <div className="flexrow">
-            <div>Total:</div>
-            <div style={{marginLeft: '175px'}}>  ₹{totalBillAmt*1.05} </div>
-          </div>
-          </div>
-          <div className='checkingout'>
-          <button onClick={() => navigate("/menu")}> Menu </button>
-          <button style={{marginLeft: '30px'}}
-            // onClick={handleCheckout}
-            onClick={handleCheckout}
-          >
-            {" "}
-            Checkout{" "}
-          </button>
-          </div>
+return (
+  <div style={{backgroundColor: '#EBF2D5'}}>
+    <div className="foodcart">
+      <h1>Food Cart</h1>
+    </div>
+    {cartItems.length > 0 ? (
+  <div className="cart1">
+    <div className="flex1">
+    <div className="cart">
+      {cartItems.map( (product) => {
+          return <CartItem key={product.menu_name} item={product} 
+            cartItemsCnt={cartItemsCnt} 
+            setCartItemsCnt={setCartItemsCnt} 
+            totalBillAmt={totalBillAmt} 
+            setTotalBillAmt={setTotalBillAmt}
+            totalBillProfit={totalBillProfit}
+            setTotalBillProfit={setTotalBillProfit} />;
+      })}
+    </div>
+    </div>
+    <div className="flex2">
+      <div className="checkout">
+        <div className = 'totals'>
+        <div className="flexrow">
+          <div style={{marginLeft: '10%'}}>Subtotal:</div>
+          <div style={{marginLeft: '40%'}}>  ₹{totalBillAmt} </div>
         </div>
-    </div>
-    </div>
-      ) : (
-        <h1 style={{color: '#942D2D'}}> Your Shopping Cart is Empty</h1>
-      )}
-    </div>
-  );
+        <div className="flexrow">
+          <div style={{marginLeft: '10%'}}>Tax(5%):</div>
+          <div style={{marginLeft: '40%'}}>  ₹{totalBillAmt*0.05} </div>
+        </div>
+        <div className="flexrow">
+          <div style={{marginLeft: '10%', marginBottom: '5%'}}>Total:</div>
+          <div style={{marginLeft: '45%'}}>  ₹{totalBillAmt*1.05} </div>
+        </div>
+        </div>
+        <div className='checkingout'>
+        <button onClick={() => navigate("/menu")}> Menu </button>
+        <button style={{marginLeft: '30px'}}
+          // onClick={handleCheckout}
+          onClick={handleCheckout}
+        >
+          {" "}
+          Checkout{" "}
+        </button>
+        </div>
+      </div>
+      </div>
+      </div>
+    ) : (
+      <div>
+      <h1 className="emptycart" style={{color: '#942D2D'}}> Your cart is like a table waiting to be filled with delicious food.</h1>
+      <Button
+                className="viewMenu"
+                onClick={navigatetoMenu}
+                 color="primary"
+                
+                Width = {10}
+                sx={{
+                  marginLeft:'45%',
+                  marginBottom:'25%',
+                  color: "#FFF", 
+                  bgcolor: "#942D2D",
+                  fontFamily: "Darker Grotesque", // Set font-family  
+                  hoverColor: "#000",
+                  borderRadius: '0px',
+                  ":hover": {
+                    bgcolor: '#EBF2D5',
+                    color: '#942D2D',
+                    borderColor: '#FFF',
+                    borderWidth: '10px'
+                  } 
+                }
+              }
+              > 
+              
+                <Typography fontSize={20} >View Menu</Typography>
+              </Button>
+              </div>
+    )}
+  </div>
+);
 };
 
 export default Cart;
-

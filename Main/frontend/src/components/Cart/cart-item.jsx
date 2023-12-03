@@ -72,8 +72,7 @@ export const CartItem = (props) => {
 
   return (
     <div className="cartItem">
-      <img src="" />
-      <div style={{width: '60%', float:'left'}} className="description">
+      <div className="description">
         <p>
           <b style={{marginTop: '50%'}} className="itemname">{menu_name}</b>
         </p>
@@ -86,7 +85,7 @@ export const CartItem = (props) => {
             value={quantity}
           />
           <button onClick={() => setQuan(quan+1)}> + </button>
-          <button onClick={deleteCartItem}>x</button>
+          <button style={{marginLeft: '5%'}} onClick={deleteCartItem}>x</button>
         </div>
     </div>
   );
