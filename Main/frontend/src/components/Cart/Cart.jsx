@@ -80,13 +80,13 @@ function Cart() {
         var options = {
             key: RAZORPAY_KEY_ID,
             key_secret: RAZORPAY_KEY_SECRET,
-            amount: totalBillAmt * 100,
+            amount: totalBillAmt * 100 * 1.05,
             currency: "INR",
-            name: "Nik Pay",
-            description: "Pay Nik",
+            name: "Automn Pay",
+            description: "Pay Automn",
             image: Automn_logo,
             handler: function (response) {
-              console.log("nik in payment....success!!")
+              console.log("Automn in payment....success!!")
               console.log(response)
               console.log("razorpay_payment_ID:: ",response.razorpay_payment_id)
               alert("Payment Successful!!");
