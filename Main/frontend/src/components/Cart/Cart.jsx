@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 import { cartItems as cartItemsAxios } from "../AxiosCreate";
 import { cart as cartAxios } from "../AxiosCreate";
+import {RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET} from '../../config';
+import Automn_logo from "../../assets/Automn_logo.png"
 
 
 function Cart() {
@@ -59,6 +61,46 @@ function Cart() {
     // console.log("nik in empty useeffect");
   },[]);
 
+  const handleCheckout = (e) => {
+    e.preventDefault();
+    console.log("nik in payment")
+    if (totalBillAmt === "") {
+        alert("Please enter amount");
+    }
+    else {
+        var options = {
+            key: RAZORPAY_KEY_ID,
+            key_secret: RAZORPAY_KEY_SECRET,
+            amount: totalBillAmt * 100,
+            currency: "INR",
+            name: "Nik Pay",
+            description: "Pay Nik",
+            image: Automn_logo,
+            handler: function (response) {
+              console.log("nik in payment....success!!")
+              console.log(response)
+              console.log("razorpay_payment_ID:: ",response.razorpay_payment_id)
+              alert("Payment Successful!!");
+              navigate("/feedback");
+            },
+            timeout: 120,   // pop up closes after 2min
+            prefill: {
+                name: "Nik",
+                email: "",
+                contact: ""
+            },
+            notes: {
+                address: "",
+            },
+            theme: {
+                color: "#942D2D",
+            }
+        };
+        var pay = new window.Razorpay(options);
+        pay.open();
+    }
+}
+
   return (
     <div style={{backgroundColor: '#EBF2D5'}}>
       <div className="foodcart">
@@ -98,9 +140,8 @@ function Cart() {
           <div className='checkingout'>
           <button onClick={() => navigate("/menu")}> Menu </button>
           <button style={{marginLeft: '30px'}}
-            onClick={() => {
-              navigate("/checkout");
-            }}
+            // onClick={handleCheckout}
+            onClick={handleCheckout}
           >
             {" "}
             Checkout{" "}

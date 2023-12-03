@@ -97,13 +97,18 @@
     height: 50px;
     font-family: Darker Grotesque;
     border: none;
-    /* border-radius: 8px; */
+    border-radius: 8px;
     margin: auto;
     margin-top: 10px;
     cursor: pointer;
     border: 1px solid #942D2D;
     color: #942D2D;
     background-color: #EBF2D5;
+  }
+
+  button:hover {
+    color: #EBF2D5;
+    background-color: #942D2D;
   }
   
   .html {

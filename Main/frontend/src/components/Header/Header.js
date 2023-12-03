@@ -12,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./Header.css"
-import Automn_logo from "./Automn_logo.png"
+import Automn_logo from "../../assets/Automn_logo.png"
 
 export default function Header() {
   const textColor = "#982c2c";
