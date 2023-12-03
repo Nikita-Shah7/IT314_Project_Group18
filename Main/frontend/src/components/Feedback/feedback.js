@@ -53,8 +53,11 @@ function Feedback() {
     }
     await feedbackAxios.post('/', data)
       .then( () => {
-        setLoading(false);
+        setComments("");
+        setStarate1(0);
+        setStarate2(0);
         toast.success("Feedback received.");
+        setLoading(false);
       })
       .catch((error) => {
         console.log("ERROR MESSAGE ::", error)
@@ -109,9 +112,10 @@ function Feedback() {
       </div>
       <p> </p>
       <textarea
-        placeholder="Share your experience with us!"
-        style={styles.textarea} onChange={handleComment}
-      />
+        required value={comments}
+         placeholder="Share your experience with us!"
+         style={styles.textarea} onChange={handleComment}
+       > </textarea> 
       <p> </p>
       <button
         style={{
