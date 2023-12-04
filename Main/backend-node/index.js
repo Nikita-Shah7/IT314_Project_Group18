@@ -10,7 +10,7 @@ const feedbackRouter = require("./routes/feedbackRoute.js");
 const adminRouter = require("./routes/adminRoute.js");
 const cartRouter = require("./routes/cartRoute.js");
 const cartItemsRouter = require("./routes/cartItemsRoute.js");
-const userRouter = require("./routes/userRoute.js");
+// const userRouter = require("./routes/userRoute.js");
 // const ordersRouter = require("./routes/ordersRoute.js");
 // const paymentRouter = require("./routes/paymentRoute.js");
 
@@ -27,7 +27,7 @@ app.use("/feedback",feedbackRouter)
 app.use("/admin",adminRouter)
 app.use("/cart",cartRouter)
 app.use("/cart_items",cartItemsRouter)
-app.use("/users",userRouter)
+// app.use("/users",userRouter)
 // app.use("/orders",ordersRouter)
 // app.use("/payment",paymentRouter)
 
@@ -97,9 +97,9 @@ app.get('/', async (req, res) => {
                         total_profit INT NOT NULL,
                         date_time TIMESTAMP NOT NULL,
                         PRIMARY KEY (order_id, menu_name) );`);
-        const userRelation = await pool.query(`CREATE TABLE IF NOT EXISTS \"${RELATION10}\"(
-                        user_email VARCHAR PRIMARY KEY, 
-                        user_name VARCHAR NOT NULL);`);
+        // const userRelation = await pool.query(`CREATE TABLE IF NOT EXISTS \"${RELATION10}\"(
+        //                 user_email VARCHAR PRIMARY KEY, 
+        //                 user_name VARCHAR NOT NULL);`);
         return res.status(234).send("Welcome to PERN !!");        
     } catch (error) {
         console.log("ERROR MESSAGE ::", error.message)
