@@ -222,11 +222,12 @@ select#category {
   cursor: pointer;
 }
 
-.product-image {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+
+.popup-image img {
+  width: 25vw;
+  height: 35vh;
 }
+
 
 .individual-product .description {
   color: #942D2D;
@@ -355,12 +356,6 @@ select#category {
   }
 }
 
-.popup-image img {
-  width:25vw;
-  height: 35vh;
-}
-
-
 @media (max-width:500px) {
   
   .popup-image img{
@@ -376,7 +371,6 @@ select#category {
     height: 22vh;
   }
 }
-
 
 .popup-sidebar {
   width: auto;
