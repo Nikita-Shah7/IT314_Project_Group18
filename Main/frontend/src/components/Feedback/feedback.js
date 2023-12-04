@@ -5,9 +5,12 @@ import image from './flower.png';
 import {feedback as feedbackAxios} from '../AxiosCreate.jsx';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';   
+import LeaveTable from "../LeaveTable/LeaveTable.js";
 
-function Feedback() {
+
+export default function Feedback() 
+ {
 
   const [loading, setLoading] = useState(true);
   const [starate1, setStarate1] = useState(0);
@@ -15,9 +18,11 @@ function Feedback() {
   const [starate2, setStarate2] = useState(0);
   const [hoverFoodValue, setHoverFoodValue] = useState(undefined);
   const [comments, setComments] = useState("");
-  const stars = Array(5).fill(0);
+  const stars = Array(5).fill(0); 
 
-  const navigate = useNavigate();
+ 
+
+  const navigate = useNavigate(); 
   
   useEffect( () => {
     if(!localStorage.getItem("table_id")) {
@@ -68,6 +73,8 @@ function Feedback() {
 
 
   return (
+    <> 
+    <LeaveTable/>
     <div style={styles.container}>
       <h2 style={styles.title}>Feedback</h2>
       <div style={styles.ratingSectionsContainer}>
@@ -134,11 +141,11 @@ function Feedback() {
         <img src={image} alt="Flower_Image" style={styles.leftImage} />
       </div>
     </div>
+    </>
   );
-}
+} 
+ 
 
 
-export default Feedback;
-
-
+// export default Feedback;
 
