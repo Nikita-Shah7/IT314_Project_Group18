@@ -182,19 +182,19 @@ export default function () {
       </section>
 
       {/* Custom Error Bullet Point List */}
-      <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
-        <Modal.Header closeButton={false}>
+     <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
+        <Modal.Header closeButton={false} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
           <Modal.Title>Error</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ color: '#942D2D' }}>
+        <Modal.Body style={{ color: '#942D2D', backgroundColor: '#EBF2D5' }}>
           {errorModalMessages.map((message, index) => (
             <p key={index}>&#8226; {message}</p>
           ))}
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>
+        <Modal.Footer style={{backgroundColor: '#EBF2D5' }}>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
             Close
-          </Button>
+          </Button> 
         </Modal.Footer>
       </Modal>
     </div>

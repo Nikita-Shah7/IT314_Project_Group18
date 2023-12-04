@@ -6,7 +6,8 @@ import Product from './product';
 import AdminCategory from '../AdminCategory/AdminCategory'; // Import the AdminCategory component
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 export default function() {
 
     // console.log("nik in admin menu");
@@ -21,10 +22,28 @@ export default function() {
     const [menuName, setMenuName] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState(0);
-    const [profit, setProfit] = useState(0);
-    const [img, setImg] = useState("abc");
-
+    const [price, setPrice] = useState();
+    const [profit, setProfit] = useState();
+    const [img, setImg] = useState("");
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [errorModalMessages, setErrorModalMessages] = useState([]);
+    const toggleErrorModal = (messages) => {
+        setErrorModalMessages(messages);
+        setShowErrorModal(!showErrorModal);
+      };
+      const validateInput = () => {
+        const errors = [];
+    
+        if (price <= 0) {
+          errors.push('Price must greater or equal to zero');
+        }
+    
+        if (profit < 0 || profit > price ) {
+          errors.push('Profit must be between 0 and Price');
+        }
+    
+        return errors;
+      };
     useEffect(() => {
         setLoading(true)
         menuAxios.get('/')
@@ -56,6 +75,13 @@ export default function() {
     const [modal,setModal] = useState(false);
 
     const toggleModal = () => {
+        setMenuItemsCnt(menuItemsCnt + 1);
+            setMenuName("");
+            setCategory("");
+            setDescription("");
+            setPrice();
+            setProfit();
+            setImg("");
         setModal(!modal)
     }
 
@@ -89,14 +115,19 @@ export default function() {
             console.log("UNAUTHORIZED!!");
             return;
         }
+        const validationErrors = validateInput();
 
-        if(!img) img = "abc";
+    if (validationErrors.length > 0) {
+      setLoading(false);
+      toggleErrorModal(validationErrors);
+      return;
+    }
         const data = {
             menu_name: menuName,
             categoryName: category,
             description: description,
             price: price,
-            profit,
+            profit: profit,
             img: img
         }
         await menuAxios.post('/', data, {
@@ -110,8 +141,8 @@ export default function() {
             setMenuName("");
             setCategory("");
             setDescription("");
-            setPrice(0);
-            setProfit(0);
+            setPrice();
+            setProfit();
             setImg("");
             console.log([response.data][0].message);
             setModal(!modal)
@@ -161,8 +192,7 @@ export default function() {
                 </div>
                 <div className="row-a">
                         <label htmlFor="img">Image URL:</label>
-                        {/* <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} /> */}
-                        <input type="text" className="in-a" name="img" />
+                        <input type="text" className="in-ad" name="img" required value={img} onChange={(e) => setImg(e.target.value)} />
                 </div>
                 <div className="row-a">
                     <label htmlFor="content">Price :</label>
@@ -186,6 +216,21 @@ export default function() {
               ))
         }
         </section>
+        <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
+        <Modal.Header closeButton={false} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ color: '#942D2D', backgroundColor: '#EBF2D5' }}>
+          {errorModalMessages.map((message, index) => (
+            <p key={index}>&#8226; {message}</p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer style={{backgroundColor: '#EBF2D5' }}>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
+            Close
+          </Button> 
+        </Modal.Footer>
+      </Modal>
         </div>
     )
 }

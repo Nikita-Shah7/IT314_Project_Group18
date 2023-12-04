@@ -1,0 +1,137 @@
+/* CartItem.css */
+
+.cartItem {
+    display: flex;
+    background-color: #EBF2D5;
+    border: 2px solid #942D2D;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .itemname {
+    color: #942D2D;
+    font-family: 'Darker Grotesque';
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0px;
+  }
+  
+  .countHandler input[readonly] {
+    border: 0;
+    background-color: #EBF2D5;
+    color: #942D2D;
+    font-family: 'Darker Grotesque';
+    padding: 5px;
+    height: 30%;
+    width: 15%;
+    text-align: center;
+    line-height: 100%;
+    box-sizing: border-box;
+  }
+  
+  .countHandler .btn:hover {
+    background-color: #942D2D;
+    color: #EBF2D5;
+  }
+  
+  .countHandler .btn {
+    background-color: #EBF2D5;
+    color: #942D2D;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .description {
+    color: #942D2D;
+    font-family: Darker Grotesque;
+    font-size: 20px;
+    margin-top: 15px;
+    width: 60%;
+    margin-left: 5%;
+  }
+  
+  .countHandler {
+    font-size: 30px;
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .btn {
+    background-color: #942D2D;
+    color: #EBF2D5;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  .item2 {
+    color: #942D2D;
+    margin: 0px;
+    font-family: 'Darker Grotesque';
+    font-size: 15px;
+    font-weight: 300;
+}
+  /* Media Queries for Responsive Design */
+  
+/* Existing styles... */
+
+@media screen and (max-width: 600px) {
+    .countHandler {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .countHandler input[readonly] {
+      width: 70%;
+      font-size: 20px; /* Adjusted font size */
+    }
+  
+    .itemname {
+      font-size: 20px; /* Adjusted font size */
+    }
+  
+    .countHandler .btn .fas,
+    .fa-solid {
+      font-size: 10px;
+    }
+  
+    .countHandler .btn {
+      margin: 0px;
+    }
+  }
+  
+  @media screen and (min-width: 401px) and (max-width: 600px) {
+    .countHandler {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .countHandler input[readonly] {
+      width: 40%;
+    }
+  
+    .itemname {
+      font-size: 25px; /* Adjusted font size */
+    }
+  
+    .countHandler .btn .fas,
+    .fa-solid {
+      font-size: 15px; /* Adjusted font size */
+    }
+  }
+  
+  

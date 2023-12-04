@@ -4,21 +4,47 @@ import axios from 'axios';
 import './Items.css';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import { restaurantMenu as menuAxios, category as categoryAxios } from '../AxiosCreate';
 export default function Product(props) {
 
     // console.log(props.data)
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
-    const [menuName, setMenuName] = useState(props.data.menu_name);
+    const [menu_name, setMenuName] = useState(props.data.menu_name);
     const [category, setCategory] = useState(props.data.categoryName);
     const [description, setDescription] = useState(props.data.description);
     const [price, setPrice] = useState(props.data.price);
     const [profit, setProfit] = useState(props.data.profit);
     const [img, setImg] = useState(props.data.img);
-
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [errorModalMessages, setErrorModalMessages] = useState([]);
+    const toggleErrorModal = (messages) => {
+        setErrorModalMessages(messages);
+        setShowErrorModal(!showErrorModal);
+      };
+      const validateInput = () => {
+        const errors = [];
+    
+        if (price <= 0) {
+          errors.push('Price must greater or equal to zero');
+        }
+    
+        if (profit < 0 || profit > price ) {
+          errors.push('Profit must be between 0 and Price');
+        }
+    
+        return errors;
+      };
     const [modal,setModal] = useState(false);
     const toggleModal = () => {
+        setMenuName(props.data.menu_name);
+            setCategory(props.data.categoryName);
+            setDescription(props.data.description);
+            setPrice(props.data.price);
+            setProfit(props.data.profit);
+            setImg(props.data.img);
         setModal(!modal)
     }
     useEffect(() => {
@@ -62,13 +88,19 @@ export default function Product(props) {
             console.log("UNAUTHORIZED!!");
             return;
         }
+        const validationErrors = validateInput();
 
+        if (validationErrors.length > 0) {
+          setLoading(false);
+          toggleErrorModal(validationErrors);
+          return;
+        }
         const data = {
-            menu_name: menuName,
+            menu_name: menu_name,
             categoryName: category,
             description: description,
             price: price,
-            profit,
+            profit: profit,
             img: img
         }
         await menuAxios.put(`/${props.data.menu_id}`, data, {
@@ -148,7 +180,7 @@ export default function Product(props) {
              <form className='mrow-i' onSubmit={editProduct}>
              <div className="row-i">
                      <label htmlFor="title" >Item Name :</label>
-                    <input type="text" className="in-i" name="menu_name" required value={menuName} onChange={(e) => setMenuName(e.target.value)} />
+                    <input type="text" className="in-i" name="menu_name" required value={menu_name} onChange={(e) => setMenuName(e.target.value)} />
              </div>
              <div className="row-i">
                      <label htmlFor="title">Category Name :</label>
@@ -169,7 +201,7 @@ export default function Product(props) {
              <div className="row-i">
                      <label htmlFor="img">Image URL :</label>
                         {/* <input type="file" className="in-ad" name="img" onChange={(e) => handleImageChange(e)} /> */}
-                        <input type="text" className="in-i" name="img" value={img}/>
+                        <input type="text" className="in-i" name="img" required value={img} onChange={(e)=> setImg(e.target.value)}/>
              </div>
              <div className="row-i">
                      <label htmlFor="content" >Price :</label>
@@ -186,6 +218,21 @@ export default function Product(props) {
          </form>
              </div>
      </div>)}
+     <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
+        <Modal.Header closeButton={false} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ color: '#942D2D', backgroundColor: '#EBF2D5' }}>
+          {errorModalMessages.map((message, index) => (
+            <p key={index}>&#8226; {message}</p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer style={{backgroundColor: '#EBF2D5' }}>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
+            Close
+          </Button> 
+        </Modal.Footer>
+      </Modal>
         </div>
     )
 }

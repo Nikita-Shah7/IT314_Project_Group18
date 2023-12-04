@@ -3,7 +3,8 @@ import {table as tableAxios} from '../AxiosCreate';
 import './Tab.css';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 export default function AdminTable(props) {
 
     // console.log(props.data)
@@ -11,11 +12,30 @@ export default function AdminTable(props) {
     const [tableid, setTableid] = useState(props.data.table_id);
     const [capacity, setCapacity] = useState(props.data.capacity);
     const [availabilityStatus, setAvailabilityStatus] = useState(props.data.availability_status);
-
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [errorModalMessages, setErrorModalMessages] = useState([]);
     const [modal,setModal] = useState(false);
     const toggleModal = () => {
         setModal(!modal)
     }
+    const toggleErrorModal = (messages) => {
+        setErrorModalMessages(messages);
+        setShowErrorModal(!showErrorModal);
+      };
+      const validateInput = () => {
+        const errors = [];
+    
+        if (tableid <= 0 || tableid >= 50) {
+          errors.push('Table ID must be between 1 and 49');
+        }
+    
+        if (capacity <= 0 || capacity >= 20) {
+          errors.push('Capacity must be between 1 and 19');
+        }
+    
+        return errors;
+      };
+    
     const editTable = async(e) => {
         e.preventDefault();
 
@@ -29,7 +49,13 @@ export default function AdminTable(props) {
             console.log("UNAUTHORIZED!!");
             return;
         }
+        const validationErrors = validateInput();
 
+    if (validationErrors.length > 0) {
+      setLoading(false);
+      toggleErrorModal(validationErrors);
+      return;
+    }
         const data = {
             table_id: tableid,
             capacity: capacity,
@@ -129,7 +155,22 @@ export default function AdminTable(props) {
                 </div>
             </form>
                 </div>
-        </div>)}    
+        </div>)}
+        <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
+        <Modal.Header closeButton={false} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ color: '#942D2D', backgroundColor: '#EBF2D5' }}>
+          {errorModalMessages.map((message, index) => (
+            <p key={index}>&#8226; {message}</p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer style={{backgroundColor: '#EBF2D5' }}>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
+            Close
+          </Button> 
+        </Modal.Footer>
+      </Modal>    
         </div>
     )
 }
