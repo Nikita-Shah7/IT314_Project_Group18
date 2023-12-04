@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import './home.css';
 
 export default function Home(props) {
+  const isAdmin = localStorage.getItem("isAdminAuth") === "true";
   let navigate = useNavigate();
   function navigatetoMenu() {
-    navigate('/menu')
+    {!isAdmin ? navigate('/menu'): navigate('/adminmenu')}
   }
   return (
     <>
