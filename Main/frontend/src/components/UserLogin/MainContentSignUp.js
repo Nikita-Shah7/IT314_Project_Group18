@@ -57,15 +57,21 @@ export default function SignUpBox() {
 
     const validateEmail = (email) => {
         const emailRegex = /^[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        if (!email.trim()) {
+            setEmailError('Email cannot be empty');
+            toast.error("enter your email please.");
+            return false;
+        }
         const isValid = emailRegex.test(email);
         setEmailError(isValid ? '' : 'Invalid email address');
-        toast.error("Invalid email address");
+        if(!isValid)toast.error("Invalid email address");
         return isValid;
     };
 
     const validateName = (name) => {
         if (!name.trim()) {
             setNameError('Name cannot be empty');
+            toast.error("enter your name please.");
             return false;
         }
 
@@ -81,6 +87,9 @@ export default function SignUpBox() {
         if (isNameValid && isEmailValid) {
             setName('');
             setEmail('');
+            toast.success("User created successfully.");
+            toast.success("Now,login to continue.");
+            navigate('/signin');
         }
     };
 
