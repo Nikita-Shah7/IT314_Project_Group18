@@ -110,14 +110,21 @@ function Cart() {
     }
 }
 return (
-  <div style={{backgroundColor: '#EBF2D5'}}>
+  <div style={{
+    backgroundColor: '#EBF2D5',
+    minHeight: '800px',
+    '@media screen and (max-width: 700px) and (min-height: 400px)': {
+      minHeight: '400px'
+      // Add any additional styles for the media query here
+    }
+  }}>
     <div className="foodcart">
       <h1>Food Cart</h1>
     </div>
     {cartItems.length > 0 ? (
   <div className="cart1">
     <div className="flex1">
-    <div className="cart">
+    <div className="cart" style={{marginTop:'15px'}}>
       {cartItems.map( (product) => {
           return <CartItem key={product.menu_name} item={product} 
             cartItemsCnt={cartItemsCnt} 
