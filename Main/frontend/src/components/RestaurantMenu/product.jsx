@@ -45,13 +45,13 @@ export const Product = (props) => {
   return (
     <div>
       <div className="individual-product" key={props.data.menu_id}>
-        <div className="imagefit">
+      
         <img
           className="product-image"
           src={props.data.img}
           alt={props.data.menu_name}
           onClick={togglePopup}
-        /></div>{" "}
+        />{" "}
         <div className="description">
           <p style={{ marginTop: "5px" }}>
             <b>{props.data.menu_name}</b>
