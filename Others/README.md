@@ -139,6 +139,3 @@ Here's the link: https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/5fa1
 * 202101212 RAVAT NAITIK SUMANBHAI
 * 202101220 MEHTA JAHNAVI NAVNITRAY
 
-### Formated By:
-> Dhruvi Gohel (20210101188)
-

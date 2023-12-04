@@ -3,6 +3,7 @@ import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { table as tableAxios } from "../AxiosCreate";
 
 const styles = {
   popupContainer: {
@@ -30,10 +31,30 @@ const styles = {
 };
 
 const LeaveTable = () => {
+  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(true);
 
-  const handleClose = () => {
+  const vacantTable = async () => {
     setOpen(false);
+    setLoading(true)
+    const data = {
+      "table_id": localStorage.getItem("table_id"),
+      "capacity": 8,
+      "availability_status": "Available"
+    }
+
+    await tableAxios.put(`/${localStorage.getItem("table_id")}`, data)
+      .then((response) => {
+        // console.log([response.data][0].data)
+        localStorage.removeItem("table_id");
+        setLoading(false);
+        console.log("table vacant successfull..!!");
+      })
+      .catch((error) => {
+        console.log("ERROR MESSAGE ::", error)
+        setLoading(false);
+      });
+
   };
 
   // const handleYes = () => {
@@ -47,7 +68,7 @@ const LeaveTable = () => {
   // };
 
   return (
-    <Dialog sx={{ ...styles.popupContainer }} open={open} onClose={handleClose}>
+    <Dialog sx={{ ...styles.popupContainer }} open={open} onClose={vacantTable }>
       <Box
         sx={{
           ...styles.popupContent,
@@ -76,9 +97,9 @@ const LeaveTable = () => {
 
           <div>
             <Button
-              onClick={() => handleClose()}
+              onClick={() => vacantTable ()}
               color="secondary"
-              variant="contained" 
+              variant="contained"
               fullWidth
               sx={{
                 marginTop: "40px",
@@ -89,11 +110,11 @@ const LeaveTable = () => {
             >
               <Typography fontSize={20}>Yes, I am full now</Typography>
             </Button>
-            <Button 
-            href = "/menu"
+            <Button
+              href="/menu"
               // onClick={() => handleNo()}
               color="secondary"
-              variant="contained" 
+              variant="contained"
               fullWidth
               sx={{
                 marginTop: "20px",
@@ -102,7 +123,7 @@ const LeaveTable = () => {
                 bgcolor: "#000",
                 fontFamily: "Darker Grotesque", // Set font-family
               }}
-            > 
+            >
               <Typography fontSize={20}>No, continue ordering</Typography>
             </Button>
           </div>

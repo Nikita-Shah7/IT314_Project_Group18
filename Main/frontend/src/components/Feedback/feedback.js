@@ -62,6 +62,9 @@ export default function Feedback()
         setStarate1(0);
         setStarate2(0);
         toast.success("Feedback received.");
+        localStorage.removeItem("Payment");
+        console.log("feedback successfull!!");
+        navigate("/");
         setLoading(false);
       })
       .catch((error) => {

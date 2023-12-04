@@ -1,1 +1,3 @@
 Main/backend/backend/settings.py
+.DS_Store
+.vscode

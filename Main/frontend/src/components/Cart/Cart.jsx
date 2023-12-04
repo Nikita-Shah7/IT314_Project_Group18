@@ -90,6 +90,7 @@ function Cart() {
               console.log(response)
               console.log("razorpay_payment_ID:: ",response.razorpay_payment_id)
               alert("Payment Successful!!");
+              localStorage.setItem("Payment",true);
               navigate("/feedback");
             },
             timeout: 120,   // pop up closes after 2min
@@ -121,7 +122,9 @@ return (
     <div className="foodcart">
       <h1>Food Cart</h1>
     </div>
-    {cartItems.length > 0 ? (
+    {
+      // localStorage.getItem("Payment") === "false" && 
+          (cartItems.length > 0) ? (
   <div className="cart1">
     <div className="flex1">
     <div className="cart" style={{marginTop:'15px'}}>

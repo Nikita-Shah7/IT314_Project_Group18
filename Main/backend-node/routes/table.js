@@ -95,7 +95,7 @@ tableRouter.get("/:id", async (req, res) => {
 
 tableRouter.put("/:id", async (req, res) => {
     try {
-        if (!req.body.table_id || !req.body.capacity || !req.body.availability_status) {
+        if (!req.body.table_id || !req.body.availability_status) {
             return res.status(400).json({ message: "All fields are mandatory !!" })
         }
         const { id } = req.params
