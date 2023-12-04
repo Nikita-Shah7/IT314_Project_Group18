@@ -12,7 +12,6 @@ const Orders = () => {
    if(!localStorage.getItem("isAdminAuth")) {
        navigate('/adminlogin');
    }
-
   const [loading, setLoading] = useState(true)
   const [totalBillAmt, setTotalBillAmt] = useState(0);
   // const [totalBillProfit, setTotalBillProfit] = useState([]);
