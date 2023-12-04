@@ -64,6 +64,11 @@ export default function SignUpBox() {
     };
 
     const validateName = (name) => {
+        if (!name.trim()) {
+            setNameError('Name cannot be empty');
+            return false;
+        }
+
         const hasNoNumbers = !/[0-9]/.test(name);
         setNameError(hasNoNumbers ? '' : 'Name cannot contain numbers');
         return hasNoNumbers;
