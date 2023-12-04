@@ -200,12 +200,22 @@ select#category {
 .individual-product img {
   width: 35vh;
   height: 35vh;
-  border-radius: 50%;
+}
+
+.imagefit {
+  height: 200px;
+  width: 200px;
 }
 
 .product-image:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.product-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 .individual-product .description {

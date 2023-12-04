@@ -5,7 +5,7 @@
 
 .menu-icon {
     cursor: pointer;
-    font-size: 24px;
+    font-size: 20px;
     margin: 0px;
     color: #942D2D;
 }
@@ -14,7 +14,11 @@
     cursor: pointer;
 }
 
-@media (max-width: 780px) {
+.navbar {
+    font-size: '20px';
+}
+
+@media (max-width: 900px) {
     .logout {
         width: 150px;
     }
@@ -25,6 +29,12 @@
         color: #942D2D;
         margin-right: 0px;
       }
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        font-size: 15px;
+    }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');

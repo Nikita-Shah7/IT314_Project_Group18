@@ -80,7 +80,7 @@ export default function Header() {
             </Box>
           ) : (
             // Navigation links for larger screens
-            <Box
+            <Box className='navbar'
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -230,6 +230,9 @@ export default function Header() {
               </ListItem>
               <ListItem button onClick={() => navigate("/adminfeedback")}>
                 <ListItemText primary="Feedbacks" />
+              </ListItem>
+              <ListItem button onClick={() => navigate("/adminorders")}>
+                <ListItemText primary="OrderDetails" />
               </ListItem>
             </>
           ) : (
