@@ -71,6 +71,8 @@ export default function SignUpBox() {
 
         if (isEmailValid) {
             setEmail('');
+            toast.success("Login successfully..")
+            navigate('/');
         }
     };
 
