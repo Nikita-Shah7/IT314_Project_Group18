@@ -73,15 +73,14 @@ app.get('/', async (req, res) => {
                         item_price INT NOT NULL, 
                         total_price INT NOT NULL, 
                         item_profit INT NOT NULL,
-                        total_profit INT NOT NULL, 
+                        total_profit INT NOT NULL,
                         date_time TIMESTAMP WITH TIME ZONE NOT NULL,
                         PRIMARY KEY (table_id, menu_name) );`);
         const cartRelation = await pool.query(`CREATE TABLE IF NOT EXISTS ${RELATION7}(
                         table_id INT NOT NULL PRIMARY KEY REFERENCES \"table\"(table_id),
                         total_bill_amount INT NOT NULL,
                         total_bill_profit INT NOT NULL,
-                        date_time TIMESTAMP NOT NULL
-        );`);
+                        date_time TIMESTAMP NOT NULL );`);
         const paymentRelation = await pool.query(`CREATE TABLE IF NOT EXISTS ${RELATION8}(
                         order_id VARCHAR PRIMARY KEY,
                         total_bill_amount INT NOT NULL,

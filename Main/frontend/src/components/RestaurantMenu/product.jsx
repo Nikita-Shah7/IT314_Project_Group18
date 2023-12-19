@@ -6,7 +6,7 @@ import './RestaurantMenu.scss'
 
 
 export const Product = (props) => {
-  
+
   // console.log(props.data);
   const [loading, setLoading] = useState(true)
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -14,7 +14,7 @@ export const Product = (props) => {
     setPopupOpen(!isPopupOpen);
   };
 
-  const addToCart = async() => {
+  const addToCart = async () => {
     let data = {};
     data = {
       "table_id": parseInt(localStorage.getItem("table_id")),
@@ -26,39 +26,40 @@ export const Product = (props) => {
       "total_profit": props.data.profit,
       "date_time": new Date().toISOString()
     }
-    
-    await cartItemsAxios.post(`/`,data)
-    .then( (response) => {
-      setLoading(false);
-      if (response.status === 201) {
-        toast.success("Item added to Cart");
-      } 
-    })
-    .catch( (error) => {
-      // console.log("ERROR MESSAGE ::", error)
-      setLoading(false);
-      toast.error("Item is already added in the cart.");
-    });
+
+    await cartItemsAxios.post(`/`, data)
+      .then((response) => {
+        setLoading(false);
+        if (response.status === 201) {
+          toast.success("Item added to Cart");
+        }
+      })
+      .catch((error) => {
+        // console.log("ERROR MESSAGE ::", error)
+        setLoading(false);
+        toast.error("Item is already added in the cart.");
+      });
   }
-  
+
 
   return (
     <div>
       <div className="individual-product" key={props.data.menu_id}>
-        <div className="imagefit">
-        <img
-          className="product-image"
-          src={props.data.img}
-          alt={props.data.menu_name}
-          onClick={togglePopup}
-        /></div>{" "}
+        <div className="imagefit image-container">
+          <img
+            className="product-image"
+            src={props.data.img}
+            alt={props.data.menu_name}
+            onClick={togglePopup}
+          />
+        </div>
         <div className="description">
           <p style={{ marginTop: "5px" }}>
             <b>{props.data.menu_name}</b>
           </p>
           <p style={{ marginTop: "1px", marginBottom: "5px" }}>₹{props.data.price}</p>
         </div>
-        { !localStorage.getItem("table_id") ?(<></>) :
+        {!localStorage.getItem("table_id") ? (<></>) :
           (<div className="cartbutton">
             <button className="addToCartBttn" onClick={() => addToCart()}>
               Add To Cart
@@ -71,7 +72,7 @@ export const Product = (props) => {
         <div className="popup-container">
           <div className="popup">
             <div className="popup-content ">
-              <div className="popup-image">
+              <div className="popup-image-container">
                 {/* <img src={"data:image/jpg;base64," + props.data.img} alt={props.data.menu_name} /> */}
                 <img src={props.data.img} alt={props.data.menu_name} />
               </div>
@@ -84,7 +85,7 @@ export const Product = (props) => {
               </div>
             </div>
             <div className="popup-bottom">
-              { !localStorage.getItem("table_id") ? (<></>) :
+              {!localStorage.getItem("table_id") ? (<></>) :
                 (<div>
                   <button className="addToCartBttn" onClick={() => addToCart()}>
                     Add to Cart

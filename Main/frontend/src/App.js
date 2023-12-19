@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import React, { useState } from "react";
+import React from "react";
 import AdminCategory from './components/AdminCategory/AdminCategory'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -26,13 +26,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  const [loading, setLoading] = useState(true);
-
   return (
     <div style={{'backgroundColor': '#EBF2D5'}}>
-            <ToastContainer />
+          <ToastContainer />
           <Router>
-
             <Routes>
               <Route path='/menu' element={<><Header/> <RestaurantMenu/> <Footer/></>} />
               <Route path='/cart' element={<><Header/> <Cart/> <Footer/></>} />

@@ -26,15 +26,54 @@ restaurantMenuRouter.post("/", authenticateToken, async (req, res) => {
     }
 });
 
-// get menuItems
+// get menuItems according to pagination
 restaurantMenuRouter.get("/", async (req, res) => {
     try {
-        const allMenuItems = await pool.query(`SELECT*FROM \"restaurantMenu\" ORDER BY menu_name ASC`);
+        let { page, limit, searchTerm, category } = req.query;
+        category = category ? category = decodeURIComponent(category) : null;
+        page = page ? page : 0;
+        searchTerm = searchTerm ? `%${searchTerm}%` : '%'; // sanitize the input
+        // console.log(page, limit, searchTerm, category);
+        let menuCount = 0;
+        if (category && category.length) {
+            menuCount = await pool.query(`SELECT COUNT(*) FROM \"restaurantMenu\" WHERE \"categoryName\" = $2 AND (menu_name ILIKE $1 OR \"categoryName\" ILIKE $1);`, [searchTerm, category]);
+            // console.log(menuCount.rows[0].count);
+        }
+        else
+            menuCount = await pool.query(`SELECT COUNT(*) FROM \"restaurantMenu\" WHERE menu_name ILIKE $1 OR \"categoryName\" ILIKE $1;`, [searchTerm]);
+        menuCount = menuCount.rows[0].count;
+        limit = limit ? limit : parseInt(menuCount) + 1;
+        // console.log(page, limit, searchTerm, category);
+        if (page < 1)
+            page = 1;
+        if (page > Math.ceil(menuCount / limit))
+            page = Math.ceil(menuCount / limit);
+        let startIndex = (page - 1) * limit;
+        let endIndex = Math.min(page * limit - 1, menuCount - 1);
+        if (startIndex < 0 || endIndex < 0) {
+            startIndex = 0;
+            endIndex = 0;
+        }
+        // console.log(startIndex, endIndex, searchTerm, category)
+        let paginatedMenu;
+        if (category) {
+            paginatedMenu = await pool.query(`SELECT*FROM \"restaurantMenu\" WHERE \"categoryName\" = $4 AND (menu_name ILIKE $1 OR \"categoryName\" ILIKE $1) ORDER BY menu_name ASC LIMIT $2 OFFSET $3 ;`, [searchTerm, limit, startIndex, category]);
+        }
+        else {
+            paginatedMenu = await pool.query(`SELECT*FROM \"restaurantMenu\" WHERE menu_name ILIKE $1 OR \"categoryName\" ILIKE $1 ORDER BY menu_name ASC LIMIT $2 OFFSET $3 ;`, [searchTerm, limit, startIndex]);
+        }
+        // const allMenuItems = await pool.query(`SELECT*FROM \"restaurantMenu\" ORDER BY menu_name ASC`);
         return res.status(200).json({
             message: "All menuItems received !!",
-            count: allMenuItems.rows.length,
-            data: allMenuItems.rows
+            totalCount: menuCount,
+            count: paginatedMenu.rows.length,
+            data: paginatedMenu.rows
         });
+        // return res.status(200).json({
+        //     message: "All menuItems received !!",
+        //     count: allMenuItems.rows.length,
+        //     data: allMenuItems.rows
+        // });
     } catch (error) {
         console.log("ERROR MESSAGE ::", error.message)
         res.status(500).json({ message: "Can't get all menuItems!!" })
@@ -60,23 +99,6 @@ restaurantMenuRouter.get("/category/:category", async (req, res) => {
     } catch (error) {
         console.log("ERROR MESSAGE ::", error.message)
         res.status(500).json({ message: "Can't get all menuItems based on category!!" })
-    }
-});
-
-// based on searchTerm
-restaurantMenuRouter.get("/search/:searchTerm", async (req, res) => {
-    try {
-        let {searchTerm} = req.params
-        searchTerm = searchTerm ? `${searchTerm}%` : '%'; // sanitize the input
-        const allMenuItems = await pool.query(`SELECT*FROM \"restaurantMenu\" WHERE menu_name ILIKE $1 OR \"categoryName\" ILIKE $2`,[searchTerm,searchTerm]);
-        return res.status(200).json({
-            message: "All menuItems received based on menu_name!!",
-            count: allMenuItems.rows.length,
-            data: allMenuItems.rows
-        });
-    } catch (error) {
-        console.log("ERROR MESSAGE ::", error.message)
-        res.status(500).json({ message: "Can't get all menuItems based on menu_name!!" })
     }
 });
 
@@ -146,19 +168,19 @@ function authenticateToken(req, res, next) {
     // console.log(req.headers)
     const authHeader = req.headers['authorization']
     // console.log(authHeader)
-    if(authHeader) {
+    if (authHeader) {
         const accessToken = authHeader.split(' ')[1]
         // console.log(accessToken)
         jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
             // console.log("ERROR MESSAGE ::",err)
-            if(err) {
+            if (err) {
                 // meaning that you have accessToken but it is not valid(moght be expired)
-                return res.status(403).json({message: "Invalid accessToken !!"})
+                return res.status(403).json({ message: "Invalid accessToken !!" })
             }
             else next()
         })
     }
-    else return res.status(401).json({message: "Unauthorized !!"})
+    else return res.status(401).json({ message: "Unauthorized !!" })
 }
 
 module.exports = restaurantMenuRouter;

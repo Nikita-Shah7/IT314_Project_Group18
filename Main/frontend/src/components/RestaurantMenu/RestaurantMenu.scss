@@ -188,19 +188,26 @@ select#category {
 // Adding css for individual product display . ie. product card
 .individual-product {
   border-radius: 15px;
-  width: 350px;
+  width: 400px;
   height: 350px;
-  margin: 40px;
+  margin: 10px 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.individual-product img {
-  width: 35vw;
-  height: 35vh;
+.image-container {
+  width: 13vw; /* Adjust as needed */
+  height: 13vw; /* Adjust as needed */
+  border-radius: 50%;
   overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 
@@ -218,9 +225,15 @@ select#category {
   cursor: pointer;
 }
 
-.popup-image img {
+.popup-image-container {
   width: 25vw;
   height: 35vh;
+}
+
+.popup-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 
@@ -283,7 +296,7 @@ select#category {
 // For creating a scrollable container for product list
 .scroll-container {
   width: 90vw;
-  height: 55vh;
+  height: 75vh;
   margin: 0;
   padding: 0;
   background-color: #EBF2D5;

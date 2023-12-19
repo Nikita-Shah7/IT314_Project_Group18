@@ -2,6 +2,8 @@ CREATE TABLE IF NOT EXISTS category(
                     category_id VARCHAR PRIMARY KEY,
                     "categoryName" VARCHAR NOT NULL UNIQUE);
 
+select*from category;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 INSERT INTO category (category_id, "categoryName")
 VALUES
