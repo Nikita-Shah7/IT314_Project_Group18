@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import Dialog from "@mui/material/Dialog";
-import Button from "@mui/material/Button";
+import ButtonComponent from "../Button/ButtonComponent";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { table as tableAxios } from "../AxiosCreate";
+import { cartItems, table as tableAxios } from "../AxiosCreate";
 
 const styles = {
   popupContainer: {
@@ -31,44 +32,46 @@ const styles = {
 };
 
 const LeaveTable = () => {
+
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(true);
 
+  const navigate = useNavigate();
+
   const vacantTable = async () => {
     setOpen(false);
-    setLoading(true)
     const data = {
       "table_id": localStorage.getItem("table_id"),
-      "capacity": 8,
+      "capacity": localStorage.getItem("table_capacity"),
       "availability_status": "Available"
     }
 
+    setLoading(true)
     await tableAxios.put(`/${localStorage.getItem("table_id")}`, data)
-      .then((response) => {
-        // console.log([response.data][0].data)
+      .then(async (response) => {
+        // console.log(response.data.data)
         localStorage.removeItem("table_id");
-        setLoading(false);
+        localStorage.removeItem("table_capacity");
         console.log("table vacant successfull..!!");
+        
+        await cartItems.delete(`/cart_table/${localStorage.getItem("table_id")}`)
+          .then((response) => {
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log("ERROR MESSAGE ::", error)
+            setLoading(false);
+          });
       })
       .catch((error) => {
         console.log("ERROR MESSAGE ::", error)
         setLoading(false);
       });
-
   };
 
-  // const handleYes = () => {
-  //   // window.location.href = 'https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/main';
-  //   return <RestaurantMenu />;
-  // };
-
-  // const handleNo = () => {
-  //   // window.location.href = 'https://github.com/Nikita-Shah7/IT314_Project_Group18/tree/main';
-  //   return <RestaurantMenu />;
-  // };
 
   return (
-    <Dialog sx={{ ...styles.popupContainer }} open={open} onClose={vacantTable }>
+    <Dialog sx={{ ...styles.popupContainer }} open={open}>
       <Box
         sx={{
           ...styles.popupContent,
@@ -76,8 +79,7 @@ const LeaveTable = () => {
           border: "2px solid #942D2D", // Replace the border color
           marginBottom: "0px", // Add margin bottom
           marginTop: "0px", // Add margin top
-        }}
-      >
+        }}>
         <Typography
           variant="h6"
           fontSize={40}
@@ -85,47 +87,17 @@ const LeaveTable = () => {
             fontFamily: "Darker Grotesque", // Set font-family
             marginBottom: "0px",
             marginTop: "-100px",
-          }}
-        >
+          }}>
           Confirmation
         </Typography>
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <Typography sx={{ marginTop: "50px" }} fontSize={22}>
             {" "}
             Do you want to leave this Table?{" "}
           </Typography>
-
           <div>
-            <Button
-              onClick={() => vacantTable ()}
-              color="secondary"
-              variant="contained"
-              fullWidth
-              sx={{
-                marginTop: "40px",
-                color: "#FFF",
-                bgcolor: "#942D2D",
-                fontFamily: "Darker Grotesque", // Set font-family
-              }}
-            >
-              <Typography fontSize={20}>Yes, I am full now</Typography>
-            </Button>
-            <Button
-              href="/menu"
-              // onClick={() => handleNo()}
-              color="secondary"
-              variant="contained"
-              fullWidth
-              sx={{
-                marginTop: "20px",
-                marginBottom: "-50px",
-                color: "#FFF",
-                bgcolor: "#000",
-                fontFamily: "Darker Grotesque", // Set font-family
-              }}
-            >
-              <Typography fontSize={20}>No, continue ordering</Typography>
-            </Button>
+            <ButtonComponent color={"primary"} message={"Yes"} func={vacantTable} />
+            <ButtonComponent color={"secondary"} message={"No, continue ordering"} func={() => navigate('/menu')} />
           </div>
         </form>
       </Box>

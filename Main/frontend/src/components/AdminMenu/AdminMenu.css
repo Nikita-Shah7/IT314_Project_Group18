@@ -1,20 +1,15 @@
 .item-list{
-    overflow-y: scroll;
-    height: 70%;
+    overflow-y: auto;
     background-color: #EBF2D5;
 }
 .adm{
-    margin: 0px;
-    height: 100vh;
     background-color: #EBF2D5;
     font-family: 'David Libre';
     color: #942D2D;
 }
-.bu-fo-a {
-    width: 50%;
+.bu-fo-a {    
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
 }
 .but2-list-a {
     padding: 0px 10px 0px 10px;
@@ -56,7 +51,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 100vm;
+    width: 100%;
     height: 100%;
 }
 .overlay-a{
@@ -81,7 +76,7 @@
     background: #EBF2D5;
     width: 80%;
     height: 83%;
-    padding: 14px 28px;
+    padding: 3rem;
     border: 1px solid #942D2D;
 }
 .in-a{
@@ -98,9 +93,10 @@
 .row-a{
     display: flex;
     flex-direction: row;
-    margin: 10px 0px;
+    margin: 1rem 0px;
     align-items: center;
     width: 90%;
+    height: 2.5rem;
     justify-content: space-between;
     font-family: 'David Libre';
     font-size: 150%;

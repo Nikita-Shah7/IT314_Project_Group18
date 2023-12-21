@@ -5,6 +5,7 @@ import './AdminCat.css'
 import Category from './category';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import ButtonComponent from '../Button/ButtonComponent';
 
 export default function AdminCategory() {
 
@@ -89,8 +90,8 @@ export default function AdminCategory() {
     <div className='adm-cat'>
         <div className="addi-cat">
             <div className='w-cat'>
-                <h2 className='ti-cat'>Categories  </h2>
-                <button className="but-list-cat" onClick={toggleModal}>Add Category</button>
+                <h2 className='ti-cat'>Categories:</h2>
+                <ButtonComponent color={"button4"} message={"Add Category"} func={toggleModal} />
             </div>
         </div>
         { modal && (
@@ -98,12 +99,12 @@ export default function AdminCategory() {
                 <div className='content-ct' onClick={ (event) => event.stopPropagation()} >
                 <form className='mrow-cat' onSubmit={addCategory}>
                 <div className="row-cat">
-                        <label htmlFor="title" >Category Name :</label>
-                        <input type="text"  className="in-ca" name="category" required value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
+                        <label htmlFor="title">Category Name:</label>
+                        <input type="text" className="in-ca" name="category" required value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
                 </div>
                 <div className='bu-fo-cat'>
-                    <button className="but2-list-cat" type="submit">ADD</button>
-                    <button className="but2-list-cat" onClick={toggleModal}>CLOSE</button>
+                    <ButtonComponent color={"primary"} message={"ADD"} />
+                    <ButtonComponent color={"secondary"} message={"CLOSE"} func={toggleModal} />
                 </div>
             </form>
                 </div>

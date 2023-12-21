@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import ButtonComponent from "../Button/ButtonComponent";
 import Link from "@mui/material/Link";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -15,7 +15,7 @@ import "./Header.css"
 import Automn_logo from "../../assets/Automn_logo.png"
 
 export default function Header() {
-  const textColor = "#982c2c";
+  const textColor = "#942d2d";
 
   const linkStyle = {
     color: textColor,
@@ -48,7 +48,7 @@ export default function Header() {
     <Box sx={{ marginBottom: 0, flexGrow: 1 }}>
       <AppBar
         position="static"
-        sx={{ backgroundColor: "#f0f4d4", boxShadow: "none" }}
+        sx={{ backgroundColor: "#EBF2D5", boxShadow: "none" }}
       >
         <Toolbar>
           <Box
@@ -184,21 +184,9 @@ export default function Header() {
 
           {!isSmallScreen && (
             // "Login/Signup" and "Logout" buttons for larger screens
-            <Button
-              color="inherit"
-              sx={{
-                borderRadius: "0",
-                color: textColor,
-                backgroundColor: "white",
-                border: "1px solid #982c2c",
-                minWidth: 120,
-              }}
-              onClick={handleAdminLogin}
-            >
-              {!localStorage.getItem("isAdminAuth")
-                ? "Login/SignUp"
-                : "LogOut"}
-            </Button>
+            <ButtonComponent color={"tertiary"} message={!localStorage.getItem("isAdminAuth")
+            ? "Login/SignUp"
+            : "LogOut"} func={handleAdminLogin} />
           )}
         </Toolbar>
       </AppBar>
@@ -259,14 +247,9 @@ export default function Header() {
           </ListItem>
           {/* "Login/Signup" and "Logout" buttons for small screens */}
           <ListItem>
-            <Button
-              color="inherit"
-              onClick={handleAdminLogin}
-            >
-              {!localStorage.getItem("isAdminAuth")
-                ? "Login/SignUp"
-                : "LogOut"}
-            </Button>
+          <ButtonComponent color={"tertiary"} message={!localStorage.getItem("isAdminAuth")
+            ? "Login/SignUp"
+            : "LogOut"} func={handleAdminLogin} />
           </ListItem>
         </List>
       </Drawer>

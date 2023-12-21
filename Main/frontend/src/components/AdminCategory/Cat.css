@@ -78,8 +78,6 @@
 }
 
 .overlay-t {
-    width: 100vw;
-    height: 100vh;
     top: 0;
     left: 0;
     right: 0;
@@ -99,8 +97,8 @@
     text-align: center;
     line-height: 1.4;
     background: #EBF2D5;
-    width: 60%;
-    height: 60%;
+    width: 45%;
+    height: 45%;
     padding: 14px 28px;
     border: 1px solid #942D2D;
 }
@@ -129,10 +127,8 @@
 }
 
 .bu-fo-t {
-    width: 50%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
 }
 
 .but2-list-t {

@@ -1,81 +1,27 @@
 import React from "react";
-import Typography from "@mui/material/Typography";  
-import Button from "@mui/material/Button";
+import ButtonComponent from "../Button/ButtonComponent";
 import { useNavigate } from "react-router-dom";
-import './home.css';
+import './Home.scss';
 
 export default function Home(props) {
   const isAdmin = localStorage.getItem("isAdminAuth") === "true";
   let navigate = useNavigate();
   function navigatetoMenu() {
-    {!isAdmin ? navigate('/menu'): navigate('/adminmenu')}
+    { !isAdmin ? navigate('/menu') : navigate('/adminmenu') }
   }
   return (
     <>
-      <div className="imageset"
-        style={{ 
-          backgroundImage: `url("/Group 8516.png") ` ,
-        }}
-      > 
-      
-     
-    
-        <div >
-          <Typography
-            className="welcomee"
-            variant="body1"
-            sx={{
-              fontFamily: "Darker Grotesque",
-              fontSize: 60,
-              marginLeft: '12%',
-            }}
-          >
+      <div className="home-container">
+        <div className="home-content">
+          <h2>
             {/* Welcome { !localStorage.getItem("isAdminAuth") ? (`${props.userName}`) :("Admin") }, */}
-            Welcome{ !localStorage.getItem("isAdminAuth") ? ("") :(" Admin") },
-          </Typography>
-        </div>
-
-        <div className="welcometext">
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: "Darker Grotesque",
-              fontSize: 25,
-            }}
-          >
-            Enjoy delicious food of your choices, <br></br>
+            Welcome{!localStorage.getItem("isAdminAuth") ? ("") : (" Admin")},
+          </h2>
+          <p>Enjoy delicious food of your choices, <br />
             by ordering it from our digital menu and pay for it online.
-          </Typography>
-        </div> 
-
-        <Button
-                  className="viewMenu"
-                  onClick={navigatetoMenu}
-                   color="primary"
-                  
-                  Width = {10}
-                  sx={{
-                    marginTop: "10%", 
-                    marginLeft: "150px",
-                    marginBottom: "0px",
-                    color: "#FFF", 
-                    bgcolor: "#942D2D",
-                    fontFamily: "Darker Grotesque", // Set font-family  
-                    hoverColor: "#000",
-                    width: '170px',
-                    borderRadius: '0px',
-                    ":hover": {
-                      bgcolor: '#EBF2D5',
-                      color: '#942D2D',
-                      borderColor: '#FFF',
-                      borderWidth: '10px'
-                    } 
-                  }
-                }
-                > 
-                
-                  <Typography fontSize={20} >View Menu</Typography>
-                </Button>
+          </p>
+          <ButtonComponent color={"primary"} message={"View Menu"} func={navigatetoMenu} />
+        </div>
       </div>
     </>
   );

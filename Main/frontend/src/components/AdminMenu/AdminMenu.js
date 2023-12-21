@@ -7,7 +7,7 @@ import AdminCategory from '../AdminCategory/AdminCategory'; // Import the AdminC
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import ButtonComponent from '../Button/ButtonComponent';
 import Pagination from '../PaginationBar/PaginationBar';
 
 
@@ -179,19 +179,19 @@ export default function () {
     <div className='adm'>
       {/* <AdminCategory setCategory={setCategories} /> Pass setCategories as a prop */}
       <div className="addi-a">
-        <h2>Menu Items  </h2>
-        <button className="but-list-a" onClick={toggleModal}>Add Item</button>
+        <h2>Menu Items:</h2>
+        <ButtonComponent color={"button4"} message={"Add Item"} func={toggleModal} />
       </div>
       {modal && (
         <div className='overlay-a' onClick={toggleModal}>
           <div className='content-a' onClick={(event) => event.stopPropagation()} >
             <form className='mrow-a' onSubmit={addItem}>
               <div className="row-a">
-                <label htmlFor="title" >Item Name :</label>
+                <label htmlFor="title" >Item Name:</label>
                 <input type="text" className="in-a" name="menu_name" required value={menuName} onChange={(e) => setMenuName(e.target.value)} />
               </div>
               <div className="row-a">
-                <label htmlFor="text">Category Name :</label>
+                <label htmlFor="text">Category Name:</label>
                 {/* Use a dropdown for category selection */}
                 <select className="in-a" name="categoryName" required value={category} onChange={(e) => setCategory(e.target.value)}>
                   <option value="">Select Category</option>
@@ -203,24 +203,24 @@ export default function () {
                 </select>
               </div>
               <div className="row-a">
-                <label htmlFor="author">Short Description :</label>
+                <label htmlFor="author">Short Description: </label>
                 <input type="text" className="in-a" name="description" required value={description} onChange={(e) => setDescription(e.target.value)} />
               </div>
               <div className="row-a">
-                <label htmlFor="img">Image URL:</label>
+                <label htmlFor="img">Image URL: </label>
                 <input type="text" className="in-ad" name="img" required value={img} onChange={(e) => setImg(e.target.value)} />
               </div>
               <div className="row-a">
-                <label htmlFor="content">Price :</label>
+                <label htmlFor="content">Price: </label>
                 <input type="number" className="in-a" name="price" required value={price} onChange={(e) => setPrice(e.target.value)} />
               </div>
               <div className="row-a">
-                <label htmlFor="content" >Profit :</label>
+                <label htmlFor="content" >Profit: </label>
                 <input type="number" className="in-a" name="profit" required value={profit} onChange={(e) => setProfit(e.target.value)} />
               </div>
               <div className='bu-fo-a'>
-                <button className="but2-list-a" type="submit">ADD</button>
-                <button className="but2-list-a" onClick={toggleModal}>CLOSE</button>
+                <ButtonComponent color={"primary"} message={"ADD"} />
+                <ButtonComponent color={"secondary"} message={"CLOSE"} func={toggleModal} />
               </div>
             </form>
           </div>
@@ -249,9 +249,7 @@ export default function () {
           ))}
         </Modal.Body>
         <Modal.Footer style={{ backgroundColor: '#EBF2D5' }}>
-          <Button variant="secondary" onClick={() => setShowErrorModal(false)} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
-            Close
-          </Button>
+          <ButtonComponent color={"secondary"} message={"CLOSE"} func={() => setShowErrorModal(false)} />
         </Modal.Footer>
       </Modal>
     </div>

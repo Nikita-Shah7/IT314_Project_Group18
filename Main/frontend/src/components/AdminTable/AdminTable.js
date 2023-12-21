@@ -5,7 +5,7 @@ import { table as tableAxios } from '../AxiosCreate';
 import './AdminTab.css';
 import Table from './Table';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import ButtonComponent from '../Button/ButtonComponent';
 
 export default function () {
   const navigate = useNavigate();
@@ -117,10 +117,8 @@ export default function () {
     <div className="adm-ad">
       <div className="addi-ad">
         <div className="w-ad">
-          <h2 className="ti-ad">Tables </h2>
-          <button className="but-list-ad" onClick={toggleModal}>
-            Add DinnTable
-          </button>
+          <h2 className="ti-ad">Tables:</h2>
+          <ButtonComponent color={"button4"} message={"Add Table"} func={toggleModal} />
         </div>
       </div>
       {modal && (
@@ -164,12 +162,8 @@ export default function () {
                 </select>
               </div>
               <div className="bu-fo-ad">
-                <button className="but2-list-ad" type="submit">
-                  ADD
-                </button>
-                <button className="but2-list-ad" onClick={toggleModal}>
-                  CLOSE
-                </button>
+                <ButtonComponent color={"primary"} message={"ADD"} />
+                <ButtonComponent color={"secondary"} message={"CLOSE"} func={toggleModal} />
               </div>
             </form>
           </div>
@@ -191,10 +185,8 @@ export default function () {
             <p key={index}>&#8226; {message}</p>
           ))}
         </Modal.Body>
-        <Modal.Footer style={{backgroundColor: '#EBF2D5' }}>
-          <Button variant="secondary" onClick={() => setShowErrorModal(false)} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
-            Close
-          </Button> 
+        <Modal.Footer>
+          <ButtonComponent color={"secondary"} message={"CLOSE"} func={() => setShowErrorModal(false)} />
         </Modal.Footer>
       </Modal>
     </div>

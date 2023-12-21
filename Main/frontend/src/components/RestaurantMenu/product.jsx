@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { cartItems as cartItemsAxios } from "../AxiosCreate";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import './RestaurantMenu.scss'
+import './RestaurantMenu.scss';
+import ButtonComponent from "../Button/ButtonComponent";
 
 
 export const Product = (props) => {
@@ -45,7 +46,7 @@ export const Product = (props) => {
   return (
     <div>
       <div className="individual-product" key={props.data.menu_id}>
-        <div className="imagefit image-container">
+        <div className="image-container">
           <img
             className="product-image"
             src={props.data.img}
@@ -53,18 +54,13 @@ export const Product = (props) => {
             onClick={togglePopup}
           />
         </div>
-        <div className="description">
-          <p style={{ marginTop: "5px" }}>
+        <div className="product-description">
             <b>{props.data.menu_name}</b>
-          </p>
-          <p style={{ marginTop: "1px", marginBottom: "5px" }}>₹{props.data.price}</p>
+            <p>₹{props.data.price}</p>
         </div>
-        {!localStorage.getItem("table_id") ? (<></>) :
-          (<div className="cartbutton">
-            <button className="addToCartBttn" onClick={() => addToCart()}>
-              Add To Cart
-            </button>
-          </div>)
+        {!localStorage.getItem("table_id") ? (<></>) : (
+            <ButtonComponent color={"button4"} message={"Add to Cart"} func={addToCart} />
+          )
         }
       </div>
 
@@ -86,17 +82,9 @@ export const Product = (props) => {
             </div>
             <div className="popup-bottom">
               {!localStorage.getItem("table_id") ? (<></>) :
-                (<div>
-                  <button className="addToCartBttn" onClick={() => addToCart()}>
-                    Add to Cart
-                  </button>
-                </div>)
+                (<ButtonComponent color={"primary"} message={"Add to Cart"} func={addToCart} />)
               }
-              <div>
-                <button className="popupbutton" onClick={togglePopup}>
-                  Close
-                </button>
-              </div>
+              <ButtonComponent color={"secondary"} message={"Close"} func={togglePopup} />
             </div>
           </div>
         </div>

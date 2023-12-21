@@ -106,7 +106,6 @@ function Cart() {
   return (
     <div style={{
       backgroundColor: '#EBF2D5',
-      minHeight: '800px',
       '@media screen and (max-width: 700px) and (min-height: 400px)': {
         minHeight: '400px'
         // Add any additional styles for the media query here
@@ -150,7 +149,6 @@ function Cart() {
                 <div className='checkingout'>
                   <button onClick={() => navigate("/menu")}> Menu </button>
                   <button style={{ marginLeft: '30px' }}
-                    // onClick={handleCheckout}
                     onClick={handleCheckout}
                   >
                     {" "}
@@ -162,11 +160,13 @@ function Cart() {
           </div>
         ) : (
           <div>
-            <h1 className="emptycart" style={{ color: '#942D2D' }}>
+            <h1 className="emptycart">
               Your cart is like a table waiting to be filled with delicious food.
             </h1>
-            <ButtonComponent color={"primary"} message={"View Menu"} func={() => navigate('/menu')} />
-            <ButtonComponent color={"secondary"} message={"Vacant Table"} func={() => navigate('/feedback')} />
+            <div className="bottom-button">
+              <ButtonComponent color={"primary"} message={"View Menu"} func={() => navigate('/menu')} />
+              <ButtonComponent color={"secondary"} message={"Vacant Table"} func={() => navigate('/feedback')} />
+            </div>
           </div>
         )}
     </div>

@@ -1,38 +1,10 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import ButtonComponent from "../Button/ButtonComponent.jsx";
 import { useNavigate } from 'react-router-dom';
 import { admin as adminAxios } from '../AxiosCreate';
 import { toast } from 'react-toastify';
+import './AdminLogin.scss';
 import 'react-toastify/dist/ReactToastify.css';
-
-const loginBoxStyle = {
-    width: '380px',
-    padding: '20px',
-    backgroundColor: '#f0f4d4',
-    border: '2px solid #982c2c',
-    borderRadius: '0',
-    margin: '0 auto',
-    marginTop: '180px',
-    marginBottom: '50px',
-    transform: 'translateY(-50%)',
-};
-
-const inputStyle = {
-    backgroundColor: 'white',
-    width: '100%',
-    marginBottom: '15px',
-    border: '1px solid #982c2c',
-    borderRadius: '4px',
-    padding: '10px',
-};
-
-
-const loginTextStyle = {
-    color: '#982c2c',
-    marginBottom: '25px',
-    marginTop: '120px'
-};
 
 
 export default function AdminLogin() {
@@ -84,41 +56,27 @@ export default function AdminLogin() {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', justifyContent: 'center' }}>
-            <Typography variant="h4" gutterBottom align='center' style={loginTextStyle}>
-                Admin Login
-            </Typography>
-            <div style={loginBoxStyle}>
+        <div className="adminlogin-container">
+            <h3>Admin Login</h3>
+            <div className='loginBoxStyle'>
                 <input
                     type="text"
                     placeholder="Enter Your Admin Name"
-                    style={inputStyle}
+                    className='inputStyle'
                     value={adminname}
                     onChange={(e) => setAdminName(e.target.value)}
                 />
                 <input
                     type="password"
                     placeholder="Enter Your Password"
-                    style={inputStyle}
+                    className='inputStyle'
                     value={password}
                     onChange={(e) => setPasswd(e.target.value)}
                 />
-
-
-                <Button
-                    variant="contained"
-                    sx={{ width: '205px', backgroundColor: '#982c2c', margin: '0 auto', marginTop: '15px', marginBottom: '25px', display: 'block', borderRadius: '0' }}
-                    onClick={handleAdminLogin}
-                >
-                    LOGIN
-                </Button>
-                <Button
-                    variant="contained"
-                    sx={{ width: '205px', backgroundColor: '#982c2c', margin: '0 auto', marginTop: '15px', marginBottom: '25px', display: 'block', borderRadius: '0' }}
-                    onClick={() => navigate('/')}
-                >
-                    BACK
-                </Button>
+                <div className='button-div'>
+                    <ButtonComponent color={"primary"} message={"LOGIN"} func={handleAdminLogin} />
+                    <ButtonComponent color={"secondary"} message={"BACK"} func={() => navigate('/')} />
+                </div>
             </div>
         </div>
     );

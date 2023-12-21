@@ -83,34 +83,34 @@ const Orders = () => {
               <div>
                 <h5>Menu_Item</h5>
               </div>
-              <div style={{ 'marginLeft': '5%' }}>
+              <div>
                 <h5>Quantity</h5>
               </div>
-              <div style={{ 'marginLeft': '5%' }}>
+              <div>
                 <h5>Item_Price</h5>
               </div>
-              <div style={{ 'marginLeft': '5%' }}>
+              <div>
                 <h5>Total_Price</h5>
               </div>
             </div>
             {orders.map((order, index) => (
               <div key={index} className='itemflex'>
                 <div>
-                  <p>{order.menu_name}</p>
+                  <span>{order.menu_name}</span>
                 </div>
-                <div style={{ 'marginLeft': '10%' }}>
-                  <p>{order.quantity}</p>
+                <div>
+                  <span>{order.quantity}</span>
                 </div>
-                <div style={{ 'marginLeft': '10%' }}>
-                  <p>{order.item_price}</p>
+                <div>
+                  <span>{order.item_price}</span>
                 </div>
-                <div style={{ 'marginLeft': '10%' }}>
-                  <p>{order.total_price}</p>
+                <div>
+                  <span>{order.total_price}</span>
                 </div>
               </div>
             ))}
+            <h4 className='totalBillAmt'>{totalBillAmt[tableId]}</h4>
           </div>
-            <h5>{totalBillAmt[tableId]}</h5>
           </>
         ))}
       </div>

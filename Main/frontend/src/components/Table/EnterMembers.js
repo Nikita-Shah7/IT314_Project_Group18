@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import ButtonComponent from "../Button/ButtonComponent";
 import TextField from "@mui/material/TextField";
 import SelectTable from "./SelectTable";
 
@@ -34,6 +35,8 @@ const EnterMembers = () => {
   const [totalMember, setTotalMember] = useState(0);
   const [totalMembers, setTotalMembers] = useState(null);
 
+  const navigate = useNavigate();
+  
   const handleConfirm = () => {
     if (
       totalMember <= 0 ||
@@ -70,7 +73,7 @@ const EnterMembers = () => {
           >
             Enter Total Members
           </Typography>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <TextField
               type="number"
               variant="outlined"
@@ -80,19 +83,8 @@ const EnterMembers = () => {
               inputProps={{ style: { background: "#FFF" } }}
               placeholder="Enter Total Members"
             />
-            <Button
-              type="button"
-              onClick={handleConfirm}
-              fullWidth
-              sx={{
-                marginTop: "20px",
-                color: "#FFF",
-                bgcolor: "#942D2D",
-                fontFamily: "Darker Grotesque", // Set font-family
-              }}
-            >
-              <Typography fontSize={20}>Confirm</Typography>
-            </Button>
+            <ButtonComponent color={"primary"} message={"Confirm"} func={handleConfirm} />
+            <ButtonComponent color={"secondary"} message={"Back"} func={() => navigate('/')} />
           </form>
         </Box>
       </Box>

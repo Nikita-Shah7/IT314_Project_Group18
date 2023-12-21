@@ -195,27 +195,27 @@ select#category {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Darker Grotesque", Helvetica;
 }
 
 .image-container {
-  width: 13vw; /* Adjust as needed */
-  height: 13vw; /* Adjust as needed */
-  border-radius: 50%;
+  width: 13vw;
+  height: 13vw;
+  border-radius: 50%;  
   overflow: hidden;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 
 @media (max-width:500px) {
   
   .individual-product img{
-    width: 51vw;
-    height: 21vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
   }
 }
@@ -237,30 +237,17 @@ select#category {
 }
 
 
-.individual-product .description {
+.individual-product .product-description {
   color: #942D2D;
   display: flex;
   flex-direction: column;
-}
-
-.addToCartBttn {
-  margin-top: 5%;
-  border: 1px solid #942D2D;
-  background: #EBF2D5;
-  min-width: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: #942D2D;
-}
-
-.addToCartBttn:hover {
-  background-color: #942D2D;
-  color: #EBF2D5;
-  cursor: pointer;
-  transform: scale(1.15);
-  border-radius: 5px;
+  align-items: center;
+  b {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
 }
 
 .popupbutton {
@@ -282,15 +269,6 @@ select#category {
   cursor: pointer;
   transform: scale(1.15);
   border-radius: 5px;
-}
-
-.individual-product img {
-  max-width: 50%;
-  height: auto;
-}
-
-.description p {
-  margin: 5px 0;
 }
 
 // For creating a scrollable container for product list
@@ -439,8 +417,7 @@ select#category {
   flex-direction: row;
   justify-content: space-around;
   margin: 10px;
-  padding: 10px;
-  width: 100%;
+  width: 40%;
 }
 
 /* Show the popup when open */
