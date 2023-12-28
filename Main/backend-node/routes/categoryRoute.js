@@ -2,7 +2,6 @@ const express = require("express");
 const pool = require("../db.js");
 const { v4: uuidv4 } = require('uuid');
 const authenticateToken = require('../middlewares/auth.js');
-const cachingHeader = require('../middlewares/cache.js');
 require('dotenv').config();
 
 const categoryRouter = express.Router();
