@@ -28,6 +28,12 @@ feedbackRouter.post("/", async (req, res) => {
 feedbackRouter.get("/", async (req, res) => {
     try {
         const allFeedbacks = await pool.query(`SELECT*FROM feedback ORDER BY date_time DESC`);
+
+        // Set cache control headers
+        const max_age = 120; // 120 seconds
+        res.setHeader('Cache-Control', `private, max-age=${max_age}`);
+
+        console.log("nik cache");
         return res.status(200).json({
             message: "All Feedbacks received !!",
             count: allFeedbacks.rows.length,
@@ -42,8 +48,8 @@ feedbackRouter.get("/", async (req, res) => {
 // get Feedbacks based on starating1
 feedbackRouter.get("/starate/:starate1", async (req, res) => {
     try {
-        const {starate1} = req.params
-        const allFeedbacks = await pool.query(`SELECT*FROM feedback WHERE starate1 = $1 ORDER BY date_time ASC`,[starate1]);
+        const { starate1 } = req.params
+        const allFeedbacks = await pool.query(`SELECT*FROM feedback WHERE starate1 = $1 ORDER BY date_time ASC`, [starate1]);
         return res.status(200).json({
             message: "All Feedbacks received based on starRate !!",
             count: allFeedbacks.rows.length,

@@ -1,7 +1,8 @@
 const express = require("express");
 const pool = require("../db.js");
 const { v4: uuidv4 } = require('uuid');
-const jwt = require('jsonwebtoken');
+const authenticateToken = require('../middlewares/auth.js');
+const cachingHeader = require('../middlewares/cache.js');
 require('dotenv').config();
 
 const categoryRouter = express.Router();
@@ -29,7 +30,7 @@ categoryRouter.post("/", authenticateToken, async (req, res) => {
     }
 });
 
-// get all category (based on searctTerm)
+// get all category
 categoryRouter.get("/", async (req, res) => {
     try {
         const { categoryName } = req.query;
@@ -41,6 +42,18 @@ categoryRouter.get("/", async (req, res) => {
                         GROUP BY "categoryName"
                     ) r ON c."categoryName" = r."categoryName" 
                     ORDER BY c."categoryName" ASC;`);
+
+        // Set cache-related headers
+        const max_age = 120; // 120 seconds
+        const currentDate = new Date();
+        const thirtySecondsLater = new Date(currentDate.getTime() + max_age * 1000); // 30 seconds later
+        // const lastModified = /* Calculate or retrieve the last modified date of the data */
+
+        res.setHeader('Cache-Control', `private, max-age=${max_age}`);
+        res.setHeader('Date', currentDate.toUTCString());
+        res.setHeader('Expires', thirtySecondsLater.toUTCString());
+        // res.setHeader('Last-Modified', lastModified.toUTCString());
+
         return res.status(200).json({
             message: "All categories received !!",
             count: allCategories.rows.length,
@@ -98,7 +111,7 @@ categoryRouter.put("/:id", authenticateToken, async (req, res) => {
 categoryRouter.delete("/:id", authenticateToken, async (req, res) => {
     try {
         const { id } = req.params
-        let categoryName = await pool.query("SELECT \"categoryName\" FROM category WHERE category_id = $1;",[id]);
+        let categoryName = await pool.query("SELECT \"categoryName\" FROM category WHERE category_id = $1;", [id]);
         // console.log(categoryName.rows[0].categoryName);
         categoryName = categoryName.rows[0].categoryName;
         const deleteMenuItems = await pool.query("DELETE FROM \"restaurantMenu\" WHERE \"categoryName\" = $1;", [categoryName]);
@@ -117,27 +130,6 @@ categoryRouter.delete("/:id", authenticateToken, async (req, res) => {
         res.status(500).json({ message: "Can't delete!!" })
     }
 });
-
-
-// authentication of the token when loggedIn as Admin
-function authenticateToken(req, res, next) {
-    // console.log(req.headers)
-    const authHeader = req.headers['authorization']
-    // console.log(authHeader)
-    if(authHeader) {
-        const accessToken = authHeader.split(' ')[1]
-        // console.log(accessToken)
-        jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
-            // console.log("ERROR MESSAGE ::",err)
-            if(err) {
-                // meaning that you have accessToken but it is not valid(moght be expired)
-                return res.status(403).json({message: "Invalid accessToken !!"})
-            }
-            else next()
-        })
-    }
-    else return res.status(401).json({message: "Unauthorized !!"})
-}
 
 
 module.exports = categoryRouter;

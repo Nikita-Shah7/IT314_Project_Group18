@@ -5,12 +5,13 @@ import { restaurantMenu as menuAxios } from "../AxiosCreate";
 import { category as categoryAxios } from "../AxiosCreate";
 import './RestaurantMenu.scss';
 import image1 from "./a-food-on-darke-0-1.png";
+// import Loader from "../Loader/Loader";
 import Pagination from "../PaginationBar/PaginationBar";
 
 function RestaurantMenu() {
   // console.log("nik in menu")
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ function RestaurantMenu() {
       setLoading(true)
       await categoryAxios.get(`/`)
         .then((response) => {
-          // console.log([response.data][0].data)
+          // console.log(response.data.data)
           setCategories(response.data.data);
           setSelectedCategory(response.data.data[0].categoryName)
           setLoading(false);
@@ -107,6 +108,7 @@ function RestaurantMenu() {
 
   return (
     <>
+  
       <div className="main-container">
         <div className="uppercontainer">
           <h1>Our Menu</h1>

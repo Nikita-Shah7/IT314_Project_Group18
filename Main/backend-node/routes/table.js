@@ -1,6 +1,6 @@
 const express = require("express");
 const pool = require("../db.js");
-const jwt = require('jsonwebtoken');
+const authenticateToken = require('../middlewares/auth.js');
 require('dotenv').config();
 
 const tableRouter = express.Router();
@@ -28,6 +28,11 @@ tableRouter.post("/", authenticateToken, async (req, res) => {
 tableRouter.get("/", async (req, res) => {
     try {
         const allTables = await pool.query(`SELECT*FROM \"table\" ORDER BY table_id ASC;`);
+
+        // Set cache control headers
+        const max_age = 120; // 120 seconds
+        res.setHeader('Cache-Control', `private, max-age=${max_age}`);
+
         return res.status(200).json({
             message: "All Tables received !!",
             count: allTables.rows.length,
@@ -131,27 +136,6 @@ tableRouter.delete("/:id", authenticateToken, async (req, res) => {
         res.status(500).json({ message: "Can't delete!!" })
     }
 });
-
-
-// authentication of the token when loggedIn as Admin
-function authenticateToken(req, res, next) {
-    // console.log(req.headers)
-    const authHeader = req.headers['authorization']
-    // console.log(authHeader)
-    if(authHeader) {
-        const accessToken = authHeader.split(' ')[1]
-        // console.log(accessToken)
-        jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
-            // console.log("ERROR MESSAGE ::",err)
-            if(err) {
-                // meaning that you have accessToken but it is not valid(moght be expired)
-                return res.status(403).json({message: "Invalid accessToken !!"})
-            }
-            else next()
-        })
-    }
-    else return res.status(401).json({message: "Unauthorized !!"})
-}
 
 
 module.exports = tableRouter;

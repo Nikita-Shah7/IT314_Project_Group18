@@ -1,4 +1,5 @@
 const express = require("express");
+const compression = require('compression');
 const cors = require("cors");
 const { SERVER_PORT, RELATION1, RELATION2, RELATION3, RELATION4, 
     RELATION5, RELATION6, RELATION7, RELATION8, RELATION9, RELATION10 } = require("./config.js")
@@ -16,9 +17,11 @@ const cartItemsRouter = require("./routes/cartItemsRoute.js");
 
 const app = express();
 
-// middleware
+// middlewares::
 app.use(cors())
 app.use(express.json())
+// compress all responses
+app.use(compression());
 
 app.use("/menu",restaurantMenuRouter)
 app.use("/category",categoryRouter)
