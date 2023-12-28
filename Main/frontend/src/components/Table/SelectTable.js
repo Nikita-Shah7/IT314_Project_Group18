@@ -4,6 +4,7 @@ import Sheet from "@mui/material/Table";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ButtonComponent from "../Button/ButtonComponent.jsx";
+import Loader from "../Loader/Loader.js";
 import Dialog from "@mui/material/Dialog";
 // import DialogActions from "@mui/material/DialogActions";
 // import DialogContent from "@mui/material/DialogContent";
@@ -102,6 +103,10 @@ const SelectTable = ({ totalMembers }) => {
     );
   } else {
     return (
+      <>
+      {loading ? (
+        <Loader />
+      ) : (
       <Box minHeight="100vh" marginBottom="0px">
         <Box className="container">
           <Typography
@@ -284,7 +289,8 @@ const SelectTable = ({ totalMembers }) => {
             </Box>
           </Dialog>
         </Box>
-      </Box>
+      </Box>)}
+      </>
     );
   }
 };

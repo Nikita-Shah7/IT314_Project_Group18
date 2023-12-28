@@ -7,7 +7,7 @@ import './RestaurantMenu.scss';
 import image1 from "./a-food-on-darke-0-1.png";
 // import Loader from "../Loader/Loader";
 import Pagination from "../PaginationBar/PaginationBar";
-
+import Loader from "../Loader/Loader";
 function RestaurantMenu() {
   // console.log("nik in menu")
 
@@ -122,7 +122,6 @@ function RestaurantMenu() {
             Whether it is the cuisine of the Maharajas of yesteryear or the exotic flavours of the world over, Automn's impressive masters of culinary across the brand, weave together elevated experiences that tell an epicurean tale of the local culture, from sharing regional recipes to using offbeat ingredients with inventive menus in magical settings.
           </p>
         </div>
-
         <div className="bottom-container">
           <div className="container-row">
             <div className="searchbar">
@@ -148,6 +147,9 @@ function RestaurantMenu() {
               </select>
             </div>
           </div>
+          {loading ? (
+        <Loader />
+      ) : (<>
           <p>Total Items Found: {itemCnt}</p>
           <div className="scroll-container" ref={scrollContainerRef}>
             <div className="product-list">
@@ -168,6 +170,7 @@ function RestaurantMenu() {
               />)
             }
           </div>
+          </>)}
         </div>
       </div>
     </>

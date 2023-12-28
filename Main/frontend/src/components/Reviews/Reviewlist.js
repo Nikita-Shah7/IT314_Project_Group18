@@ -4,7 +4,7 @@ import { feedback as feedbackAxios } from '../AxiosCreate';
 import Review from './Reviews';
 import './Review.css';
 import ButtonComponent from '../Button/ButtonComponent';
-
+import Loader from '../Loader/Loader'
 export default function Reviewlist() {
 
   // console.log("nik in admin feedback");
@@ -56,6 +56,9 @@ export default function Reviewlist() {
 
   return (
     <>
+    {loading ? (
+        <Loader />
+      ) : (
       <div className='bg'>
         <h1 className='ti-re'>Reviews : </h1>
         <div className='button-container'>
@@ -65,7 +68,7 @@ export default function Reviewlist() {
           <ButtonComponent color={"button4"} message={"Place"} func={() => handleFilterClick('place')} />
         </div>
         <section className='rev-list'>{reviewlist}</section>
-      </div>
+      </div>)}
     </>
   );
 }

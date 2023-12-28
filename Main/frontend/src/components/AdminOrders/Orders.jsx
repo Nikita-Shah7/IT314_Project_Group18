@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import './orders.css';
 import { cartItems as cartItemsAxios } from "../AxiosCreate";
 import { cart as cartAxios } from "../AxiosCreate";
-
+import Loader from '../Loader/Loader';
 
 const Orders = () => {
 
@@ -72,6 +72,9 @@ const Orders = () => {
   return (
     <div className="container">
       <h1 style={{ color: '#942D2D' }}>Order Details</h1>
+      {loading ? (
+        <Loader /> // Show loader while data is being fetched
+      ) : (
       <div className="orders">
         {Object.entries(cartItems).map(([tableId, orders]) => (
           <>
@@ -113,7 +116,7 @@ const Orders = () => {
           </div>
           </>
         ))}
-      </div>
+      </div>)}
     </div>
   );
 

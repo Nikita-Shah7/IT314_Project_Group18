@@ -6,8 +6,8 @@ import './AdminTab.css';
 import Table from './Table';
 import Modal from 'react-bootstrap/Modal';
 import ButtonComponent from '../Button/ButtonComponent';
-
-export default function () {
+import Loader from '../Loader/Loader';
+export default function AdminTab() {
   const navigate = useNavigate();
 
   if (!localStorage.getItem('isAdminAuth')) {
@@ -114,13 +114,17 @@ export default function () {
   };
 
   return (
+    
     <div className="adm-ad">
+      {loading ? (
+      <Loader />
+    ) : (<>
       <div className="addi-ad">
         <div className="w-ad">
           <h2 className="ti-ad">Tables:</h2>
           <ButtonComponent color={"button4"} message={"Add Table"} func={toggleModal} />
         </div>
-      </div>
+      </div> 
       {modal && (
         <div className="overlay-ad" onClick={toggleModal}>
           <div className="content-ad" onClick={(event) => event.stopPropagation()}>
@@ -176,7 +180,7 @@ export default function () {
       </section>
 
       {/* Custom Error Bullet Point List */}
-     <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
+      <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)} centered>
         <Modal.Header closeButton={false} style={{ backgroundColor: '#942D2D', color: '#EBF2D5' }}>
           <Modal.Title>Error</Modal.Title>
         </Modal.Header>
@@ -189,6 +193,7 @@ export default function () {
           <ButtonComponent color={"secondary"} message={"CLOSE"} func={() => setShowErrorModal(false)} />
         </Modal.Footer>
       </Modal>
+      </>)}
     </div>
   );
 }

@@ -1,20 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CanvasJSReact from '@canvasjs/react-charts';
 import { PRODUCTS } from './data';
+import Loader from '../Loader/Loader'
 
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const DARKER_GROTESQUE_FONT = 'Darker Grotesque';
 
-
 export default function Analysis() {
-
-  // console.log("nik in admin menu");
   const navigate = useNavigate();
 
-  if(!localStorage.getItem("isAdminAuth")) {
-      navigate('/adminlogin');
+  if (!localStorage.getItem("isAdminAuth")) {
+    navigate('/adminlogin');
   }
 
   const [loading, setLoading] = useState(true);
@@ -29,63 +27,65 @@ export default function Analysis() {
   const customerRatingDeliveryChartRef = useRef(null);
 
   useEffect(() => {
-    const countTripExpensesOccurrences = () => {
-      const counts = {};
+    const fetchData = async () => {
+      // Simulate fetching data
+      await new Promise(resolve => setTimeout(resolve, 3000));
 
-      PRODUCTS.forEach((item) => {
-        if (!selectedMonth || item.Month === selectedMonth) {
-          const dayValue = item.Day;
-          counts[dayValue] = (counts[dayValue] || 0) + 1;
-        }
-      });
-
-      setTripExpensesOccurrences(counts);
-    };
-
-    const sumOrderAmounts = () => {
-      const sums = {};
-
-      PRODUCTS.forEach((item) => {
-        if (!selectedMonth || item.Month === selectedMonth) {
-          const dayValue = item.Day;
-          const orderAmount = item['Order Amount'] || 0;
-
-          sums[dayValue] = (sums[dayValue] || 0) + orderAmount;
-        }
-      });
-
-      setOrderAmounts(sums);
-    };
-
-    const processCustomerRating = (field) => {
-      const dataMap = new Map();
-
-      PRODUCTS.forEach((item) => {
-        if (!selectedMonth || item.Month === selectedMonth) {
-          const value = item[field];
-          const sumValue = item[field] || 0;
-
-          if (dataMap.has(value)) {
-            const currentSum = dataMap.get(value);
-            dataMap.set(value, currentSum + sumValue);
-          } else {
-            dataMap.set(value, sumValue);
+      // Your existing data processing logic
+      const countTripExpensesOccurrences = () => {
+        const counts = {};
+        PRODUCTS.forEach((item) => {
+          if (!selectedMonth || item.Month === selectedMonth) {
+            const dayValue = item.Day;
+            counts[dayValue] = (counts[dayValue] || 0) + 1;
           }
-        }
-      });
+        });
+        setTripExpensesOccurrences(counts);
+      };
 
-      const chartData = Array.from(dataMap).map(([value, sumValue]) => ({
-        x: value,
-        y: sumValue,
-      }));
+      const sumOrderAmounts = () => {
+        const sums = {};
+        PRODUCTS.forEach((item) => {
+          if (!selectedMonth || item.Month === selectedMonth) {
+            const dayValue = item.Day;
+            const orderAmount = item['Order Amount'] || 0;
+            sums[dayValue] = (sums[dayValue] || 0) + orderAmount;
+          }
+        });
+        setOrderAmounts(sums);
+      };
 
-      return chartData;
+      const processCustomerRating = (field) => {
+        const dataMap = new Map();
+        PRODUCTS.forEach((item) => {
+          if (!selectedMonth || item.Month === selectedMonth) {
+            const value = item[field];
+            const sumValue = item[field] || 0;
+            if (dataMap.has(value)) {
+              const currentSum = dataMap.get(value);
+              dataMap.set(value, currentSum + sumValue);
+            } else {
+              dataMap.set(value, sumValue);
+            }
+          }
+        });
+        const chartData = Array.from(dataMap).map(([value, sumValue]) => ({
+          x: value,
+          y: sumValue,
+        }));
+        return chartData;
+      };
+
+      countTripExpensesOccurrences();
+      sumOrderAmounts();
+      setCustomerRatingData(processCustomerRating('Customer Rating-Fo '));
+      setCustomerRatingDeliveryData(processCustomerRating('Customer Rating-Delivery'));
+
+      // Set loading to false once data is fetched
+      setLoading(false);
     };
 
-    countTripExpensesOccurrences();
-    sumOrderAmounts();
-    setCustomerRatingData(processCustomerRating('Customer Rating-Fo '));
-    setCustomerRatingDeliveryData(processCustomerRating('Customer Rating-Delivery'));
+    fetchData();
   }, [selectedMonth]);
 
   const tripExpensesOptions = {
@@ -201,7 +201,7 @@ export default function Analysis() {
         <h1>Restaurant Data Analysis</h1>
       </div>
       <div style={selectContainerStyle}>
-        <label htmlFor="monthDropdown" style={{'color': '#942D2D','marginRight':'1%','fontWeight':'600'}}>Select Month :  </label>
+        <label htmlFor="monthDropdown" style={{ 'color': '#942D2D', 'marginRight': '1%', 'fontWeight': '600' }}>Select Month :  </label>
         <select id="monthDropdown" onChange={handleMonthChange} value={selectedMonth || ''} style={selectStyle}>
           <option value="">All Months</option>
           <option value="1">January</option>
@@ -218,16 +218,22 @@ export default function Analysis() {
           <option value="12">December</option>
         </select>
       </div>
-      <CanvasJSChart options={tripExpensesOptions} onRef={(ref) => (tripExpensesChartRef.current = ref)} />
-      <br></br>
-      <br></br>
-      <CanvasJSChart options={orderAmountOptions} onRef={(ref) => (orderAmountChartRef.current = ref)} />
-      <br></br>
-      <br></br>
-      <CanvasJSChart options={customerRatingOptions} onRef={(ref) => (customerRatingChartRef.current = ref)} />
-      <br></br>
-      <br></br>
-      <CanvasJSChart options={customerRatingDeliveryOptions} onRef={(ref) => (customerRatingDeliveryChartRef.current = ref)} />
+      {loading ? (
+        <Loader/>
+      ) : (
+        <>
+          <CanvasJSChart options={tripExpensesOptions} onRef={(ref) => (tripExpensesChartRef.current = ref)} />
+          <br></br>
+          <br></br>
+          <CanvasJSChart options={orderAmountOptions} onRef={(ref) => (orderAmountChartRef.current = ref)} />
+          <br></br>
+          <br></br>
+          <CanvasJSChart options={customerRatingOptions} onRef={(ref) => (customerRatingChartRef.current = ref)} />
+          <br></br>
+          <br></br>
+          <CanvasJSChart options={customerRatingDeliveryOptions} onRef={(ref) => (customerRatingDeliveryChartRef.current = ref)} />
+        </>
+      )}
     </div>
   );
 }

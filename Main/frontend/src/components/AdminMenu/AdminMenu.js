@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-bootstrap/Modal';
 import ButtonComponent from '../Button/ButtonComponent';
 import Pagination from '../PaginationBar/PaginationBar';
-
+import Loader from '../Loader/Loader';
 
 export default function () {
 
@@ -177,7 +177,11 @@ export default function () {
 
   return (
     <div className='adm'>
-      {/* <AdminCategory setCategory={setCategories} /> Pass setCategories as a prop */}
+      {loading ? (
+        <Loader/>
+      ) : (
+      // {/* <AdminCategory setCategory={setCategories} /> Pass setCategories as a prop */}
+      <>
       <div className="addi-a">
         <h2>Menu Items:</h2>
         <ButtonComponent color={"button4"} message={"Add Item"} func={toggleModal} />
@@ -252,6 +256,7 @@ export default function () {
           <ButtonComponent color={"secondary"} message={"CLOSE"} func={() => setShowErrorModal(false)} />
         </Modal.Footer>
       </Modal>
+      </>)}
     </div>
   )
 }
